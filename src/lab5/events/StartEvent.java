@@ -10,9 +10,10 @@ import lab5.State.SimState;
  */
 public class StartEvent extends Event {
 
-    public StartEvent(EventQueue eventQueue, SimState state){
+    public StartEvent(EventQueue eventQueue, SimState state, double executeTime){
         this.eventQueue = eventQueue;
         this.state = state;
+        this.executeTime = executeTime;
     }
 
     @Override

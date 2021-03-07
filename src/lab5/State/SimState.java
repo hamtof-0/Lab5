@@ -7,8 +7,8 @@ package lab5.State;
  * @author ...
  */
 public abstract class SimState {
-    private boolean stopped;
-    private double time;
+    protected boolean stopped;
+    protected double time;
 
     SimState() {
         stopped = false;

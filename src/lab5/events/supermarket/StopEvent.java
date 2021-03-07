@@ -11,8 +11,8 @@ import lab5.events.EventQueue;
  */
 public class StopEvent extends lab5.events.StopEvent {
 
-    public StopEvent(EventQueue eventQueue, SimState state){
-        super(eventQueue, state);
+    public StopEvent(EventQueue eventQueue, SimState state, double executeTime){
+        super(eventQueue, state, executeTime);
     }
 
     @Override
