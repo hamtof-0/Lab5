@@ -10,10 +10,11 @@ public class StartEvent extends Event {
 
     @Override
     public void execute() {
-
+        setParameters();
+        //TODO: Add code to add to first Event
     }
 
-    private void setParameters(){
-
+    protected void setParameters(){
+        //TODO: Add code to set the parameters of the simulation state
     }
 }
