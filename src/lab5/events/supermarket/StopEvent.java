@@ -1,6 +1,7 @@
 package lab5.events.supermarket;
 
 import lab5.State.SimState;
+import lab5.events.EventQueue;
 
 /**
  * @author Hampus Toft
@@ -10,8 +11,8 @@ import lab5.State.SimState;
  */
 public class StopEvent extends lab5.events.StopEvent {
 
-    public StopEvent(SimState state) {
-        super(state);
+    public StopEvent(EventQueue eventQueue, SimState state){
+        super(eventQueue, state);
     }
 
     @Override

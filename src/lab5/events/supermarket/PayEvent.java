@@ -2,6 +2,7 @@ package lab5.events.supermarket;
 
 import lab5.State.SimState;
 import lab5.events.Event;
+import lab5.events.EventQueue;
 
 /**
  * @author Hampus Toft
@@ -11,7 +12,8 @@ import lab5.events.Event;
  */
 public class PayEvent extends Event {
 
-    public PayEvent(SimState state) {
+    public PayEvent(EventQueue eventQueue, SimState state){
+        this.eventQueue = eventQueue;
         this.state = state;
     }
 

@@ -11,5 +11,6 @@ import lab5.State.SimState;
 public abstract class Event {
     protected double executeTime;
     protected SimState state;
+    protected EventQueue eventQueue;
     public abstract void execute();
 }

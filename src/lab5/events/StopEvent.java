@@ -10,7 +10,8 @@ import lab5.State.SimState;
  */
 public class StopEvent extends Event {
 
-    public StopEvent(SimState state){
+    public StopEvent(EventQueue eventQueue, SimState state){
+        this.eventQueue = eventQueue;
         this.state = state;
     }
 
