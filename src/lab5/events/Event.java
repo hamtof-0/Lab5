@@ -1,5 +1,7 @@
 package lab5.events;
 
+import lab5.State.SimState;
+
 /**
  * @author Hampus Toft
  * @author ...
@@ -7,6 +9,7 @@ package lab5.events;
  * @author ...
  */
 public abstract class Event {
-    private double executeTime;
+    protected double executeTime;
+    protected SimState state;
     public abstract void execute();
 }

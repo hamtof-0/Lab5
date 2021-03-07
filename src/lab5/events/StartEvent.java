@@ -1,5 +1,7 @@
 package lab5.events;
 
+import lab5.State.SimState;
+
 /**
  * @author Hampus Toft
  * @author ...
@@ -7,6 +9,10 @@ package lab5.events;
  * @author ...
  */
 public class StartEvent extends Event {
+
+    public StartEvent(SimState state){
+        this.state = state;
+    }
 
     @Override
     public void execute() {
