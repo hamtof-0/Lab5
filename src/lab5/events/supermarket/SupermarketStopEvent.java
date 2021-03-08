@@ -9,9 +9,9 @@ import lab5.events.EventQueue;
  * @author ...
  * @author ...
  */
-public class StopEvent extends lab5.events.StopEvent {
+public class SupermarketStopEvent extends lab5.events.StopEvent {
 
-    public StopEvent(EventQueue eventQueue, SimState state, double executeTime){
+    public SupermarketStopEvent(EventQueue eventQueue, SimState state, double executeTime){
         super(eventQueue, state, executeTime);
     }
 

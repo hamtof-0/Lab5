@@ -9,16 +9,16 @@ import lab5.events.EventQueue;
  * @author ...
  * @author ...
  */
-public class StartEvent extends lab5.events.StartEvent {
+public class SupermarketStartEvent extends lab5.events.StartEvent {
 
-    public StartEvent(EventQueue eventQueue, SimState state, double executeTime){
+    public SupermarketStartEvent(EventQueue eventQueue, SimState state, double executeTime){
         super(eventQueue, state, executeTime);
     }
 
     @Override
     public void execute() {
         setParameters();
-        eventQueue.addEvent(new ArrivalEvent(eventQueue, state, this.executeTime+10));
+        eventQueue.addEvent(new SupermarketArrivalEvent(eventQueue, state, this.executeTime+10));
         // FIXME: Next event is always 10 time units away
         // FIXME: Not sure if customer factory is used here or later
 

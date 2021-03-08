@@ -10,9 +10,9 @@ import lab5.events.EventQueue;
  * @author ...
  * @author ...
  */
-public class PayEvent extends Event {
+public class SupermarketPayEvent extends Event {
 
-    public PayEvent(EventQueue eventQueue, SimState state, double executeTime){
+    public SupermarketPayEvent(EventQueue eventQueue, SimState state, double executeTime){
         this.eventQueue = eventQueue;
         this.state = state;
         this.executeTime = executeTime;
@@ -21,7 +21,7 @@ public class PayEvent extends Event {
     @Override
     public void execute() {
         // TODO: Should the next customer be reliant on current customer paying?
-        eventQueue.addEvent(new ArrivalEvent(eventQueue, state, this.executeTime+10));
+        eventQueue.addEvent(new SupermarketArrivalEvent(eventQueue, state, this.executeTime+10));
         // FIXME: Next event is always 10 time units away
         //TODO: Add code to add Event specific code
     }
