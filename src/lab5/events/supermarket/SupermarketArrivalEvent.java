@@ -1,6 +1,6 @@
 package lab5.events.supermarket;
 
-import lab5.State.SimState;
+import lab5.state.SimState;
 import lab5.events.Event;
 import lab5.events.EventQueue;
 /**
