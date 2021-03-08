@@ -22,7 +22,7 @@ public class ArrivalEvent extends Event {
     public void execute() {
         eventQueue.addEvent(new PayEvent(eventQueue, state, this.executeTime+10));
         // FIXME: Next event is always 10 time units away
-        //TODO: Add code to add Event specific code
+        // TODO: Add code to add Event specific code
     }
 
 }
