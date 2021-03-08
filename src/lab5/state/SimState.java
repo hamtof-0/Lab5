@@ -1,4 +1,4 @@
-package lab5.State;
+package lab5.state;
 
 /**
  * @author Hampus Toft
