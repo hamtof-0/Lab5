@@ -17,11 +17,33 @@ public class SupermarketState extends SimState {
 	private int seed;
 	private CustomerFactory Costumer;
 	private TimeManager timeManager;
+	private double scanningTimeLower;
+	private double scanningTimeUpper;
+	private double gatheringTimeLower;
+	private double gatheringTimeUpper;
+	private double arrivalLambda;
 	
-	public SupermarketState(int numberOfCustomers, int checkoustsTotal, int checkoutsOccupied, int costumersServed,
-			boolean open, int missedCustomers, int customersQueued, double queueTimeTotal, FIFO queue, int maxCostumers,
-			int seed, ArrivalTime arrivalTime, GatherTime gatherTime, ScanningTime scanningTime,
-			CustomerFactory costumer, double closingTime) {
+	//Constructur
+	public SupermarketState(int numberOfCustomers, 
+			int checkoustsTotal, 
+			int checkoutsOccupied, 
+			int costumersServed,
+			boolean open, 
+			int missedCustomers, 
+			int customersQueued, 
+			double queueTimeTotal, 
+			FIFO queue, 
+			int maxCostumers,
+			int seed, 
+			double scanningTimeLower,
+			double scanningTimeUpper,
+			double gatheringTimeLower, 
+			double gatheringTimeUpper,
+			double arrivalLambda,
+			
+			CustomerFactory costumer, 
+			double closingTime) {
+		
 		super();
 		this.numberOfCustomers = numberOfCustomers;
 		this.checkoustsTotal = checkoustsTotal;
@@ -38,7 +60,6 @@ public class SupermarketState extends SimState {
 	}
 	
 	//Here the TOString goes or might be in the SimView thingy
-	@Override
 	public String toString() {
 		String leString = null;
 		

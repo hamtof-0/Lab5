@@ -10,8 +10,6 @@ public class CustomerFactory {
 		totalNumberOfCustomers = 0;
 	}
 	
-	
-	
 	public Customer newCustomer() {
 		totalNumberOfCustomers++;
 		Customer customer = new Customer(totalNumberOfCustomers);

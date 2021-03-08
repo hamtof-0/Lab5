@@ -7,12 +7,11 @@ public class TimeManager {
 	private double time;
 	private double closingTime;
 	
-	public TimeManager(ArivvalTime arrivalTime, ScanningTime scanningTime, GatherTime gathertime, double time,
-			double closingTime) {
+	public TimeManager(int seed, int time, int closingTime) {
 		super();
-		this.arrivalTime = arrivalTime;
-		this.scanningTime = scanningTime;
-		this.gathertime = gathertime;
+		this.arrivalTime = new ArrivalTime();
+		this.scanningTime = new ScanningTime();
+		this.gathertime = new GatherTime();
 		this.time = time;
 		this.closingTime = closingTime;
 	}
