@@ -23,5 +23,15 @@
 hs_err_pid*
 
 # Idea Development file
+
+# IntelliJ project files 
 *.iml
-/.idea/*
+*.iws
+*.ipr
+.idea/
+
+# eclipse project file
+.settings/
+.classpath
+.project
+
