@@ -12,6 +12,8 @@ public class SupermarketView extends SimView{
 		
 		if (state.getTime() ==  0d) {
 			parameters(state);
+		} else if (state.getTime < 1000d) { //Vill man göra så här eller ha ett annat sätt?
+			running(state);
 		}
 	}
 	
@@ -29,6 +31,31 @@ public class SupermarketView extends SimView{
 		System.out.println("FÖRLOPP");
 		System.out.println("_______");
 		System.out.println(" TID HÄNDELSE KUND ÖPPET/STÄNGT FRIKASSOR FRIKASSETID KUNDANTAL KLARHANDLADE LEDSENKUNDER KÖAT KÖTID KÖAR [KÖN]");
-		System.out.println("0,00");
+		System.out.println("0,00 Start");
+	}
+	
+	private void running(SupermarketState state) {
+		String result = "";
+		
+	}
+	
+	private String correctLengthDouble(double d, int len) {
+		String s = Double.toString(d);
+		
+		if (s.length() == len) {
+			return s;
+		} else if (s.length() < len) {
+			while (s.length() < len) {
+				s = s + " ";
+			}
+			return s;
+		} else  {
+			String s2 = s;
+			s = "";
+			for (int i = 0; i < len; i++) {
+				s = s + s2.charAt(i);
+			}
+			return s;
+		}
 	}
 }
