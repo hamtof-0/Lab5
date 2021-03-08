@@ -66,7 +66,7 @@ public class TimeManager {
 		return arrivalTime.getArrivalTime(time);
 	}
 
-	public double scanningTime(){
+	public double scanTime(){
 		return scanningTime.getScanningTime(time);
 	}
 
