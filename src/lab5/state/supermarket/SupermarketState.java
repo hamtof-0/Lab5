@@ -132,7 +132,7 @@ public class SupermarketState {
 	}
 
 	public CustomerFactory getCostumer() {
-		return Costumer;
+		return customer;
 	}
 
 	public void setCostumer(CustomerFactory costumer) {
