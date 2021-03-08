@@ -158,7 +158,7 @@ public class SupermarketState extends SimState {
 		super.stop();
 	}
 
-	public Checkout register(){
+	public Checkout checkout(){
 		return this.checkout;
 	}
 
