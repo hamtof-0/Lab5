@@ -33,6 +33,7 @@ public class SupermarketState extends SimState {
 		this.seed = seed;
 		Costumer = costumer;
 		this.checkout = new Checkout(checkoutTotal);
+		this.timeManager = new TimeManager(0D, closingTime, seed);
 	}
 	
 	//Here the TOString goes or might be in the SimView thingy
