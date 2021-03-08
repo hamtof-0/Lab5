@@ -16,6 +16,7 @@ public class SupermarketState extends SimState {
 	private int maxCostumers;
 	private int seed;
 	private CustomerFactory Costumer;
+	private TimeManager timeManager;
 	
 	public SupermarketState(int numberOfCustomers, int checkoustsTotal, int checkoutsOccupied, int costumersServed,
 			boolean open, int missedCustomers, int customersQueued, double queueTimeTotal, FIFO queue, int maxCostumers,
@@ -142,4 +143,7 @@ public class SupermarketState extends SimState {
 		Costumer = costumer;
 	}
 
+	public TimeManager timeManager(){
+		return timeManager;
+	}
 }
