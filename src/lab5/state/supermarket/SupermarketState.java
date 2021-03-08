@@ -12,29 +12,27 @@ public class SupermarketState extends SimState {
 	private int missedCustomers;
 	private int customersQueued;
 	private double queueTimeTotal;
-	private FIFO queue;
 	private int maxCostumers;
 	private int seed;
 	private CustomerFactory Costumer;
 	private TimeManager timeManager;
+	private Register register;
 	
-	public SupermarketState(int numberOfCustomers, int checkoustsTotal, int checkoutsOccupied, int costumersServed,
-			boolean open, int missedCustomers, int customersQueued, double queueTimeTotal, FIFO queue, int maxCostumers,
+	public SupermarketState(int numberOfCustomers, int checkoustsTotal, int costumersServed,
+			boolean open, int missedCustomers, int customersQueued, double queueTimeTotal, int maxCostumers,
 			int seed, ArrivalTime arrivalTime, GatherTime gatherTime, ScanningTime scanningTime,
 			CustomerFactory costumer, double closingTime) {
 		super();
 		this.numberOfCustomers = numberOfCustomers;
-		this.checkoustsTotal = checkoustsTotal;
-		this.checkoutsOccupied = checkoutsOccupied;
 		this.costumersServed = costumersServed;
 		this.open = open;
 		this.missedCustomers = missedCustomers;
 		this.customersQueued = customersQueued;
 		this.queueTimeTotal = queueTimeTotal;
-		this.queue = queue;
 		this.maxCostumers = maxCostumers;
 		this.seed = seed;
 		Costumer = costumer;
+		this.register = new Register(checkoustsTotal);
 	}
 	
 	//Here the TOString goes or might be in the SimView thingy
@@ -79,9 +77,6 @@ public class SupermarketState extends SimState {
 		this.costumersServed = costumersServed;
 	}
 
-	public boolean isOpen() {
-		return open;
-	}
 
 	public void setOpen(boolean open) {
 		this.open = open;
@@ -109,14 +104,6 @@ public class SupermarketState extends SimState {
 
 	public void setQueueTimeTotal(double queueTimeTotal) {
 		this.queueTimeTotal = queueTimeTotal;
-	}
-
-	public FIFO getQueue() {
-		return queue;
-	}
-
-	public void setQueue(FIFO queue) {
-		this.queue = queue;
 	}
 
 	public int getMaxCostumers() {
@@ -150,4 +137,29 @@ public class SupermarketState extends SimState {
 	public boolean hasRoom(){
 		return (this.maxCostumers - this.numberOfCustomers) > 0;
 	}
+
+	public void addCustomer(){
+		numberOfCustomers += 1;
+	}
+
+	public void missedCustomer(){
+		missedCustomers += 1;
+	}
+
+	public void close(){
+		open = false;
+	}
+
+	public boolean isOpen() {
+		return open;
+	}
+
+	public void stop(){
+		super.stop();
+	}
+
+	public Register register(){
+		return this.register;
+	}
+
 }
