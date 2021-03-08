@@ -16,6 +16,10 @@ public class Checkout {
         return checkoutsOccupied <= 0;
     }
 
+    public boolean hasEmptyCheckout(){
+        return checkoutsOccupied < checkoutTotal;
+    }
+
     public void add(Customer customer){
         checkoutQueue.add(customer);
     }
