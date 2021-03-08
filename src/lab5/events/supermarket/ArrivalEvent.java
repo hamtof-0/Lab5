@@ -3,7 +3,7 @@ package lab5.events.supermarket;
 import lab5.State.SimState;
 import lab5.events.Event;
 import lab5.events.EventQueue;
-
+// Made a change
 /**
  * @author Hampus Toft
  * @author Malkolm Lundkvist
