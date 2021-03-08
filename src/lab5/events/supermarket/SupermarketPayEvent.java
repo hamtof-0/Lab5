@@ -28,7 +28,7 @@ public class SupermarketPayEvent extends Event {
         SupermarketState stateSuper = (SupermarketState) state;
         TimeManager time = stateSuper.getTimeManager();
         if (!stateSuper.isOpen()){
-            if(stateSuper.register().isEmpty()){
+            if(stateSuper.checkout().isEmpty()){
                 eventQueue.addEvent(new SupermarketStopEvent(eventQueue, state, time.current()+1));
             }
         }
