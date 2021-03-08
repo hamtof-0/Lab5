@@ -1,6 +1,8 @@
 package lab5.state.supermarket;
 
-public class SupermarketState {
+import lab5.state.SimState;
+
+public class SupermarketState extends SimState {
 	
 	private int numberOfCustomers;
 	private int checkoustsTotal;
@@ -35,7 +37,8 @@ public class SupermarketState {
 	}
 	
 	//Here the TOString goes or might be in the SimView thingy
-	public String ToString() {
+	@Override
+	public String toString() {
 		String leString = null;
 		
 		return leString;
@@ -138,4 +141,5 @@ public class SupermarketState {
 	public void setCostumer(CustomerFactory costumer) {
 		Costumer = costumer;
 	}
+
 }

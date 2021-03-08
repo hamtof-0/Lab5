@@ -10,7 +10,7 @@ public abstract class SimState {
     protected boolean stopped;
     protected double time;
 
-    SimState() {
+    public SimState() {
         stopped = false;
     }
 
