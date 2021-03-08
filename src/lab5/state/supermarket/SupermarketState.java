@@ -146,4 +146,8 @@ public class SupermarketState extends SimState {
 	public TimeManager getTimeManager(){
 		return timeManager;
 	}
+
+	public boolean hasRoom(){
+		return (this.maxCostumers - this.numberOfCustomers) > 0;
+	}
 }
