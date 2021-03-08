@@ -3,7 +3,7 @@ package lab5.state;
 /**
  * @author Hampus Toft
  * @author Malkolm Lundkvist
- * @author ...
+ * @author Billy Norman
  * @author ...
  */
 public abstract class SimState {
