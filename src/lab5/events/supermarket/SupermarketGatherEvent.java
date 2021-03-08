@@ -21,11 +21,11 @@ public class SupermarketGatherEvent extends Event {
 
     @Override
     public void execute() {
-        if(!(state instanceof SimState)) {
-            throw new RuntimeException("Wrong state was used");
+        if (!(state instanceof SupermarketState)){
+            throw new RuntimeException("Invalid State");
         }
-        SimState simState = (SimState) state;
-        TimeManager time = simState.getTimeManager();
+        SupermarketState stateSuper = (SupermarketState) state;
+        TimeManager time = stateSuper.getTimeManager();
         double newExecuteTime;
         if (simState.isOpen()) {
             newExecuteTime = time.arrivalTime();

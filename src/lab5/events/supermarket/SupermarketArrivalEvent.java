@@ -20,7 +20,23 @@ public class SupermarketArrivalEvent extends Event {
 
     @Override
     public void execute() {
-        eventQueue.addEvent(new SupermarketPayEvent(eventQueue, state, this.executeTime+10));
+        if (!(state instanceof SupermarketState)){
+            throw new RuntimeException("Invalid State");
+        }
+        SupermarketState stateSuper = (SupermarketState) state;
+        TimeManager time = stateSuper.getTimeManager();
+        double newExecuteTime;
+        if(!stateSuper.isOpen()) {
+            return;
+        }
+        eventQueue.addEvent(new SupermarketArrivalEvent(eventQueue, state, time.arrivalTime()));
+
+        if(stateSuper.hasRoom()){
+            stateSuper.addCustomer();
+            eventQueue.addEvent(new SupermarketGatherEvent(eventQueue, state, time.gatherTime()));
+        } else {
+            stateSuper.missedCoustomer();
+        }
         // FIXME: Next event is always 10 time units away
         // TODO: Add code to add Event specific code
     }

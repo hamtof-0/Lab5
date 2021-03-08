@@ -21,10 +21,16 @@ public class SupermarketPayEvent extends Event {
 
     @Override
     public void execute() {
-        // TODO: Should the next customer be reliant on current customer paying?
-        eventQueue.addEvent(new SupermarketArrivalEvent(eventQueue, state, this.executeTime+10));
-        // FIXME: Next event is always 10 time units away
-        //TODO: Add code to add Event specific code
+        if (!(state instanceof SupermarketState)){
+            throw new RuntimeException("Invalid State");
+        }
+        SupermarketState stateSuper = (SupermarketState) state;
+        TimeManager time = stateSuper.getTimeManager();
+        if (!stateSuper.isOpen()){
+            if(stateSuper.register().isEmpty()){
+                eventQueue.addEvent(new SupermarketStopEvent(eventQueue, state, time.current()+1));
+            }
+        }
     }
 
 }

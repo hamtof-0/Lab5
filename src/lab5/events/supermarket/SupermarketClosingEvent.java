@@ -21,7 +21,11 @@ public class SupermarketClosingEvent extends Event {
 
     @Override
     public void execute() {
-        eventQueue.addEvent(new SupermarketStopEvent(eventQueue, state, this.executeTime+10));
+        if (!(state instanceof SupermarketState)){
+            throw new RuntimeException("Invalid State");
+        }
+        SupermarketState stateSuper = (SupermarketState) state;
+        stateSuper.closed();
         // FIXME: Next event is always 10 time units away
         //TODO: Add code to add Event specific code
 
