@@ -131,10 +131,6 @@ public class SupermarketState {
 		this.seed = seed;
 	}
 
-	public CustomerFactory getCostumer() {
-		return customer;
-	}
-
 	public void setCostumer(CustomerFactory costumer) {
 		Costumer = costumer;
 	}
