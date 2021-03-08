@@ -143,7 +143,7 @@ public class SupermarketState extends SimState {
 		Costumer = costumer;
 	}
 
-	public TimeManager timeManager(){
+	public TimeManager getTimeManager(){
 		return timeManager;
 	}
 }
