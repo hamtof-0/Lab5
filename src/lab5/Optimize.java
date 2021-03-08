@@ -4,7 +4,7 @@ package lab5;
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman
- * @author ...
+ * @author Axel Johansson
  */
 public class Optimize {
 
