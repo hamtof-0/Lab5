@@ -18,7 +18,7 @@ public class SupermarketState extends SimState {
 	private TimeManager timeManager;
 	private Checkout checkout;
 	
-	public SupermarketState(int numberOfCustomers, int checkoustsTotal, int costumersServed,
+	public SupermarketState(int numberOfCustomers, int checkoutTotal, int costumersServed,
 			boolean open, int missedCustomers, int customersQueued, double queueTimeTotal, int maxCostumers,
 			int seed, ArrivalTime arrivalTime, GatherTime gatherTime, ScanningTime scanningTime,
 			CustomerFactory costumer, double closingTime) {
@@ -32,7 +32,7 @@ public class SupermarketState extends SimState {
 		this.maxCostumers = maxCostumers;
 		this.seed = seed;
 		Costumer = costumer;
-		this.checkout = new Checkout(checkoustsTotal);
+		this.checkout = new Checkout(checkoutTotal);
 	}
 	
 	//Here the TOString goes or might be in the SimView thingy
