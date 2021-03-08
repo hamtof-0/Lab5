@@ -3,6 +3,7 @@ package lab5.events.supermarket;
 import lab5.state.SimState;
 import lab5.events.Event;
 import lab5.events.EventQueue;
+import lab5.state.supermarket.TimeManager;
 /**
  * @author Hampus Toft
  * @author Malkolm Lundkvist
