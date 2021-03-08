@@ -29,7 +29,7 @@ public class SupermarketPayEvent extends Event {
         TimeManager time = stateSuper.getTimeManager();
         if (!stateSuper.isOpen()){
             if(stateSuper.getNumberOfCustomers() == 0){
-                eventQueue.addEvent(new SupermarketStopEvent(eventQueue, state, time.current()+1));
+                eventQueue.addEvent(new SupermarketStopEvent(eventQueue, state, time.getTime()+1));
             }
         }
     }
