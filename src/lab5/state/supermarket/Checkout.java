@@ -1,12 +1,12 @@
 package lab5.state.supermarket;
 
-public class Register {
+public class Checkout {
 
     private int checkoutTotal;
     private int checkoutsOccupied;
     private FIFO checkoutQueue;
 
-    public Register(int checkoutTotal) {
+    public Checkout(int checkoutTotal) {
         this.checkoutTotal = checkoutTotal;
         this.checkoutsOccupied = 0;
         this.checkoutQueue = new FIFO();

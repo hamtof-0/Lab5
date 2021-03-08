@@ -5,7 +5,7 @@ import lab5.state.SimState;
 public class SupermarketState extends SimState {
 	
 	private int numberOfCustomers;
-	private int checkoustsTotal;
+	private int checkoutTotal;
 	private int checkoutsOccupied;
 	private int costumersServed;
 	private boolean open;
@@ -16,7 +16,7 @@ public class SupermarketState extends SimState {
 	private int seed;
 	private CustomerFactory Costumer;
 	private TimeManager timeManager;
-	private Register register;
+	private Checkout checkout;
 	
 	public SupermarketState(int numberOfCustomers, int checkoustsTotal, int costumersServed,
 			boolean open, int missedCustomers, int customersQueued, double queueTimeTotal, int maxCostumers,
@@ -32,7 +32,7 @@ public class SupermarketState extends SimState {
 		this.maxCostumers = maxCostumers;
 		this.seed = seed;
 		Costumer = costumer;
-		this.register = new Register(checkoustsTotal);
+		this.checkout = new Checkout(checkoustsTotal);
 	}
 	
 	//Here the TOString goes or might be in the SimView thingy
@@ -53,12 +53,12 @@ public class SupermarketState extends SimState {
 		this.numberOfCustomers = numberOfCustomers;
 	}
 
-	public int getCheckoustsTotal() {
-		return checkoustsTotal;
+	public int getCheckoutTotal() {
+		return checkoutTotal;
 	}
 
-	public void setCheckoustsTotal(int checkoustsTotal) {
-		this.checkoustsTotal = checkoustsTotal;
+	public void setCheckoutTotal(int checkoutTotal) {
+		this.checkoutTotal = checkoutTotal;
 	}
 
 	public int getCheckoutsOccupied() {
@@ -158,8 +158,8 @@ public class SupermarketState extends SimState {
 		super.stop();
 	}
 
-	public Register register(){
-		return this.register;
+	public Checkout register(){
+		return this.checkout;
 	}
 
 }
