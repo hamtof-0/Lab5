@@ -35,7 +35,7 @@ public class SupermarketArrivalEvent extends Event {
             stateSuper.addCustomer();
             eventQueue.addEvent(new SupermarketGatherEvent(eventQueue, state, time.gatherTime()));
         } else {
-            stateSuper.missedCoustomer();
+            stateSuper.missedCustomer();
         }
         // FIXME: Next event is always 10 time units away
         // TODO: Add code to add Event specific code
