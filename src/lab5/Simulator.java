@@ -7,7 +7,7 @@ import lab5.view.SimView;
 /**
  * @author Hampus Toft
  * @author Malkolm Lundkvist
- * @author ...
+ * @author Billy Norman
  * @author ...
  */
 public class Simulator {
