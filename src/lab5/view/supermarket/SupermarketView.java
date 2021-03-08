@@ -9,10 +9,11 @@ public class SupermarketView extends SimView{
 
 	public void update(Observable o, Object arg) {
 		SupermarketState state = (SupermarketState)o;
-		
-		if (state.getTime() ==  0d) {
+		if (state.getStopped) { //Se till att den här görs
+			
+		} else if (state.getTime() ==  0d) {
 			parameters(state);
-		} else if (state.getTime < 1000d) { //Vill man göra så här eller ha ett annat sätt?
+		} else  { //Vill man göra så här eller ha ett annat sätt?
 			running(state);
 		}
 	}
@@ -30,18 +31,53 @@ public class SupermarketView extends SimView{
 		System.out.println();
 		System.out.println("FÖRLOPP");
 		System.out.println("_______");
-		System.out.println(" TID HÄNDELSE KUND ÖPPET/STÄNGT FRIKASSOR FRIKASSETID KUNDANTAL KLARHANDLADE LEDSENKUNDER KÖAT KÖTID KÖAR [KÖN]");
+		System.out.println(" TID HÄNDELSE  KUND ÖPPET/STÄNGT FRIKASSOR FRIKASSETID KUNDANTAL KLARHANDLADE LEDSENKUNDER KÖAT KÖTID KÖAR [KÖN]");
 		System.out.println("0,00 Start");
 	}
 	
 	private void running(SupermarketState state) {
-		String result = "";
+		String time = correctLengthDouble(state.getTime(), 5);
+		String event = correctLengthString(state.getEvent(), 10); //Diskutera med andra så getEvent finns och returnerar en sträng
+		String customer = correctLengthInt(state.getCostumer(), 5); //Kanske måste göra något annat för att få ut numret?
+		String open = correctLengthString((state.isOpen() ? "Öppet" : "Stängt"), 13);
+		String freeCheckouts = correctLengthInt(state.getCheckoutsTotal() - state.getCheckoutsOccupied(), 10);
+		String freeTime = correctLengthDouble(state.getFreeTime(), 12); //Diskutera så den också finns
+		String custumersNumber = correctLengthInt(state.getNumberOfCustomers(), 10);
+		String customersFinished = correctLengthInt(state.getCostumersServed(), 13);
+		String customersSad = correctLengthInt(state.getMissedCustomers(), 13);
+		String customersQueued = correctLengthInt(state.getCustomersQueued(), 5);
+		String customersQueuetime = correctLengthDouble(state.getQueueTimeTotal(), 6);
+		String customersQueing = correctLengthInt(state.getQueue().size(), 5);
+		String queue = state.getQueue().toString();
 		
+		String result = time + event + customer + open + freeCheckouts + freeTime + custumersNumber +
+				customersFinished + customersSad + customersQueued + customersQueuetime + customersQueing + queue;
+		
+		System.out.println(result);
 	}
 	
 	private String correctLengthDouble(double d, int len) {
 		String s = Double.toString(d);
+		String s2 = s;
 		
+		int numAfterComma = (s.length()-1) - s.indexOf(",");
+		if (numAfterComma > 2) {
+			s = "";
+			for (int i = 0; i < s2.length() - numAfterComma + 2; i++) {
+				s = s + s2.charAt(i);
+			}
+		}
+		
+		return correctLengthString(s, len);
+	}
+	
+	private String correctLengthInt(int in, int len) {
+		String s = Integer.toString(in);
+		
+		return correctLengthString(s, len);
+	}
+	
+	private String correctLengthString (String s, int len) {
 		if (s.length() == len) {
 			return s;
 		} else if (s.length() < len) {
@@ -49,7 +85,7 @@ public class SupermarketView extends SimView{
 				s = s + " ";
 			}
 			return s;
-		} else  {
+		} else {
 			String s2 = s;
 			s = "";
 			for (int i = 0; i < len; i++) {
