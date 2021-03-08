@@ -28,10 +28,10 @@ public class SupermarketGatherEvent extends Event {
         SupermarketState stateSuper = (SupermarketState) state;
         TimeManager time = stateSuper.getTimeManager();
 
-        if(stateSuper.checkout().empty() > 0){
+        if(stateSuper.checkout().hasEmptyCheckout){
             eventQueue.addEvent(new SupermarketPayEvent(eventQueue, state, time.scanTime()));
         } else {
-            stateSuper.checkout().add();
+            stateSuper.checkout().add(); // TODO: customer Object from somewhere goes here
         }
         // TODO: Add code to for cashier queue and payment
     }
