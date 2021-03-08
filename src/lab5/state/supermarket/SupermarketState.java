@@ -35,15 +35,37 @@ public class SupermarketState extends SimState {
 		this.checkout = new Checkout(checkoutTotal);
 		this.timeManager = new TimeManager(0D, closingTime, seed);
 	}
-	
-	//Here the TOString goes or might be in the SimView thingy
-	@Override
-	public String toString() {
-		String leString = null;
-		
-		return leString;
+
+
+	public boolean hasRoom(){
+		return (this.maxCostumers - this.numberOfCustomers) > 0;
 	}
-	
+
+	public void addCustomer(){
+		numberOfCustomers += 1;
+	}
+
+	public void missedCustomer(){
+		missedCustomers += 1;
+	}
+
+	public void close(){
+		open = false;
+	}
+
+	public boolean isOpen() {
+		return open;
+	}
+
+	public void stop(){
+		super.stop();
+	}
+
+	public Checkout checkout(){
+		return this.checkout;
+	}
+
+
 	//There are only getters and setters beyond this point
 
 	public int getNumberOfCustomers() {
@@ -133,34 +155,6 @@ public class SupermarketState extends SimState {
 
 	public TimeManager getTimeManager(){
 		return timeManager;
-	}
-
-	public boolean hasRoom(){
-		return (this.maxCostumers - this.numberOfCustomers) > 0;
-	}
-
-	public void addCustomer(){
-		numberOfCustomers += 1;
-	}
-
-	public void missedCustomer(){
-		missedCustomers += 1;
-	}
-
-	public void close(){
-		open = false;
-	}
-
-	public boolean isOpen() {
-		return open;
-	}
-
-	public void stop(){
-		super.stop();
-	}
-
-	public Checkout checkout(){
-		return this.checkout;
 	}
 
 }
