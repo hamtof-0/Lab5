@@ -26,7 +26,6 @@ public class SupermarketArrivalEvent extends Event {
         }
         SupermarketState stateSuper = (SupermarketState) state;
         TimeManager time = stateSuper.getTimeManager();
-        double newExecuteTime;
         if(!stateSuper.isOpen()) {
             return;
         }

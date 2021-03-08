@@ -26,7 +26,7 @@ public class SupermarketClosingEvent extends Event {
             throw new RuntimeException("Invalid State");
         }
         SupermarketState stateSuper = (SupermarketState) state;
-        stateSuper.closed();
+        stateSuper.close();
         // FIXME: Next event is always 10 time units away
         //TODO: Add code to add Event specific code
 

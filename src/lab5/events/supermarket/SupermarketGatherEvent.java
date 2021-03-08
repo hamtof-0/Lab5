@@ -27,14 +27,12 @@ public class SupermarketGatherEvent extends Event {
         }
         SupermarketState stateSuper = (SupermarketState) state;
         TimeManager time = stateSuper.getTimeManager();
-        double newExecuteTime;
-        if (simState.isOpen()) {
+        if (stateSuper.isOpen()) {
             newExecuteTime = time.arrivalTime();
-            eventQueue.addEvent(new SupermarketGatherEvent(eventQueue, state, newExecuteTime));
+            eventQueue.addEvent(new SupermarketGatherEvent(eventQueue, state, time.gatherTime()));
         }
         if(state.checkout().empty() > 0){
-            newExecuteTime = time.scanTime();
-            eventQueue.addEvent(new SupermarketPayEvent(eventQueue, state, newExecuteTime);
+            eventQueue.addEvent(new SupermarketPayEvent(eventQueue, state, time.scanTime()));
         }
         // TODO: Add code to for cashier queue and payment
     }
