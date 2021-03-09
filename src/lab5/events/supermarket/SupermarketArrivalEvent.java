@@ -1,8 +1,8 @@
 package lab5.events.supermarket;
 
 import lab5.state.SimState;
-import lab5.events.Event;
 import lab5.events.EventQueue;
+import lab5.state.supermarket.Customer;
 import lab5.state.supermarket.TimeManager;
 import lab5.state.supermarket.SupermarketState;
 /**
@@ -11,13 +11,10 @@ import lab5.state.supermarket.SupermarketState;
  * @author ...
  * @author ...
  */
-public class SupermarketArrivalEvent extends Event {
+public class SupermarketArrivalEvent extends SupermarketEvent {
 
-    //TODO: This class is completed for now!
-    public SupermarketArrivalEvent(EventQueue eventQueue, SimState state, double executeTime){
-        this.eventQueue = eventQueue;
-        this.state = state;
-        this.executeTime = executeTime;
+    public SupermarketArrivalEvent(EventQueue eventQueue, SimState state, double executeTime, Customer customer) {
+        super(eventQueue, state, executeTime, customer);
     }
 
     @Override
@@ -28,11 +25,12 @@ public class SupermarketArrivalEvent extends Event {
         TimeManager time = stateSuper.getTimeManager();
         if(stateSuper.hasRoom()){
             stateSuper.addCustomer();
-            eventQueue.addEvent(new SupermarketGatherEvent(eventQueue, state, time.gatherTime()));
+            eventQueue.addEvent(new SupermarketGatherEvent(eventQueue, state, time.gatherTime(), super.customer));
         } else {
             stateSuper.missedCustomer();
         }
-        eventQueue.addEvent(new SupermarketArrivalEvent(eventQueue, state, time.arrivalTime()));
+        if (stateSuper.getCustomerFactory().canCreate())
+            eventQueue.addEvent(new SupermarketArrivalEvent(eventQueue, state, time.arrivalTime(), stateSuper.getCustomerFactory().newCustomer()));
     }
 
 }

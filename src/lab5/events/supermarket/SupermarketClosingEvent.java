@@ -3,7 +3,6 @@ package lab5.events.supermarket;
 import lab5.state.SimState;
 import lab5.events.Event;
 import lab5.events.EventQueue;
-import lab5.state.supermarket.TimeManager;
 import lab5.state.supermarket.SupermarketState;
 
 /**
@@ -15,10 +14,9 @@ import lab5.state.supermarket.SupermarketState;
 public class SupermarketClosingEvent extends Event {
 
     //TODO: This class is completed for now!
-    public SupermarketClosingEvent(EventQueue eventQueue, SimState state, double executeTime){
-        this.eventQueue = eventQueue;
-        this.state = state;
-        this.executeTime = executeTime;
+
+    public SupermarketClosingEvent(EventQueue eventQueue, SimState state, double executeTime) {
+        super(eventQueue, state, executeTime);
     }
 
     @Override
