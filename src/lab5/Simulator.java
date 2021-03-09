@@ -12,11 +12,13 @@ import lab5.view.SimView;
  */
 public class Simulator {
     private SimState state;
-    private EventQueue event;
+    private EventQueue eventQueue;
     private SimView view;
 
 
     public void run(){
-
+        while (!state.isStopped()){
+            eventQueue.getNextEvent().execute();
+        }
     }
 }

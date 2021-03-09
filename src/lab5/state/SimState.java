@@ -23,4 +23,8 @@ public abstract class SimState {
     }
 
     public abstract String toString();
+
+    public boolean isStopped(){
+        return stopped;
+    }
 }
