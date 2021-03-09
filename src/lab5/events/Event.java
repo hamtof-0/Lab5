@@ -1,7 +1,6 @@
 package lab5.events;
 
 import lab5.state.SimState;
-import lab5.state.supermarket.Customer;
 
 /**
  * @author Hampus Toft

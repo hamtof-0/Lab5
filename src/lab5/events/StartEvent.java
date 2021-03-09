@@ -11,9 +11,7 @@ import lab5.state.SimState;
 public class StartEvent extends Event {
 
     public StartEvent(EventQueue eventQueue, SimState state, double executeTime){
-        this.eventQueue = eventQueue;
-        this.state = state;
-        this.executeTime = executeTime;
+        super(eventQueue, state, executeTime);
     }
 
     @Override
