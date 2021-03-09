@@ -3,14 +3,22 @@ package lab5.view.supermarket;
 import java.util.Observable;
 
 import lab5.view.SimView;
-import lab5.state.SupermarketState;
+import lab5.state.supermarket.SupermarketState;
 
 public class SupermarketView extends SimView{
 
+	
+	public SupermarketView(SimState state) {
+		super(state);
+	}
+	
 	public void update(Observable o, Object arg) {
+		if (!(o instanceof SupermarketState)) {
+			throw new RuntimeException("Invalid State!");
+		}
 		SupermarketState state = (SupermarketState)o;
 		if (state.getStopped) { //Se till att den här görs
-			
+			endscreen(state);
 		} else if (state.getTime() ==  0d) {
 			parameters(state);
 		} else  { //Vill man göra så här eller ha ett annat sätt?
@@ -36,6 +44,7 @@ public class SupermarketView extends SimView{
 	}
 	
 	private void running(SupermarketState state) {
+		String result = "";
 		String time = correctLengthDouble(state.getTime(), 5);
 		String event = correctLengthString(state.getEvent(), 10); //Diskutera med andra så getEvent finns och returnerar en sträng
 		String customer = correctLengthInt(state.getCostumer(), 5); //Kanske måste göra något annat för att få ut numret?
@@ -50,10 +59,31 @@ public class SupermarketView extends SimView{
 		String customersQueing = correctLengthInt(state.getQueue().size(), 5);
 		String queue = state.getQueue().toString();
 		
-		String result = time + event + customer + open + freeCheckouts + freeTime + custumersNumber +
-				customersFinished + customersSad + customersQueued + customersQueuetime + customersQueing + queue;
+		if (state.getEvent == "Stänger") {
+			result = time + event + correctLengthString("-", 5) + open + freeCheckouts + freeTime + custumersNumber +
+					customersFinished + customersSad + customersQueued + customersQueuetime + customersQueing + queue;
+		} else {
+			result = time + event + customer + open + freeCheckouts + freeTime + custumersNumber +
+					customersFinished + customersSad + customersQueued + customersQueuetime + customersQueing + queue;
+		}
 		
 		System.out.println(result);
+	}
+	
+	private void endscreen(SupermarketState state) {
+		System.out.println(correctLengthDouble(state.getTime(), 5) + "Stop");
+		System.out.println();
+		System.out.println("RESULTAT");
+		System.out.println("__________________________");
+		System.out.println();
+		System.out.println("1. " + (state.getCostumersServed() + state.getMissedCostumers()) + " personer försökte handla och\n " + 
+		state.getCostumersServed() + " av dem fick plats i affären medan " + state.getCosumersMissed() + " fick gå till en konkurrent istället.");
+		System.out.println();
+		System.out.println("2. Kassorna var lediga i totalt " + correctLengthDouble(state.getFreeTime(), 5) + "t.e. \n"
+				+ "Detta är " + correctLengthDouble((state.getFreeTime() / state.checkout.totalCheckouts()), 5) + "t.e. per kassaapparat."); //Fixa så att checkout har den metoden
+		System.out.println();
+		System.out.println("3. " + state.getCustomersQueued() + " kunder behövde köa i totalt " + correctLengthDouble(state.getQueueTimeTotal(), 6) + "t.e. \n"
+				+ "Detta är " + correctLengthDouble((state.getQueueTimeTotal() / state.getCustomersQueued()), 6) + "t.e. per person.");
 	}
 	
 	private String correctLengthDouble(double d, int len) {
