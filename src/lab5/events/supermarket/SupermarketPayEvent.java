@@ -1,8 +1,8 @@
 package lab5.events.supermarket;
 
 import lab5.state.SimState;
-import lab5.events.Event;
 import lab5.events.EventQueue;
+import lab5.state.supermarket.Customer.Customer;
 
 /**
  * @author Hampus Toft
@@ -10,20 +10,35 @@ import lab5.events.EventQueue;
  * @author ...
  * @author ...
  */
-public class SupermarketPayEvent extends Event {
+public class SupermarketPayEvent extends SupermarketEvent {
 
-    public SupermarketPayEvent(EventQueue eventQueue, SimState state, double executeTime){
-        this.eventQueue = eventQueue;
-        this.state = state;
-        this.executeTime = executeTime;
+    public SupermarketPayEvent(EventQueue eventQueue, SimState state, double executeTime, Customer customer) {
+        super(eventQueue, state, executeTime, customer);
     }
 
     @Override
     public void execute() {
-        // TODO: Should the next customer be reliant on current customer paying?
-        eventQueue.addEvent(new SupermarketArrivalEvent(eventQueue, state, this.executeTime+10));
-        // FIXME: Next event is always 10 time units away
-        //TODO: Add code to add Event specific code
+        stateSuper.addSale();
+        stateSuper.checkout().customerServed();
+        if(!stateSuper.checkout().queueIsEmpty()){
+            eventQueue.addEvent(new SupermarketPayEvent(eventQueue, state, time.scanTime(),customer));
+            stateSuper.checkout().serveCustomer();
+        }
+
+        if(!stateSuper.isOpen()){
+            if(stateSuper.getNumCustomersInStore() == 0){
+                eventQueue.addEvent(new SupermarketStopEvent(eventQueue, state, time.getTime()+1));
+            }
+        }
+        /*
+        Alternative StopEvent code:
+        this will end when Queue is empty, however we want to end it when store is no longer serving customers due
+        to us counting the time of checkouts being inactive
+
+        if(eventQueue.isEmpty()){
+            eventQueue.addEvent(new SupermarketStopEvent(eventQueue, state, time.getTime()+1));
+        }
+        */
     }
 
 }

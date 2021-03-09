@@ -1,27 +1,31 @@
 package lab5.events.supermarket;
 
 import lab5.state.SimState;
-import lab5.events.Event;
 import lab5.events.EventQueue;
+import lab5.state.supermarket.Customer.Customer;
 /**
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author ...
  * @author ...
  */
-public class SupermarketArrivalEvent extends Event {
+public class SupermarketArrivalEvent extends SupermarketEvent {
 
-    public SupermarketArrivalEvent(EventQueue eventQueue, SimState state, double executeTime){
-        this.eventQueue = eventQueue;
-        this.state = state;
-        this.executeTime = executeTime;
+    public SupermarketArrivalEvent(EventQueue eventQueue, SimState state, double executeTime, Customer customer) {
+        super(eventQueue, state, executeTime, customer);
     }
 
     @Override
     public void execute() {
-        eventQueue.addEvent(new SupermarketPayEvent(eventQueue, state, this.executeTime+10));
-        // FIXME: Next event is always 10 time units away
-        // TODO: Add code to add Event specific code
+        if(!stateSuper.isOpen()) return;
+        if(stateSuper.hasRoom()){
+            stateSuper.addCustomer();
+            eventQueue.addEvent(new SupermarketGatherEvent(eventQueue, state, time.gatherTime(), super.customer));
+        } else {
+            stateSuper.missedCustomer();
+        }
+        if (stateSuper.getCustomerFactory().canCreate())
+            eventQueue.addEvent(new SupermarketArrivalEvent(eventQueue, state, time.arrivalTime(), stateSuper.getCustomerFactory().newCustomer()));
     }
 
 }

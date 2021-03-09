@@ -1,82 +1,104 @@
 package lab5.state.supermarket;
 
-public class SupermarketState {
+import lab5.state.SimState;
+import lab5.state.supermarket.Customer.CustomerFactory;
+
+public class SupermarketState extends SimState {
 	
-	private int numberOfCustomers;
-	private int checkoustsTotal;
-	private int checkoutsOccupied;
-	private int costumersServed;
-	private boolean open;
-	private int missedCustomers;
-	private int customersQueued;
-	private double queueTimeTotal;
-	private FIFO queue;
-	private int maxCostumers;
-	private int seed;
-	private CustomerFactory Costumer;
-	
-	public SupermarketState(int numberOfCustomers, int checkoustsTotal, int checkoutsOccupied, int costumersServed,
-			boolean open, int missedCustomers, int customersQueued, double queueTimeTotal, FIFO queue, int maxCostumers,
-			int seed, ArrivalTime arrivalTime, GatherTime gatherTime, ScanningTime scanningTime,
-			CustomerFactory costumer, double closingTime) {
+	private int numCustomersInStore = 0;
+	private int customersServed = 0;
+	private int missedCustomers = 0;
+	private boolean open = true;
+	private double queueTimeTotal = 0;
+	private CustomerFactory customerFactory;
+	private TimeManager timeManager;
+	private Checkout checkout;
+
+	// Constructor
+	public SupermarketState(int checkoutTotal,
+							int maxCostumers,
+							long seed,
+							double closingTime,
+							double scanningTimeLower,
+							double scanningTimeUpper,
+							double gatheringTimeLower,
+							double gatheringTimeUpper,
+							double arrivalLambda) {
 		super();
-		this.numberOfCustomers = numberOfCustomers;
-		this.checkoustsTotal = checkoustsTotal;
-		this.checkoutsOccupied = checkoutsOccupied;
-		this.costumersServed = costumersServed;
-		this.open = open;
-		this.missedCustomers = missedCustomers;
-		this.customersQueued = customersQueued;
-		this.queueTimeTotal = queueTimeTotal;
-		this.queue = queue;
-		this.maxCostumers = maxCostumers;
-		this.seed = seed;
-		Costumer = costumer;
+		this.customerFactory = new CustomerFactory(maxCostumers);
+		this.checkout = new Checkout(checkoutTotal);
+		this.timeManager = new TimeManager(0D	, closingTime, seed	,
+								scanningTimeLower	, scanningTimeUpper	,
+								gatheringTimeLower	, gatheringTimeUpper,
+								arrivalLambda);
 	}
 	
-	//Here the TOString goes or might be in the SimView thingy
-	public String ToString() {
-		String leString = null;
-		
-		return leString;
-	}
-	
-	//There are only getters and setters beyond this point
-
-	public int getNumberOfCustomers() {
-		return numberOfCustomers;
+	//Here the toString goes or might be in the SimView thingy
+	public String toString() {
+		return null;
 	}
 
-	public void setNumberOfCustomers(int numberOfCustomers) {
-		this.numberOfCustomers = numberOfCustomers;
+	public boolean hasRoom(){
+		return (this.customerFactory.getMax() - this.numCustomersInStore) > 0;
 	}
 
-	public int getCheckoustsTotal() {
-		return checkoustsTotal;
+	public void addCustomer(){
+		numCustomersInStore += 1;
 	}
 
-	public void setCheckoustsTotal(int checkoustsTotal) {
-		this.checkoustsTotal = checkoustsTotal;
+	public void missedCustomer(){
+		missedCustomers += 1;
 	}
 
-	public int getCheckoutsOccupied() {
-		return checkoutsOccupied;
-	}
-
-	public void setCheckoutsOccupied(int checkoutsOccupied) {
-		this.checkoutsOccupied = checkoutsOccupied;
-	}
-
-	public int getCostumersServed() {
-		return costumersServed;
-	}
-
-	public void setCostumersServed(int costumersServed) {
-		this.costumersServed = costumersServed;
+	public void close(){
+		open = false;
 	}
 
 	public boolean isOpen() {
 		return open;
+	}
+
+	public void stop(){
+		super.stop();
+	}
+
+	public Checkout checkout(){
+		return this.checkout;
+	}
+
+	/**
+	 * Adds 1 customer to the customersServed Statistics.
+	 * Also removes the Customer from the checkout.
+	 */
+	public void addSale(){
+		customersServed++;
+		checkout.customerServed();
+	}
+
+	/**
+	 * Adds 1 customer to the customersMissed Statistics.
+	 * Also removes the Customer from the checkout.
+	 */
+	public void addMissed(){
+		missedCustomers++;
+	}
+
+	//There are only getters and setters beyond this point
+
+	public int getNumCustomersInStore() {
+		return numCustomersInStore;
+	}
+
+	public void setNumCustomersInStore(int numCustomersInStore) {
+		this.numCustomersInStore = numCustomersInStore;
+	}
+
+	public int getCustomersServed() {
+		return customersServed;
+	}
+
+	public void setCustomersServed(int customersServed) {
+		this.customersServed = customersServed;
 	}
 
 	public void setOpen(boolean open) {
@@ -91,14 +113,6 @@ public class SupermarketState {
 		this.missedCustomers = missedCustomers;
 	}
 
-	public int getCustomersQueued() {
-		return customersQueued;
-	}
-
-	public void setCustomersQueued(int customersQueued) {
-		this.customersQueued = customersQueued;
-	}
-
 	public double getQueueTimeTotal() {
 		return queueTimeTotal;
 	}
@@ -107,35 +121,25 @@ public class SupermarketState {
 		this.queueTimeTotal = queueTimeTotal;
 	}
 
-	public FIFO getQueue() {
-		return queue;
+	public long getSeed() {
+		return timeManager.getSeed();
 	}
 
-	public void setQueue(FIFO queue) {
-		this.queue = queue;
+	public void setSeed(long seed) {
+		timeManager.setSeed(seed);
 	}
 
-	public int getMaxCostumers() {
-		return maxCostumers;
+	public void setCustomerFactory(CustomerFactory customerFactory) {
+		this.customerFactory = customerFactory;
 	}
 
-	public void setMaxCostumers(int maxCostumers) {
-		this.maxCostumers = maxCostumers;
+	public CustomerFactory getCustomerFactory() {
+		return this.customerFactory;
 	}
 
-	public int getSeed() {
-		return seed;
+
+	public TimeManager getTimeManager(){
+		return timeManager;
 	}
 
-	public void setSeed(int seed) {
-		this.seed = seed;
-	}
-
-	public CustomerFactory getCostumer() {
-		return Costumer;
-	}
-
-	public void setCostumer(CustomerFactory costumer) {
-		Costumer = costumer;
-	}
 }
