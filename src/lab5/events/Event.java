@@ -6,7 +6,7 @@ import lab5.state.SimState;
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman
- * @author ...
+ * @author Axel Johansson
  */
 public abstract class Event {
     protected double executeTime;

@@ -8,7 +8,7 @@ import lab5.view.SimView;
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman
- * @author ...
+ * @author Axel Johansson
  */
 public class Simulator {
     private SimState state;

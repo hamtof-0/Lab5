@@ -4,7 +4,7 @@ package lab5.state;
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman
- * @author ...
+ * @author Axel Johansson
  */
 public abstract class SimState {
     protected boolean stopped;
