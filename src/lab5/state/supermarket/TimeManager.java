@@ -74,4 +74,14 @@ public class TimeManager {
 		return gatherTime.getGatherTime(time);
 	}
 
+	public long getSeed(){
+		return arrivalTime.getSeed();
+	}
+
+	public void setSeed(long seed) {
+		this.arrivalTime.setSeed(seed);
+		this.scanningTime.setSeed(seed);
+		this.gatherTime.setSeed(seed);
+	}
+
 }

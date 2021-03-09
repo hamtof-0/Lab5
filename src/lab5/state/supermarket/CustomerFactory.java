@@ -9,11 +9,14 @@ public class CustomerFactory {
 		this.maxNumberOfCustomers = maxNumberOfCustomers;
 		totalNumberOfCustomers = 0;
 	}
-	
+
 	public Customer newCustomer() {
 		totalNumberOfCustomers++;
-		Customer customer = new Customer(totalNumberOfCustomers);
-		return customer;
+		return new Customer(totalNumberOfCustomers);
+	}
+
+	public int getMax() {
+		return maxNumberOfCustomers;
 	}
 			
 }
