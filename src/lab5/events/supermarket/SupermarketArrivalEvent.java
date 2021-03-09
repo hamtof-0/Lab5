@@ -18,6 +18,7 @@ public class SupermarketArrivalEvent extends SupermarketEvent {
     @Override
     public void execute() {
         if(!stateSuper.isOpen()) return;
+        stateSuper.getTimeManager().setTime(executeTime);
         if(stateSuper.hasRoom()){
             stateSuper.addCustomer();
             eventQueue.addEvent(new SupermarketGatherEvent(eventQueue, state, time.gatherTime(), super.customer));

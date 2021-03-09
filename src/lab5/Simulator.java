@@ -13,12 +13,17 @@ import lab5.view.SimView;
 public class Simulator {
     private SimState state;
     private EventQueue eventQueue;
-    private SimView view;
+    
+    public Simulator(SimState state, EventQueue eventQueue) {
+    	this.state = state;
+    	this.eventQueue = eventQueue;
+    }
 
 
     public void run(){
         while (!state.isStopped()){
             eventQueue.getNextEvent().execute();
+            state.update();
         }
     }
 }

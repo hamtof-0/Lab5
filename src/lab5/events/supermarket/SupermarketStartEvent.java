@@ -26,6 +26,7 @@ public class SupermarketStartEvent extends StartEvent{
 
     @Override
     public void execute() {
+    	stateSuper.getTimeManager().setTime(executeTime);
         setParameters();
         /*
         TODO "A) Simuleringen startar (starthändelse)
