@@ -1,7 +1,5 @@
 package lab5.state.supermarket;
 
-import com.sun.istack.internal.NotNull;
-
 public class Checkout {
 
     private int checkoutTotal;
@@ -34,7 +32,7 @@ public class Checkout {
      * add a customer to the queue
      * @param customer the customer that should be placed in the checkout queue
      */
-    public void addToQueue(@NotNull Customer customer){
+    public void addToQueue(Customer customer){
         checkoutQueue.add(customer);
     }
 
@@ -42,7 +40,7 @@ public class Checkout {
      * Used if at anypoint it is important to know what customer is getting served
      * @param customer the customer object getting served
      */
-    public void serveCustomer(@NotNull Customer customer){
+    public void serveCustomer(Customer customer){
         serveCustomer(); // TODO: Change if actually needed
     }
 
@@ -60,7 +58,7 @@ public class Checkout {
      * Used if at anypoint it is important to know what customer was served
      * @param customer the customer object getting served
      */
-    public void customerServed(@NotNull Customer customer){
+    public void customerServed(Customer customer){
         customerServed(); // TODO: Change if actually needed
     }
 

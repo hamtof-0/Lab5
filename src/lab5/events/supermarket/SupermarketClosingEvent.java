@@ -12,8 +12,6 @@ import lab5.state.supermarket.SupermarketState;
  */
 public class SupermarketClosingEvent extends SupermarketEvent {
 
-    //TODO: This class is completed for now!
-
     public SupermarketClosingEvent(EventQueue eventQueue, SimState state, double executeTime) {
         super(eventQueue, state, executeTime);
     }
