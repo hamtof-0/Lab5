@@ -1,6 +1,7 @@
 package lab5.state.supermarket;
 
 import com.sun.istack.internal.NotNull;
+import lab5.state.supermarket.Customer.Customer;
 
 public class Checkout {
 

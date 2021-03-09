@@ -1,6 +1,7 @@
 package lab5.state.supermarket;
 
 import lab5.state.SimState;
+import lab5.state.supermarket.Customer.CustomerFactory;
 
 public class SupermarketState extends SimState {
 	
