@@ -19,6 +19,11 @@ public abstract class SimState {
         stopped = false;
     }
 
+    public SimState() {
+        this.eventQueue = new EventQueue();
+        stopped = false;
+    }
+
     public double getTime() {
         return time;
     }
