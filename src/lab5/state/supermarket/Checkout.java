@@ -7,6 +7,7 @@ public class Checkout {
     private int checkoutTotal;
     private int checkoutsOccupied;
     private FIFO checkoutQueue;
+    private int customersQueued = 0;
 
     public Checkout(int checkoutTotal) {
         this.checkoutTotal = checkoutTotal;
@@ -36,6 +37,7 @@ public class Checkout {
      */
     public void addToQueue(Customer customer){
         checkoutQueue.add(customer);
+        customersQueued++;
     }
 
     /**
@@ -76,5 +78,21 @@ public class Checkout {
      */
     private void remove(){
         checkoutQueue.removeFirst();
+    }
+    
+    public int getCheckoutTotal() {
+    	return checkoutTotal;
+    }
+    
+    public int getCheckoutsOccupied() {
+    	return checkoutsOccupied;
+    }
+    
+    public int getCustomersQueued() {
+    	return checkoutsOccupied;
+    }
+    
+    public FIFO getQueue() {
+    	return checkoutQueue;
     }
 }

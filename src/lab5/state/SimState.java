@@ -1,12 +1,14 @@
 package lab5.state;
 
+import java.util.Observable;
+
 /**
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman
  * @author Axel Johansson
  */
-public abstract class SimState {
+public abstract class SimState extends Observable{
     protected boolean stopped;
     protected double time;
 
@@ -26,5 +28,10 @@ public abstract class SimState {
 
     public boolean isStopped(){
         return stopped;
+    }
+    
+    public void update() {
+    	setChanged();
+    	notifyObservers();
     }
 }

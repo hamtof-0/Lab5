@@ -13,6 +13,8 @@ public class SupermarketState extends SimState {
 	private CustomerFactory customerFactory;
 	private TimeManager timeManager;
 	private Checkout checkout;
+	private String currentEvent = "";
+	private int currentCostumer;
 
 	// Constructor
 	public SupermarketState(int checkoutTotal,
@@ -137,9 +139,32 @@ public class SupermarketState extends SimState {
 		return this.customerFactory;
 	}
 
-
 	public TimeManager getTimeManager(){
 		return timeManager;
+	}
+	
+	public boolean getStopped() {
+		return stopped;
+	}
+	
+	public void setEvent(String event) {
+		currentEvent = event;
+	}
+	
+	public String getEvent() {
+		return currentEvent;
+	}
+	
+	public void setCustomer(int costumer) {
+		currentCostumer = costumer;
+	}
+	
+	public int getCustomer() {
+		return currentCostumer;
+	}
+	
+	public double getFreeTime() {
+		return 0; //Placeholder för att view ska kunna köras
 	}
 
 }

@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class EventQueue {
 
-    private ArrayList<Event> queue;
+    private ArrayList<Event> queue = new ArrayList<Event>();
 
     /**
      * Adds the given event to this EventQueue in its correct place
@@ -18,6 +18,9 @@ public class EventQueue {
      * @param event the event that needs to be added.
      */
     public void addEvent(Event event){
+    	if (queue.size() == 0) { //Placeholder för att något ska funka
+    		queue.add(0, event);
+    	}
         // checks from last event in queue to first event in queue
         for (int index = queue.size()-1; index >= 0; index--) {
             // assuming there are more events that execute before new than there are events that execute after

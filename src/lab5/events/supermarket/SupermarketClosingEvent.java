@@ -17,6 +17,7 @@ public class SupermarketClosingEvent extends SupermarketEvent {
 
     @Override
     public void execute() {
+    	stateSuper.getTimeManager().setTime(executeTime);
         stateSuper.close();
     }
 
