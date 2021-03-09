@@ -1,5 +1,7 @@
 package lab5.state;
 
+import lab5.events.EventQueue;
+
 /**
  * @author Hampus Toft
  * @author Malkolm Lundkvist
@@ -9,8 +11,16 @@ package lab5.state;
 public abstract class SimState {
     protected boolean stopped;
     protected double time;
+    protected EventQueue eventQueue;
+
+
+    public SimState(EventQueue eventQueue) {
+        this.eventQueue = eventQueue;
+        stopped = false;
+    }
 
     public SimState() {
+        this.eventQueue = new EventQueue();
         stopped = false;
     }
 

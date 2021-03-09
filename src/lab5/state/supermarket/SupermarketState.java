@@ -1,21 +1,23 @@
 package lab5.state.supermarket;
 
+import lab5.events.EventQueue;
 import lab5.state.SimState;
 import lab5.state.supermarket.Customer.CustomerFactory;
 
 public class SupermarketState extends SimState {
-	
-	private int numCustomersInStore = 0;
-	private int customersServed = 0;
-	private int missedCustomers = 0;
-	private boolean open = true;
-	private double queueTimeTotal = 0;
+
+	private int numCustomersInStore;
+	private int customersServed;
+	private int missedCustomers;
+	private boolean open;
+	private double queueTimeTotal;
 	private CustomerFactory customerFactory;
 	private TimeManager timeManager;
 	private Checkout checkout;
 
 	// Constructor
-	public SupermarketState(int checkoutTotal,
+	public SupermarketState(EventQueue eventQueue,
+							int checkoutTotal,
 							int maxCostumers,
 							long seed,
 							double closingTime,
@@ -24,13 +26,14 @@ public class SupermarketState extends SimState {
 							double gatheringTimeLower,
 							double gatheringTimeUpper,
 							double arrivalLambda) {
-		super();
+		super(eventQueue);
 		this.customerFactory = new CustomerFactory(maxCostumers);
 		this.checkout = new Checkout(checkoutTotal);
 		this.timeManager = new TimeManager(0D	, closingTime, seed	,
-								scanningTimeLower	, scanningTimeUpper	,
-								gatheringTimeLower	, gatheringTimeUpper,
-								arrivalLambda);
+				scanningTimeLower	, scanningTimeUpper	,
+				gatheringTimeLower	, gatheringTimeUpper,
+				arrivalLambda);
+		this.eventQueue = eventQueue;
 	}
 	
 	//Here the toString goes or might be in the SimView thingy
