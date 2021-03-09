@@ -22,30 +22,16 @@ public class SupermarketArrivalEvent extends Event {
 
     @Override
     public void execute() {
-        if (!(state instanceof SupermarketState)){
-            throw new RuntimeException("Invalid State");
-        }
+        if (!(state instanceof SupermarketState)) throw new RuntimeException("Invalid State");
         SupermarketState stateSuper = (SupermarketState) state;
-
-        if(!stateSuper.isOpen()) {
-            // Supermarket is closed and nothing happens (Customer dose not count as missed...)
-            return;
-        }
-        // Supermarket is open
-
+        if(!stateSuper.isOpen()) return;
         TimeManager time = stateSuper.getTimeManager();
-
-        // If the supermarket is not full
         if(stateSuper.hasRoom()){
-            stateSuper.addCustomer();// Then increase amount of customers in the store
-            // make a gatherEvent for this new customer
+            stateSuper.addCustomer();
             eventQueue.addEvent(new SupermarketGatherEvent(eventQueue, state, time.gatherTime()));
         } else {
-            // Supermarket was full and open
-            stateSuper.missedCustomer(); // Then increase amount of missed customers.
+            stateSuper.missedCustomer();
         }
-
-        // Add a new Arrival event for the next customer
         eventQueue.addEvent(new SupermarketArrivalEvent(eventQueue, state, time.arrivalTime()));
     }
 

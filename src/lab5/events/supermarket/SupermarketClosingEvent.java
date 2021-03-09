@@ -23,9 +23,7 @@ public class SupermarketClosingEvent extends Event {
 
     @Override
     public void execute() {
-        if (!(state instanceof SupermarketState)){
-            throw new RuntimeException("Invalid State");
-        }
+        if (!(state instanceof SupermarketState)) throw new RuntimeException("Invalid State");
         SupermarketState stateSuper = (SupermarketState) state;
         stateSuper.close();
     }

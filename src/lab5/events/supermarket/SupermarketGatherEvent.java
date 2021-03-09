@@ -22,22 +22,14 @@ public class SupermarketGatherEvent extends Event {
 
     @Override
     public void execute() {
-        if (!(state instanceof SupermarketState)){
-            throw new RuntimeException("Invalid State");
-        }
+        if (!(state instanceof SupermarketState)) throw new RuntimeException("Invalid State");
         SupermarketState stateSuper = (SupermarketState) state;
-
-        // Is there a empty checkout?
         if(stateSuper.checkout().hasEmptyCheckout()){
-            // There is add this customer to a empty checkout
-
             TimeManager time = stateSuper.getTimeManager();
             eventQueue.addEvent(new SupermarketPayEvent(eventQueue, state, time.scanTime()));
-            stateSuper.checkout().serveCustomer(); // TODO: Implement this method which occupies a checkout
-            // TODO: Something to fill one of the checkouts here with the new customer
+            stateSuper.checkout().serveCustomer();
         } else {
-            // There is not add this customer to the checkout queue
-            stateSuper.checkout().addToQueue(); // TODO: customer Object from somewhere goes here
+            stateSuper.checkout().addToQueue(); // FIXME: customer Object from somewhere goes here
         }
     }
 

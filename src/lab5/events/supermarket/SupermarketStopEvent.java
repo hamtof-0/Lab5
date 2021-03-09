@@ -21,9 +21,7 @@ public class SupermarketStopEvent extends lab5.events.StopEvent {
     @Override
     public void execute() {
         super.execute();
-        if (!(state instanceof SupermarketState)){
-            throw new RuntimeException("Invalid State");
-        }
+        if (!(state instanceof SupermarketState)) throw new RuntimeException("Invalid State");
         SupermarketState stateSuper = (SupermarketState) state;
         stateSuper.stop();
     }

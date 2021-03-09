@@ -22,22 +22,16 @@ public class SupermarketPayEvent extends Event {
 
     @Override
     public void execute() {
-        if (!(state instanceof SupermarketState)){
-            throw new RuntimeException("Invalid State");
-        }
-        // acsses
+        if (!(state instanceof SupermarketState)) throw new RuntimeException("Invalid State");
         SupermarketState stateSuper = (SupermarketState) state;
         TimeManager time = stateSuper.getTimeManager();
-        stateSuper.addSale(); // TODO: Implement this method which adds to sales and remove a customer
-        stateSuper.checkout().customerServed(); // TODO: Implement this method which frees a checkout
+        stateSuper.addSale();
+        stateSuper.checkout().customerServed();
         if(!stateSuper.checkout().queueIsEmpty()){
             eventQueue.addEvent(new SupermarketPayEvent(eventQueue, state, time.scanTime()));
-            stateSuper.checkout().serveCustomer(); // TODO: Implement this method which occupies a checkout
+            stateSuper.checkout().serveCustomer();
         }
-
-        // Is the eventQueue Empty?
         if(eventQueue.isEmpty()){
-            // No events in the event queue left to process meaning it has reached its end
             eventQueue.addEvent(new SupermarketStopEvent(eventQueue, state, time.getTime()+1));
         }
 

@@ -25,9 +25,7 @@ public class SupermarketStartEvent extends lab5.events.StartEvent {
             som enda effekt att en första ankomsthändelse för en ny kund läggs till händelsekön.
             Sida 6 under Rubrik 5.1 Händlser http://www.sm.luth.se/csee/courses/d0010e/labs/lab5/lab5.pdf
         */
-        if (!(state instanceof SupermarketState)){
-            throw new RuntimeException("Invalid State");
-        }
+        if (!(state instanceof SupermarketState)) throw new RuntimeException("Invalid State");
         SupermarketState stateSuper = ((SupermarketState) state);
         TimeManager time = stateSuper.getTimeManager();
         eventQueue.addEvent(new SupermarketArrivalEvent(eventQueue, state, time.arrivalTime()));
