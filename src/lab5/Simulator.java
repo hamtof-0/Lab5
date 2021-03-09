@@ -7,16 +7,18 @@ import lab5.view.SimView;
 /**
  * @author Hampus Toft
  * @author Malkolm Lundkvist
- * @author ...
- * @author ...
+ * @author Billy Norman
+ * @author Axel Johansson
  */
 public class Simulator {
     private SimState state;
-    private EventQueue event;
+    private EventQueue eventQueue;
     private SimView view;
 
 
     public void run(){
-
+        while (!state.isStopped()){
+            eventQueue.getNextEvent().execute();
+        }
     }
 }

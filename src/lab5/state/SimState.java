@@ -3,14 +3,14 @@ package lab5.state;
 /**
  * @author Hampus Toft
  * @author Malkolm Lundkvist
- * @author ...
- * @author ...
+ * @author Billy Norman
+ * @author Axel Johansson
  */
 public abstract class SimState {
-    private boolean stopped;
-    private double time;
+    protected boolean stopped;
+    protected double time;
 
-    SimState() {
+    public SimState() {
         stopped = false;
     }
 
@@ -23,4 +23,8 @@ public abstract class SimState {
     }
 
     public abstract String toString();
+
+    public boolean isStopped(){
+        return stopped;
+    }
 }
