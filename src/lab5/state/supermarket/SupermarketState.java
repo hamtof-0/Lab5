@@ -132,6 +132,11 @@ public class SupermarketState extends SimState {
 		this.customerFactory = customerFactory;
 	}
 
+	public CustomerFactory getCustomerFactory() {
+		return this.customerFactory;
+	}
+
+
 	public TimeManager getTimeManager(){
 		return timeManager;
 	}
