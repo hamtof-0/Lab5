@@ -30,20 +30,19 @@ public class SupermarketPayEvent extends SupermarketEvent {
             eventQueue.addEvent(new SupermarketPayEvent(eventQueue, state, time.scanTime(),customer));
             stateSuper.checkout().serveCustomer();
         }
-        if(eventQueue.isEmpty()){
-            eventQueue.addEvent(new SupermarketStopEvent(eventQueue, state, time.getTime()+1));
-        }
 
-        /*
-        Alternative StopEvent code:
-
-        // Is Supermarket closed?
         if(!stateSuper.isOpen()){
-            // Is the number of customers in the store equal to 0?
-            if(stateSuper.getNumberOfCustomers() == 0){
-                // add stop event due to simulation not being able to schedule more tasks
+            if(stateSuper.getNumCustomersInStore() == 0){
                 eventQueue.addEvent(new SupermarketStopEvent(eventQueue, state, time.getTime()+1));
             }
+        }
+        /*
+        Alternative StopEvent code:
+        this will end when Queue is empty, however we want to end it when store is no longer serving customers due
+        to us counting the time of checkouts being inactive
+
+        if(eventQueue.isEmpty()){
+            eventQueue.addEvent(new SupermarketStopEvent(eventQueue, state, time.getTime()+1));
         }
         */
     }

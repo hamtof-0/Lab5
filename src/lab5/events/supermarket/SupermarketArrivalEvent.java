@@ -13,8 +13,6 @@ import lab5.state.supermarket.SupermarketState;
  */
 public class SupermarketArrivalEvent extends SupermarketEvent {
 
-    //TODO: This class is completed for now!
-
     public SupermarketArrivalEvent(EventQueue eventQueue, SimState state, double executeTime, Customer customer) {
         super(eventQueue, state, executeTime, customer);
     }

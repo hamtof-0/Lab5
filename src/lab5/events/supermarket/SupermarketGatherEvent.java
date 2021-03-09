@@ -1,6 +1,5 @@
 package lab5.events.supermarket;
 
-import lab5.events.Event;
 import lab5.events.EventQueue;
 import lab5.state.SimState;
 import lab5.state.supermarket.Customer;
@@ -28,7 +27,7 @@ public class SupermarketGatherEvent extends SupermarketEvent {
             eventQueue.addEvent(new SupermarketPayEvent(eventQueue, state, time.scanTime(), customer));
             stateSuper.checkout().serveCustomer();
         } else {
-            stateSuper.checkout().addToQueue(customer); // FIXME: customer Object from somewhere goes here
+            stateSuper.checkout().addToQueue(customer);
         }
     }
 

@@ -21,7 +21,8 @@ public class SupermarketStartEvent extends StartEvent {
     @Override
     public void execute() {
         setParameters();
-        /* TODO "A) Simuleringen startar (starthändelse)
+        /*
+        TODO "A) Simuleringen startar (starthändelse)
             Denna klass får ärva den generella starthändelsen, sättas till att inträffa tiden 0 och ha 
             som enda effekt att en första ankomsthändelse för en ny kund läggs till händelsekön.
             Sida 6 under Rubrik 5.1 Händlser http://www.sm.luth.se/csee/courses/d0010e/labs/lab5/lab5.pdf
