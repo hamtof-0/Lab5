@@ -14,10 +14,10 @@ public class SupermarketState extends SimState {
 	private CustomerFactory customerFactory;
 	private TimeManager timeManager;
 	private Checkout checkout;
-	private EventQueue eventQueue;
 
 	// Constructor
-	public SupermarketState(int checkoutTotal,
+	public SupermarketState(EventQueue eventQueue,
+							int checkoutTotal,
 							int maxCostumers,
 							long seed,
 							double closingTime,
@@ -25,9 +25,8 @@ public class SupermarketState extends SimState {
 							double scanningTimeUpper,
 							double gatheringTimeLower,
 							double gatheringTimeUpper,
-							double arrivalLambda,
-							EventQueue eventQueue) {
-		super();
+							double arrivalLambda) {
+		super(eventQueue);
 		this.customerFactory = new CustomerFactory(maxCostumers);
 		this.checkout = new Checkout(checkoutTotal);
 		this.timeManager = new TimeManager(0D	, closingTime, seed	,
