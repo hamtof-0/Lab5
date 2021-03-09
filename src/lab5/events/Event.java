@@ -5,7 +5,7 @@ import lab5.state.SimState;
 /**
  * @author Hampus Toft
  * @author Malkolm Lundkvist
- * @author ...
+ * @author Billy Norman
  * @author ...
  */
 public abstract class Event {

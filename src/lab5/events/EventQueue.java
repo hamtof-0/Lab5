@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * @author Hampus Toft
  * @author Malkolm Lundkvist
- * @author ...
+ * @author Billy Norman
  * @author ...
  */
 public class EventQueue {
