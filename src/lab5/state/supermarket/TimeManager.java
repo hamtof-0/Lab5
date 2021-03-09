@@ -1,26 +1,32 @@
 package lab5.state.supermarket;
 
 public class TimeManager {
-	private ArivvalTime arrivalTime;
+	private ArrivalTime arrivalTime;
 	private ScanningTime scanningTime;
-	private GatherTime gathertime;
+	private GatherTime gatherTime;
 	private double time;
 	private double closingTime;
 	
-	public TimeManager(int seed, int time, int closingTime) {
-		super();
-		this.arrivalTime = new ArrivalTime();
-		this.scanningTime = new ScanningTime();
-		this.gathertime = new GatherTime();
+	public TimeManager(double time,
+					   double closingTime,
+					   long seed,
+					   double arrivalLambda,
+					   double lowerScanningTime,
+					   double upperScanningTime,
+					   double lowerGatherTime,
+					   double upperGatherTime) {
+		this.arrivalTime = new ArrivalTime(seed, arrivalLambda);
+		this.scanningTime = new ScanningTime(seed, lowerScanningTime, upperScanningTime);
+		this.gatherTime = new GatherTime(seed, lowerGatherTime, upperGatherTime);
 		this.time = time;
 		this.closingTime = closingTime;
 	}
 
-	public ArivvalTime getArrivalTime() {
+	public ArrivalTime getArrivalTime() {
 		return arrivalTime;
 	}
 
-	public void setArrivalTime(ArivvalTime arrivalTime) {
+	public void setArrivalTime(ArrivalTime arrivalTime) {
 		this.arrivalTime = arrivalTime;
 	}
 
@@ -32,12 +38,12 @@ public class TimeManager {
 		this.scanningTime = scanningTime;
 	}
 
-	public GatherTime getGathertime() {
-		return gathertime;
+	public GatherTime getGatherTime() {
+		return gatherTime;
 	}
 
-	public void setGathertime(GatherTime gathertime) {
-		this.gathertime = gathertime;
+	public void setGatherTime(GatherTime gathertime) {
+		this.gatherTime = gathertime;
 	}
 
 	public double getTime() {
@@ -55,6 +61,17 @@ public class TimeManager {
 	public void setClosingTime(double closingTime) {
 		this.closingTime = closingTime;
 	}
-	
+
+	public double arrivalTime(){
+		return arrivalTime.getArrivalTime(time);
+	}
+
+	public double scanTime(){
+		return scanningTime.getScanningTime(time);
+	}
+
+	public double gatherTime(){
+		return gatherTime.getGatherTime(time);
+	}
 
 }
