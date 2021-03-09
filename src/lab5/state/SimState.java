@@ -3,8 +3,8 @@ package lab5.state;
 /**
  * @author Hampus Toft
  * @author Malkolm Lundkvist
- * @author ...
- * @author ...
+ * @author Billy Norman
+ * @author Axel Johansson
  */
 public abstract class SimState {
     private boolean stopped;
