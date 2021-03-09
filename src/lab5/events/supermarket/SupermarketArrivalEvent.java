@@ -19,10 +19,7 @@ public class SupermarketArrivalEvent extends SupermarketEvent {
 
     @Override
     public void execute() {
-        if (!(state instanceof SupermarketState)) throw new RuntimeException("Invalid State");
-        SupermarketState stateSuper = (SupermarketState) state;
         if(!stateSuper.isOpen()) return;
-        TimeManager time = stateSuper.getTimeManager();
         if(stateSuper.hasRoom()){
             stateSuper.addCustomer();
             eventQueue.addEvent(new SupermarketGatherEvent(eventQueue, state, time.gatherTime(), super.customer));

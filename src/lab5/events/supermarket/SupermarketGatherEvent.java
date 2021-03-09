@@ -20,10 +20,7 @@ public class SupermarketGatherEvent extends SupermarketEvent {
 
     @Override
     public void execute() {
-        if (!(state instanceof SupermarketState)) throw new RuntimeException("Invalid State");
-        SupermarketState stateSuper = (SupermarketState) state;
         if(stateSuper.checkout().hasEmptyCheckout()){
-            TimeManager time = stateSuper.getTimeManager();
             eventQueue.addEvent(new SupermarketPayEvent(eventQueue, state, time.scanTime(), customer));
             stateSuper.checkout().serveCustomer();
         } else {

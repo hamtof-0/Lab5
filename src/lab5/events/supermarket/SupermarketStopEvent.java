@@ -14,16 +14,16 @@ import lab5.state.supermarket.SupermarketState;
  */
 public class SupermarketStopEvent extends StopEvent {
 
-    //TODO: This class is completed for now!
+    private final SupermarketState stateSuper;
+
     public SupermarketStopEvent(EventQueue eventQueue, SimState state, double executeTime){
         super(eventQueue, state, executeTime);
+        if (!(state instanceof SupermarketState)) throw new RuntimeException("Invalid State");
+        this.stateSuper = ((SupermarketState) state);
     }
 
     @Override
     public void execute() {
-        super.execute();
-        if (!(state instanceof SupermarketState)) throw new RuntimeException("Invalid State");
-        SupermarketState stateSuper = (SupermarketState) state;
         stateSuper.stop();
     }
 }

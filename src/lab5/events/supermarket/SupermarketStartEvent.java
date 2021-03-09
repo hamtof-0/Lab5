@@ -12,10 +12,16 @@ import lab5.state.supermarket.SupermarketState;
  * @author ...
  * @author ...
  */
-public class SupermarketStartEvent extends StartEvent {
+public class SupermarketStartEvent extends StartEvent{
+
+    private final SupermarketState stateSuper;
+    private final TimeManager time;
 
     public SupermarketStartEvent(EventQueue eventQueue, SimState state, double executeTime){
         super(eventQueue, state, executeTime);
+        if (!(state instanceof SupermarketState)) throw new RuntimeException("Invalid State");
+        this.stateSuper = ((SupermarketState) state);
+        this.time = stateSuper.getTimeManager();
     }
 
     @Override
@@ -27,9 +33,6 @@ public class SupermarketStartEvent extends StartEvent {
             som enda effekt att en första ankomsthändelse för en ny kund läggs till händelsekön.
             Sida 6 under Rubrik 5.1 Händlser http://www.sm.luth.se/csee/courses/d0010e/labs/lab5/lab5.pdf
         */
-        if (!(state instanceof SupermarketState)) throw new RuntimeException("Invalid State");
-        SupermarketState stateSuper = ((SupermarketState) state);
-        TimeManager time = stateSuper.getTimeManager();
         eventQueue.addEvent(new SupermarketArrivalEvent(eventQueue, state, time.arrivalTime(), stateSuper.getCustomerFactory().newCustomer()));
     }
 
