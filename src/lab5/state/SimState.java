@@ -2,13 +2,15 @@ package lab5.state;
 
 import lab5.events.EventQueue;
 
+import java.util.Observable;
+
 /**
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman
  * @author Axel Johansson
  */
-public abstract class SimState {
+public abstract class SimState extends Observable {
     protected boolean stopped;
     protected double time;
     protected EventQueue eventQueue;
