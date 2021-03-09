@@ -1,5 +1,7 @@
 package lab5.state.supermarket;
 
+import lab5.state.supermarket.Customer.Customer;
+
 public class Checkout {
 
     private int checkoutTotal;
