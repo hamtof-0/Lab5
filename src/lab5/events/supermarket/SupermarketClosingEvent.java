@@ -14,6 +14,7 @@ import lab5.state.supermarket.SupermarketState;
  */
 public class SupermarketClosingEvent extends Event {
 
+    //TODO: This class is completed for now!
     public SupermarketClosingEvent(EventQueue eventQueue, SimState state, double executeTime){
         this.eventQueue = eventQueue;
         this.state = state;
@@ -27,9 +28,6 @@ public class SupermarketClosingEvent extends Event {
         }
         SupermarketState stateSuper = (SupermarketState) state;
         stateSuper.close();
-        // FIXME: Next event is always 10 time units away
-        //TODO: Add code to add Event specific code
-
     }
 
 }

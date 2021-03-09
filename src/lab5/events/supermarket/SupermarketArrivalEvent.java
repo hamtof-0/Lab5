@@ -13,6 +13,7 @@ import lab5.state.supermarket.SupermarketState;
  */
 public class SupermarketArrivalEvent extends Event {
 
+    //TODO: This class is completed for now!
     public SupermarketArrivalEvent(EventQueue eventQueue, SimState state, double executeTime){
         this.eventQueue = eventQueue;
         this.state = state;
@@ -25,20 +26,27 @@ public class SupermarketArrivalEvent extends Event {
             throw new RuntimeException("Invalid State");
         }
         SupermarketState stateSuper = (SupermarketState) state;
-        TimeManager time = stateSuper.getTimeManager();
+
         if(!stateSuper.isOpen()) {
+            // Supermarket is closed and nothing happens (Customer dose not count as missed...)
             return;
         }
-        eventQueue.addEvent(new SupermarketArrivalEvent(eventQueue, state, time.arrivalTime()));
+        // Supermarket is open
 
+        TimeManager time = stateSuper.getTimeManager();
+
+        // If the supermarket is not full
         if(stateSuper.hasRoom()){
-            stateSuper.addCustomer();
+            stateSuper.addCustomer();// Then increase amount of customers in the store
+            // make a gatherEvent for this new customer
             eventQueue.addEvent(new SupermarketGatherEvent(eventQueue, state, time.gatherTime()));
         } else {
-            stateSuper.missedCustomer();
+            // Supermarket was full and open
+            stateSuper.missedCustomer(); // Then increase amount of missed customers.
         }
-        // FIXME: Next event is always 10 time units away
-        // TODO: Add code to add Event specific code
+
+        // Add a new Arrival event for the next customer
+        eventQueue.addEvent(new SupermarketArrivalEvent(eventQueue, state, time.arrivalTime()));
     }
 
 }

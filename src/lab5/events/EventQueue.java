@@ -29,6 +29,8 @@ public class EventQueue {
      * @return The Event that is first in queue
      */
     public Event getNextEvent(){
+        if(this.isEmpty())
+            throw new RuntimeException("Queue is empty Unable to get next event");
         Event next = queue.get(0);
         removeFirst();
         return next;
@@ -47,5 +49,13 @@ public class EventQueue {
     public void sortQueue(){
         // FIXME: This is not needed if the smartAdd is implemented (check above)
         // TODO: sort queue by using Event variable executeTime low -> high
+    }
+
+    /**
+     * Gives the first event in the queue
+     * @return The Event that is first in queue
+     */
+    public boolean isEmpty(){
+        return queue.size() <= 0;
     }
 }

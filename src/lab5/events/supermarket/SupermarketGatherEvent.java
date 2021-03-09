@@ -26,14 +26,19 @@ public class SupermarketGatherEvent extends Event {
             throw new RuntimeException("Invalid State");
         }
         SupermarketState stateSuper = (SupermarketState) state;
-        TimeManager time = stateSuper.getTimeManager();
 
+        // Is there a empty checkout?
         if(stateSuper.checkout().hasEmptyCheckout()){
+            // There is add this customer to a empty checkout
+
+            TimeManager time = stateSuper.getTimeManager();
             eventQueue.addEvent(new SupermarketPayEvent(eventQueue, state, time.scanTime()));
+            stateSuper.checkout().serveCustomer(); // TODO: Implement this method which occupies a checkout
+            // TODO: Something to fill one of the checkouts here with the new customer
         } else {
-            stateSuper.checkout().add(); // TODO: customer Object from somewhere goes here
+            // There is not add this customer to the checkout queue
+            stateSuper.checkout().addToQueue(); // TODO: customer Object from somewhere goes here
         }
-        // TODO: Add code to for cashier queue and payment
     }
 
 }

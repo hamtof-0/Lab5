@@ -13,6 +13,7 @@ import lab5.state.supermarket.SupermarketState;
  */
 public class SupermarketStopEvent extends lab5.events.StopEvent {
 
+    //TODO: This class is completed for now!
     public SupermarketStopEvent(EventQueue eventQueue, SimState state, double executeTime){
         super(eventQueue, state, executeTime);
     }
