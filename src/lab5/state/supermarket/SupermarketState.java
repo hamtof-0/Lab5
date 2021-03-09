@@ -4,12 +4,12 @@ import lab5.state.SimState;
 import lab5.state.supermarket.Customer.CustomerFactory;
 
 public class SupermarketState extends SimState {
-	
-	private int numCustomersInStore = 0;
-	private int customersServed = 0;
-	private int missedCustomers = 0;
-	private boolean open = true;
-	private double queueTimeTotal = 0;
+
+	private int numCustomersInStore;
+	private int customersServed;
+	private int missedCustomers;
+	private boolean open;
+	private double queueTimeTotal;
 	private CustomerFactory customerFactory;
 	private TimeManager timeManager;
 	private Checkout checkout;
@@ -25,6 +25,11 @@ public class SupermarketState extends SimState {
 							double gatheringTimeUpper,
 							double arrivalLambda) {
 		super();
+		numCustomersInStore = 0;
+		customersServed = 0;
+		missedCustomers = 0;
+		queueTimeTotal = 0;
+		open = true;
 		this.customerFactory = new CustomerFactory(maxCostumers);
 		this.checkout = new Checkout(checkoutTotal);
 		this.timeManager = new TimeManager(0D	, closingTime, seed	,
