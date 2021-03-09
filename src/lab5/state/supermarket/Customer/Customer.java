@@ -1,9 +1,9 @@
-package lab5.state.supermarket;
+package lab5.state.supermarket.Customer;
 
 public class Customer {
 	private int myNumber;
 	
-	public Customer(int number) {
+	Customer(int number) {
 		myNumber = number;
 	}
 }

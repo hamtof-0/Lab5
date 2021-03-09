@@ -1,4 +1,6 @@
-package lab5.state.supermarket;
+package lab5.state.supermarket.Customer;
+
+import lab5.state.supermarket.Customer.Customer;
 
 public class CustomerFactory {
 	private int maxNumberOfCustomers;
