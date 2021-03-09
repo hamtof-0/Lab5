@@ -4,7 +4,7 @@ import java.util.Observable;
 
 import lab5.state.SimState;
 import lab5.view.SimView;
-import lab5.state.supermakrket.SupermakrketState;
+import lab5.state.supermarket.SupermarketState;
 
 public class SupermarketView extends SimView{
 
@@ -13,7 +13,7 @@ public class SupermarketView extends SimView{
 	}
 
 	public void update(Observable o, Object arg) {
-		if (state instanceof SupermakrketState)
+		if ((state instanceof SupermarketState)) throw new RuntimeException("Invalid State!");
 		SupermarketState supermarketState = (SupermarketState) state;
 		if (supermarketState.getStopped) { //Se till att den här görs
 			
