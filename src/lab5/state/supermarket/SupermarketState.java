@@ -36,7 +36,7 @@ public class SupermarketState extends SimState {
 				gatheringTimeLower, gatheringTimeUpper,
 				scanningTimeLower, scanningTimeUpper,
 				seed,
-				closingTime, time);
+				closingTime, this);
 	}
 	
 	//Here the toString goes or might be in the SimView thingy

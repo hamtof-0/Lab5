@@ -19,10 +19,8 @@ public class SupermarketClosingEvent extends SupermarketEvent {
 
     @Override
     public void execute() {
-        if(DEBUG_EVENTS) System.out.println("\t[Closing Event] Running...");
         super.execute();
         stateSuper.close();
-        if(DEBUG_EVENTS) System.out.println("\t[Closing Event] Finished!");
     }
 
 }

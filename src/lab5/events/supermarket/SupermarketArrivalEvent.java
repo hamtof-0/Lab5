@@ -19,25 +19,19 @@ public class SupermarketArrivalEvent extends SupermarketEvent {
 
     @Override
     public void execute() {
-        if(DEBUG_EVENTS) System.out.println("\t[Arrival Event] Running...");
         super.execute();
         if(!stateSuper.isOpen()) {
-            if(DEBUG_EVENTS) System.out.println("\t[Arrival Event] store was closed");
             return;
         }
         if(stateSuper.hasRoom()){
             stateSuper.addCustomer();
-            if(DEBUG_EVENTS) System.out.println("\t[Arrival Event] Added new \"Gather Event\"");
             eventQueue.addEvent(new SupermarketGatherEvent(eventQueue, state, time.gatherTime(), super.customer));
         } else {
             stateSuper.missedCustomer();
         }
         if (stateSuper.getCustomerFactory().canCreate()) {
-            if(DEBUG_EVENTS) System.out.println("\t[Arrival Event] Factory can create");
-            if(DEBUG_EVENTS) System.out.println("\t[Arrival Event] Added new \"Arrival Event\"");
             eventQueue.addEvent(new SupermarketArrivalEvent(eventQueue, state, time.arrivalTime(), stateSuper.getCustomerFactory().newCustomer()));
         }
-        if(DEBUG_EVENTS) System.out.println("\t[Arrival Event] Finished!");
     }
 
 }

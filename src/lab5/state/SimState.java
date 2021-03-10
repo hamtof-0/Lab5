@@ -32,6 +32,10 @@ public abstract class SimState extends Observable {
         return time;
     }
 
+    public void setTime(double time) {
+        this.time = Math.max(this.time, time);
+    }
+
     public double getClosingTime() {
         return closingTime;
     }

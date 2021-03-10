@@ -98,7 +98,7 @@ public class SupermarketView extends SimView{
 	}
 	
 	private void endscreen(SupermarketState state) {
-		System.out.println(correctLengthDouble(state.getTimeManager().getTime(), 6) + "Stop");
+		System.out.println(correctLengthDouble(state.getTime(), 6) + "Stop");
 		System.out.println();
 		System.out.println("RESULTAT");
 		System.out.println("__________________________");
