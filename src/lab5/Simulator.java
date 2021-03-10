@@ -15,17 +15,15 @@ import lab5.events.EventQueue;
  */
 public class Simulator {
     private final SimState state;
+    private EventQueue eventQueue;
 
-    public Simulator(SimState state) {
+    public Simulator(SimState state, EventQueue queue) {
     	this.state = state;
+    	eventQueue = queue;
     }
 
 
     public void run(){
-        EventQueue eventQueue = new EventQueue();
-        eventQueue.addEvent(new SupermarketStartEvent(eventQueue, state, 0d));
-        eventQueue.addEvent(new SupermarketClosingEvent(eventQueue, state, 10D));
-        eventQueue.addEvent(new SupermarketStopEvent(eventQueue, state, 999.0));
         //System.out.println("\tNew Event queue: " + eventQueue.toString());
         while (!state.isStopped()){
             Event eventToRun = eventQueue.getNextEvent();
