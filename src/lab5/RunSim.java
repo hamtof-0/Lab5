@@ -12,9 +12,14 @@ import lab5.view.supermarket.SupermarketView;
  * @author Malkolm Lundkvist
  * @author Billy Norman
  * @author Axel Johansson
+ * 
+ * Tells the simultaor to start the simulation
  */
 public class RunSim {
 
+	/**
+	 * Creates a state for the supermarket and tells the simulator to run
+	 */
     public static void main(String[] args) {
 		SupermarketState state = new SupermarketState(
 				2,

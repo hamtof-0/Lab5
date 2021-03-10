@@ -12,15 +12,24 @@ import lab5.events.EventQueue;
  * @author Malkolm Lundkvist
  * @author Billy Norman
  * @author Axel Johansson
+ * 
+ * The general simulator
  */
 public class Simulator {
     private final SimState state;
 
+    /**
+	 * The constructor
+	 * 
+	 * @param state The general state used to keep track of the general state of the simulation
+	 */
     public Simulator(SimState state) {
     	this.state = state;
     }
 
-
+    /**
+	 * Starts the simulation 
+	 */
     public void run(){
         EventQueue eventQueue = new EventQueue();
         eventQueue.addEvent(new SupermarketStartEvent(eventQueue, state, 0d));

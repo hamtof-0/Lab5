@@ -7,6 +7,8 @@ import lab5.state.supermarket.SupermarketState;
  * @author Malkolm Lundkvist
  * @author Billy Norman
  * @author Axel Johansson
+ * 
+ * This is the TimeManager which manages the 
  */
 
 public class TimeManager {

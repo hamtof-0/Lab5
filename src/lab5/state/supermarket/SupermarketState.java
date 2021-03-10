@@ -38,11 +38,6 @@ public class SupermarketState extends SimState {
 				scanningTimeUpper, seed, this);
 	}
 
-	// Here the toString goes or might be in the SimView thingy
-	public String toString() {
-		return "SupermarketState";
-	}
-
 	public boolean hasRoom() {
 		return (this.maxCustomersInStore - this.numCustomersInStore) > 0;
 	}

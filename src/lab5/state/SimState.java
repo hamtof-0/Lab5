@@ -10,6 +10,8 @@ import java.util.Observable;
  * @author Malkolm Lundkvist
  * @author Billy Norman
  * @author Axel Johansson
+ * 
+ * The general state, keeps track of the general state of the simulation
  */
 public abstract class SimState extends Observable {
     protected boolean stopped;
@@ -18,39 +20,70 @@ public abstract class SimState extends Observable {
     protected Event nextEvent;
     protected EventQueue eventQueue = new EventQueue();
 
+    
+    /**
+	 * Constructor 
+	 * 
+	 * Hold the general parameters for a simulation
+	 */
     public SimState() {
         stopped = false;
         time = 0D;
     }
-
+    
+    /**
+	 * Getter for for the current time of the simulation
+	 * 
+	 * @return time The current time of the simulation
+	 */
     public double getTime() {
         return time;
     }
-
+    
+    /**
+	 * Setter for the new current time
+	 */
     public void setTime(double time) {
     	previousTime = this.time;
         this.time = Math.max(this.time, time);
     }
     
+    /**
+	 * Handbrake for the simulation
+	 */
     public void stop() {
         stopped = true;
     }
-
-    public abstract String toString();
-
+    
+    /**
+	 * Used to check if the simulation is to stop
+	 * 
+	 * @returns stopped Hold the value if the simulation is stopped or not
+	 */
     public boolean isStopped(){
         return stopped;
     }
-
+    
+    /**
+	 * Notify any observers
+	 */
     public void update() {
     	setChanged();
     	notifyObservers();
     }
-
+    
+    /**
+	 * 
+	 */
     public String getEvent() {
         return nextEvent.getName();
     }
-
+    
+    /**
+	 * Sets the updates the variable nextEvent
+	 * 
+	 * @param nextEvent updates old nextEvent to the new nextEvent
+	 */
     public void nextEvent(Event nextEvent){
         this.nextEvent = nextEvent;
     }

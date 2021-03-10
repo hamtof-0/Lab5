@@ -9,31 +9,52 @@ import java.util.NoSuchElementException;
  * @author Malkolm Lundkvist
  * @author Billy Norman
  * @author Axel Johansson
+ * 
+ * This is a simple FIFO queue
  */
 
 public class FIFO{
 	private final List<Object> objectList;
 	private int maxsize;
 
+	/**
+	 * Constructor  
+	 * 
+	 * Makes a FIFO queue
+	 */
 	public FIFO() {
 		objectList = new ArrayList<Object>();
 		maxsize = 0;
 	}
-
+	
+	/**
+	 * Adds an object to the queue
+	 * 
+	 * @param item The object to put in the queue
+	 */
 	public void add(Object item) {
 		objectList.add(item);
 		if (objectList.size() > maxsize) {
 			maxsize = objectList.size();
 		}
 	}
-
+	/**
+	 * Removes the first object in the queue
+	 * 
+	 * @exception throws an exception if the queue is empty
+	 */
 	public void removeFirst() throws NoSuchElementException {
 		if (isEmpty()) {
 			throw new NoSuchElementException();
 		}
 		objectList.remove(0);
 	}
-
+	
+	/**
+	 * Gets the first object in the queue
+	 * 
+	 * @return Returns the first object in the queue
+	 */
 	public Object first() throws NoSuchElementException {
 		if (isEmpty()) {
 			throw new NoSuchElementException();
@@ -41,56 +62,25 @@ public class FIFO{
 		return (objectList.get(0));
 	}
 
-	public int maxSize() {
-		return maxsize;
-	}
-
+	/**
+	 * Checks if the queue is empty
+	 * 
+	 * @return Returns true if the queue is empty otherwise false
+	 */
 	public boolean isEmpty() {
 		if (objectList.size() != 0) {
 			return (false);
 		}
 		return (true);
 	}
-
+	
+	/**
+	 * Returns the size of the queue
+	 * 
+	 * @return Returns the size of the queue
+	 */
 	public int size() {
 		return (objectList.size());
-	}
-	
-	public boolean equals(Object f) throws ClassCastException {
-		if (f instanceof FIFO) {
-			if (this.objectList.size() == ((FIFO) f).objectList.size()) {
-				for (int i = 0; i < this.size(); i++) {
-					if ((objectList.get(i) == null) && ((FIFO) f).objectList.get(i) == null) {
-						continue;
-					}
-					if ((((FIFO) f).objectList.get(i) != null
-						
-							&& this.objectList.get(i) != null)
-							
-							&& (this.objectList.get(i).equals(((FIFO) f).objectList.get(i)))) {
-						
-						continue;
-					}
-
-					return (false);
-				}
-				return (true);
-			}
-		} else {
-			throw new ClassCastException();
-		}
-		return (false);
-	}
-
-	public String toString() {
-		StringBuilder output = new StringBuilder("[");
-		for (int i = 0; i < objectList.size(); i++) {
-			output.append(String.valueOf(objectList.get(i)));
-			if(i == objectList.size()-1) break;
-			output.append(", ");
-		}
-		output.append(']');
-		return String.valueOf(output);
 	}
 }
 
