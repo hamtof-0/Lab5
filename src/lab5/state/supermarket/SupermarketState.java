@@ -21,21 +21,20 @@ public class SupermarketState extends SimState {
 	// Constructor
 	public SupermarketState(int checkoutTotal,
 							int maxCustomersInStore,
+							double arrivalLambda,
+							double gatheringTimeLower, double gatheringTimeUpper,
+							double scanningTimeLower, double scanningTimeUpper,
 							long seed,
-							double closingTime,
-							double scanningTimeLower,
-							double scanningTimeUpper,
-							double gatheringTimeLower,
-							double gatheringTimeUpper,
-							double arrivalLambda) {
+							double closingTime) {
 		super();
 		this.maxCustomersInStore = maxCustomersInStore;
 		this.customerFactory = new CustomerFactory(1000);
 		this.checkout = new Checkout(checkoutTotal);
-		this.timeManager = new TimeManager(time	, closingTime, seed	,
-								scanningTimeLower	, scanningTimeUpper	,
-								gatheringTimeLower	, gatheringTimeUpper,
-								arrivalLambda);
+		this.timeManager = new TimeManager(arrivalLambda,
+				gatheringTimeLower, gatheringTimeUpper,
+				scanningTimeLower, scanningTimeUpper,
+				seed,
+				closingTime, time);
 	}
 	
 	//Here the toString goes or might be in the SimView thingy
