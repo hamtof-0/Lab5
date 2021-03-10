@@ -8,7 +8,7 @@ import lab5.state.supermarket.SupermarketState;
  * @author Billy Norman
  * @author Axel Johansson
  * 
- * This is the TimeManager which manages the 
+ * This is the TimeManager which manages when different events executes using ExponentialRandomStream and UniformRandomStream
  */
 
 public class TimeManager {
@@ -23,6 +23,21 @@ public class TimeManager {
 	private final double upperGatherTime;
 	private final SupermarketState state;
 	
+	/**
+	 * 
+	 * 
+	 * @param arrivalLambda How fast the customers arrive
+	 * 
+	 * @param lowerGatherTime The least amount of time a customer needs to gather their stuff in the supermarket
+	 * @param upperGatherTime The greatest amount of time a customer needs to gather their stuff in the supermarket
+	 * 
+	 * @param lowerScanningTime The least amount of time a checkout needs to scan a customers stuff
+	 * @param upperScanningTime The greatest amount of time a checkout needs to scan a customers stuff
+	 * 
+	 * @param seed A start value for the RandomStreams to get the same result when using the same parameters and seed
+	 * @param state used to get the currentTime
+	 * 
+	 */
 	public TimeManager(
 					   double arrivalLambda,
 					   double lowerGatherTime, double upperGatherTime,

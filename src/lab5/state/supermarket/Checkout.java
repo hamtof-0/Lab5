@@ -106,20 +106,37 @@ public class Checkout {
     }
     
 	/**
+	 * Returns the value of checkoutTotal
 	 * 
+	 * @return chechoutTotal The number of customers that has left the supermarket
 	 */
     public int getCheckoutTotal() {
     	return checkoutTotal;
     }
     
+	/**
+	 * Returns the number of checkouts that are occupied
+	 * 
+	 * @return checkoutsOccupied The number of checkouts occupied
+	 */
     public int getCheckoutsOccupied() {
     	return checkoutsOccupied;
     }
     
+	/**
+	 * Returns the number of customers queued
+	 * 
+	 * @return customersQueued The number of customers queued
+	 */
     public int getCustomersQueued() {
     	return customersQueued;
     }
     
+	/**
+	 * Returns the checkout queue
+	 * 
+	 * @return checkoutQueue The checkoutQueue
+	 */
     public FIFO getQueue() {
     	return checkoutQueue;
     }
