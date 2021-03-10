@@ -1,5 +1,7 @@
 package lab5.state.supermarket.TimeManager;
 
+import lab5.state.supermarket.ExponentialRandomStream;
+
 public class TimeManager {
 	private UniformRandomStream gatherRandom;
 	private UniformRandomStream scanningRandom;
