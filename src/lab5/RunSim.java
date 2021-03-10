@@ -26,17 +26,9 @@ public class RunSim {
 				0.5,
 				1.0,
 				1.0);
-		EventQueue queue = new EventQueue();
-		queue.addEvent(new SupermarketStartEvent(queue, state, 0d));
-		queue.addEvent(new SupermarketClosingEvent(queue, state, 10.0));
-		queue.addEvent(new SupermarketStopEvent(queue, state, 99.0));
-		System.out.println("2");
 		SupermarketView view = new SupermarketView(state);
-		System.out.println("3");
 		state.addObserver(view);
-		System.out.println("4");
-		Simulator sim = new Simulator(state, queue);
+		Simulator sim = new Simulator(state);
 		sim.run();
-		System.out.println("5");
     }
 }

@@ -8,6 +8,7 @@ import lab5.state.supermarket.SupermarketState;
 
 public class SupermarketView extends SimView{
 
+	private boolean printParameters = true;
 	
 	public SupermarketView(SimState state) {
 		super(state);
@@ -17,8 +18,10 @@ public class SupermarketView extends SimView{
 		SupermarketState state = (SupermarketState)super.state;
 		if (state.getStopped()) {
 			endscreen(state);
-		} else if (state.getTimeManager().getTime() ==  0d) {
+			printParameters = !printParameters;
+		} else if (printParameters) {
 			parameters(state);
+			printParameters = !printParameters;
 		} else  { 
 			running(state);
 		}
@@ -37,14 +40,13 @@ public class SupermarketView extends SimView{
 		System.out.println("FÖRLOPP");
 		System.out.println("_______");
 		System.out.println(" TID HÄNDELSE  KUND ÖPPET/STÄNGT FRIKASSOR FRIKASSETID KUNDANTAL KLARHANDLADE LEDSENKUNDER KÖAT KÖTID KÖAR [KÖN]");
-		System.out.println("0,00 Start");
 	}
 	
 	private void running(SupermarketState state) {
 		String result = "";
 		String time = correctLengthDouble(state.getTimeManager().getTime(), 5);
 		String event = correctLengthString(state.getEvent(), 10);
-		String customer = correctLengthInt(state.getCustomer(), 5);
+		String customer = correctLengthString(state.getCustomer().toString(), 5);
 		String open = correctLengthString((state.isOpen() ? "Öppet" : "Stängt"), 13);
 		String freeCheckouts = correctLengthInt(state.checkout().getCheckoutTotal() - state.checkout().getCheckoutsOccupied(), 10);
 		String freeTime = correctLengthDouble(state.getFreeTime(), 12); //Just nu en placeholder
@@ -56,7 +58,7 @@ public class SupermarketView extends SimView{
 		String customersQueing = correctLengthInt(state.checkout().getQueue().size(), 5);
 		String queue = state.checkout().getQueue().toString();
 		
-		if (state.getEvent() == "Stänger") {
+		if (state.getEvent().equals("Stänger")) {
 			result = time + event + correctLengthString("-", 5) + open + freeCheckouts + freeTime + custumersNumber +
 					customersFinished + customersSad + customersQueued + customersQueuetime + customersQueing + queue;
 		} else {

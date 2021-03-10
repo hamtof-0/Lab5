@@ -26,20 +26,10 @@ public class SupermarketStartEvent extends StartEvent{
 
     @Override
     public void execute() {
-    	stateSuper.getTimeManager().setTime(executeTime);
-        setParameters();
-        /*
-        TODO "A) Simuleringen startar (starthändelse)
-            Denna klass får ärva den generella starthändelsen, sättas till att inträffa tiden 0 och ha 
-            som enda effekt att en första ankomsthändelse för en ny kund läggs till händelsekön.
-            Sida 6 under Rubrik 5.1 Händlser http://www.sm.luth.se/csee/courses/d0010e/labs/lab5/lab5.pdf
-        */
+        if(DEBUG_EVENTS) System.out.println("\t[Start Event] Running...");
+        super.execute();
+        if(DEBUG_EVENTS) System.out.println("\t[Start Event] Added new \"Arrival Event\"");
         eventQueue.addEvent(new SupermarketArrivalEvent(eventQueue, state, time.arrivalTime(), stateSuper.getCustomerFactory().newCustomer()));
-    }
-
-    @Override
-    protected void setParameters() {
-        super.setParameters();
-        //TODO: The parameters need to be set using get and Set methods from State
+        if(DEBUG_EVENTS) System.out.println("\t[Start Event] Finished!");
     }
 }

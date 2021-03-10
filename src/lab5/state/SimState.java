@@ -11,9 +11,16 @@ import java.util.Observable;
 public abstract class SimState extends Observable{
     protected boolean stopped;
     protected double time;
+    protected String currentEvent;
 
     public SimState() {
         stopped = false;
+        time = 0D;
+    }
+
+    public SimState(double time) {
+        this();
+        this.time = time;
     }
 
     public double getTime() {
@@ -33,5 +40,13 @@ public abstract class SimState extends Observable{
     public void update() {
     	setChanged();
     	notifyObservers();
+    }
+
+    public void setEvent(String event) {
+        currentEvent = event;
+    }
+
+    public String getEvent() {
+        return currentEvent;
     }
 }
