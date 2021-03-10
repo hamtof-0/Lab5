@@ -1,9 +1,6 @@
 package lab5;
 
 import lab5.events.Event;
-import lab5.events.supermarket.SupermarketClosingEvent;
-import lab5.events.supermarket.SupermarketStartEvent;
-import lab5.events.supermarket.SupermarketStopEvent;
 import lab5.state.SimState;
 import lab5.events.EventQueue;
 
