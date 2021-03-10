@@ -24,7 +24,7 @@ public class TimeManager {
 	private final SupermarketState state;
 	
 	/**
-	 * 
+	 * Cunstructur
 	 * 
 	 * @param arrivalLambda How fast the customers arrive
 	 * 
@@ -56,38 +56,83 @@ public class TimeManager {
 		this.state = state;
 	}
 
+	/**
+	 * Returns the arrival time for the next customer
+	 * 
+	 * @return The arrival time for the next customer
+	 */
 	public double arrivalTime(){
 		return arrivalRandom.next() + state.getTime();
 	}
 
+	/**
+	 * Returns the scanning time for the customer
+	 * 
+	 * @return The scanning time for the customer
+	 */
 	public double scanTime(){
 		return scanningRandom.next() + state.getTime();
 	}
 
+	/**
+	 * Returns the gather time for the customer
+	 * 
+	 * @return The gathering time for the customer
+	 */
 	public double gatherTime(){
 		return gatherRandom.next() + state.getTime();
 	}
 
+	/**
+	 *Returns the seed
+	 *
+	 *@return Seed The seed used for the RandomeStreams
+	 */
 	public long getSeed(){
 		return seed;
 	}
-
+	
+	/**
+	 * Getter for customers per hour
+	 * 
+	 * @return arrivalLambda The number of customers per hour
+	 */
 	public double getArrivalLambda() {
 		return arrivalLambda;
 	}
-
+	
+	/**
+	 * Getter for the shortest time to scan
+	 * 
+	 * @Return lowerScanningTime The shortest time to scan
+	 */
 	public double getLowerScanningTime() {
 		return lowerScanningTime;
 	}
 
+	/**
+	 * Getter for the greatest time to scan
+	 * 
+	 * @Return upperScanningTime The greatest time to scan
+	 */
 	public double getUpperScanningTime() {
 		return upperScanningTime;
 	}
 
+	/**
+	 * Getter for the shortest time to gather
+	 * 
+	 * @Return lowerGatherTime The shortest time to gather
+	 */
 	public double getLowerGatherTime() {
 		return lowerGatherTime;
 	}
 
+	/**
+	 * Getter for the greatest time to gather
+	 * 
+	 * @Return lowerGatherTime The greatest time to gather
+	 */
 	public double getUpperGatherTime() {
 		return upperGatherTime;
 	}
