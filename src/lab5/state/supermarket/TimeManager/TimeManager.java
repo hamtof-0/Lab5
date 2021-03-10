@@ -1,5 +1,7 @@
 package lab5.state.supermarket.TimeManager;
 
+import lab5.state.supermarket.SupermarketState;
+
 public class TimeManager {
 	private UniformRandomStream gatherRandom;
 	private UniformRandomStream scanningRandom;
@@ -10,15 +12,15 @@ public class TimeManager {
 	private double upperScanningTime;
 	private double lowerGatherTime;
 	private double upperGatherTime;
-	private double time;
 	private double closingTime;
+	private SupermarketState state;
 	
 	public TimeManager(
 					   double arrivalLambda,
 					   double lowerGatherTime, double upperGatherTime,
 					   double lowerScanningTime, double upperScanningTime,
 					   long seed,
-					   double closingTime, double time) {
+					   double closingTime, SupermarketState state) {
 		this.seed = seed;
 		this.arrivalLambda = arrivalLambda;
 		this.lowerScanningTime = lowerScanningTime;
@@ -28,16 +30,8 @@ public class TimeManager {
 		this.arrivalRandom = new ExponentialRandomStream(arrivalLambda, seed);
 		this.scanningRandom = new UniformRandomStream(lowerScanningTime, upperScanningTime, seed);
 		this.gatherRandom = new UniformRandomStream(lowerGatherTime, upperGatherTime, seed);
-		this.time = time;
+		this.state = state;
 		this.closingTime = closingTime;
-	}
-
-	public double getTime() {
-		return time;
-	}
-
-	public void setTime(double time) {
-		this.time = time;
 	}
 
 	public double getClosingTime() {
@@ -49,15 +43,15 @@ public class TimeManager {
 	}
 
 	public double arrivalTime(){
-		return rounded2Decimals(arrivalRandom.next() + time);
+		return arrivalRandom.next() + state.getTime();
 	}
 
 	public double scanTime(){
-		return rounded2Decimals(scanningRandom.next() + time);
+		return scanningRandom.next() + state.getTime();
 	}
 
 	public double gatherTime(){
-		return rounded2Decimals(gatherRandom.next() + time);
+		return gatherRandom.next() + state.getTime();
 	}
 
 	public long getSeed(){
@@ -108,10 +102,5 @@ public class TimeManager {
 
 	public void setUpperGatherTime(double upperGatherTime) {
 		this.upperGatherTime = upperGatherTime;
-	}
-
-	private static double rounded2Decimals(double in){
-		int truncated = (int) Math.round((in*100));
-		return ((double) truncated) / 100;
 	}
 }

@@ -10,8 +10,14 @@ import lab5.state.SimState;
  */
 public class StopEvent extends Event {
 
+    private static final String NAME = "Stop";
+
     public StopEvent(EventQueue eventQueue, SimState state, double executeTime){
-    	super(eventQueue, state, executeTime, "Stop");
+    	super(eventQueue, state, executeTime, NAME);
+    }
+
+    public StopEvent(){
+        super(NAME);
     }
 
     @Override

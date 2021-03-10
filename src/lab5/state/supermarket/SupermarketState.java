@@ -1,5 +1,7 @@
 package lab5.state.supermarket;
 
+import lab5.events.Event;
+import lab5.events.supermarket.SupermarketEvent;
 import lab5.state.SimState;
 import lab5.state.supermarket.Customer.Customer;
 import lab5.state.supermarket.Customer.CustomerFactory;
@@ -26,7 +28,7 @@ public class SupermarketState extends SimState {
 							double scanningTimeLower, double scanningTimeUpper,
 							long seed,
 							double closingTime) {
-		super();
+		super(closingTime);
 		this.maxCustomersInStore = maxCustomersInStore;
 		this.customerFactory = new CustomerFactory(1000);
 		this.checkout = new Checkout(checkoutTotal);
@@ -34,7 +36,7 @@ public class SupermarketState extends SimState {
 				gatheringTimeLower, gatheringTimeUpper,
 				scanningTimeLower, scanningTimeUpper,
 				seed,
-				closingTime, time);
+				closingTime, this);
 	}
 	
 	//Here the toString goes or might be in the SimView thingy
@@ -43,13 +45,17 @@ public class SupermarketState extends SimState {
 	}
 
 	public boolean hasRoom(){
-		return (this.customerFactory.getMax() - this.numCustomersInStore) > 0;
+		return (this.maxCustomersInStore - this.numCustomersInStore) > 0;
 	}
 
 	public void addCustomer(){
 		numCustomersInStore += 1;
 	}
 
+	/**
+	 * Adds 1 customer to the customersMissed Statistics.
+	 * Also removes the Customer from the checkout.
+	 */
 	public void missedCustomer(){
 		missedCustomers += 1;
 	}
@@ -80,14 +86,6 @@ public class SupermarketState extends SimState {
 		numCustomersInStore--;
 	}
 
-	/**
-	 * Adds 1 customer to the customersMissed Statistics.
-	 * Also removes the Customer from the checkout.
-	 */
-	public void addMissed(){
-		missedCustomers++;
-	}
-
 	//There are only getters and setters beyond this point
 
 	public int getNumCustomersInStore() {
@@ -98,48 +96,20 @@ public class SupermarketState extends SimState {
 		return maxCustomersInStore;
 	}
 
-	public void setNumCustomersInStore(int numCustomersInStore) {
-		this.numCustomersInStore = numCustomersInStore;
-	}
-
 	public int getCustomersServed() {
 		return customersServed;
-	}
-
-	public void setCustomersServed(int customersServed) {
-		this.customersServed = customersServed;
-	}
-
-	public void setOpen(boolean open) {
-		this.open = open;
 	}
 
 	public int getMissedCustomers() {
 		return missedCustomers;
 	}
 
-	public void setMissedCustomers(int missedCustomers) {
-		this.missedCustomers = missedCustomers;
-	}
-
 	public double getQueueTimeTotal() {
 		return queueTimeTotal;
 	}
 
-	public void setQueueTimeTotal(double queueTimeTotal) {
-		this.queueTimeTotal = queueTimeTotal;
-	}
-
 	public long getSeed() {
 		return timeManager.getSeed();
-	}
-
-	public void setSeed(long seed) {
-		timeManager.setSeed(seed);
-	}
-
-	public void setCustomerFactory(CustomerFactory customerFactory) {
-		this.customerFactory = customerFactory;
 	}
 
 	public CustomerFactory getCustomerFactory() {
@@ -157,10 +127,13 @@ public class SupermarketState extends SimState {
 	public void setCustomer(Customer costumer) {
 		currentCostumer = costumer;
 	}
-	
-	public String getCustomer() {
-		if(currentCostumer != null) return currentCostumer.toString();
-		else return "---";
+
+	public double getClosingTime() {
+		return timeManager.getClosingTime();
+	}
+
+	public Event nextEvent() {
+		return nextEvent;
 	}
 	
 	public double getFreeTime() {

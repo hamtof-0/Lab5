@@ -26,10 +26,7 @@ public class SupermarketStartEvent extends StartEvent{
 
     @Override
     public void execute() {
-        if(DEBUG_EVENTS) System.out.println("\t[Start Event] Running...");
         super.execute();
-        if(DEBUG_EVENTS) System.out.println("\t[Start Event] Added new \"Arrival Event\"");
         eventQueue.addEvent(new SupermarketArrivalEvent(eventQueue, state, time.arrivalTime(), stateSuper.getCustomerFactory().newCustomer()));
-        if(DEBUG_EVENTS) System.out.println("\t[Start Event] Finished!");
     }
 }

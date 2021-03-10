@@ -51,6 +51,18 @@ public class EventQueue {
     }
 
     /**
+     * Gives the first event in the queue
+     * @return The Event that is first in queue
+     */
+    public Event getFirst(){
+        if(this.isEmpty())
+            throw new RuntimeException("Queue is empty Unable to get next event");
+        Event next = queue.get(0);
+        removeFirst();
+        return next;
+    }
+
+    /**
      * Removes the first event in the queue
      */
     public void removeFirst(){

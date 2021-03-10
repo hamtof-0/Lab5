@@ -2,6 +2,10 @@ package lab5.view.supermarket;
 
 import java.util.Observable;
 
+import lab5.events.Event;
+import lab5.events.StopEvent;
+import lab5.events.supermarket.SupermarketEvent;
+import lab5.events.supermarket.SupermarketStopEvent;
 import lab5.view.SimView;
 import lab5.state.SimState;
 import lab5.state.supermarket.SupermarketState;
@@ -59,9 +63,18 @@ public class SupermarketView extends SimView{
 	
 	private void running(SupermarketState state) {
 		String result = "";
-		String time = correctLengthDouble(state.getTimeManager().getTime(), 6);
-		String event = correctLengthString(state.getEvent(), 10);
-		String customer = correctLengthString(state.getCustomer().toString(), 5);
+		Event next = state.nextEvent();
+		String time = correctLengthDouble(next.getExecuteTime(), 6);
+		if(next.getName().equals(new StopEvent().getName())){
+			return;
+		}
+		String event = correctLengthString(next.getName(), 10);
+		String customer;
+		if(next instanceof SupermarketEvent){
+			customer = correctLengthString(((SupermarketEvent) next).getCustomerID(), 5);
+		} else {
+			customer = correctLengthString("", 5);
+		}
 		String open = correctLengthString((state.isOpen() ? "Öppet" : "Stängt"), 13);
 		String freeCheckouts = correctLengthInt(state.checkout().getCheckoutTotal() - state.checkout().getCheckoutsOccupied(), 10);
 		String freeTime = correctLengthDouble(state.getFreeTime(), 12); //Just nu en placeholder
@@ -85,7 +98,7 @@ public class SupermarketView extends SimView{
 	}
 	
 	private void endscreen(SupermarketState state) {
-		System.out.println(correctLengthDouble(state.getTimeManager().getTime(), 6) + "Stop");
+		System.out.println(correctLengthDouble(state.getTime(), 6) + "Stop");
 		System.out.println();
 		System.out.println("RESULTAT");
 		System.out.println("__________________________");
@@ -102,11 +115,9 @@ public class SupermarketView extends SimView{
 	
 	private String correctLengthDouble(double d, int len) {
 		//Säkra två decimaler
-		d = d * FIX_DECIMALS;
-		int e = (int)d;
-		d = (double)e;
-		d = d / FIX_DECIMALS;
-		
+		int truncated = (int) Math.round((d*FIX_DECIMALS));
+		d = ((double) truncated) / FIX_DECIMALS;
+
 		String s = Double.toString(d);
 		
 		int numAfterComma = (s.length()-1) - (s.indexOf("."));
