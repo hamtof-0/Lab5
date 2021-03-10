@@ -11,8 +11,10 @@ import lab5.events.EventQueue;
  */
 public class SupermarketClosingEvent extends SupermarketEvent {
 
+    private static final String NAME = "Closing";
+
     public SupermarketClosingEvent(EventQueue eventQueue, SimState state, double executeTime) {
-        super(eventQueue, state, executeTime, "Closing");
+        super(eventQueue, state, executeTime, NAME);
     }
 
     @Override

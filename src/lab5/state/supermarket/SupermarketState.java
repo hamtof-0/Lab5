@@ -1,5 +1,7 @@
 package lab5.state.supermarket;
 
+import lab5.events.Event;
+import lab5.events.supermarket.SupermarketEvent;
 import lab5.state.SimState;
 import lab5.state.supermarket.Customer.Customer;
 import lab5.state.supermarket.Customer.CustomerFactory;
@@ -26,7 +28,7 @@ public class SupermarketState extends SimState {
 							double scanningTimeLower, double scanningTimeUpper,
 							long seed,
 							double closingTime) {
-		super();
+		super(closingTime);
 		this.maxCustomersInStore = maxCustomersInStore;
 		this.customerFactory = new CustomerFactory(1000);
 		this.checkout = new Checkout(checkoutTotal);
@@ -125,10 +127,13 @@ public class SupermarketState extends SimState {
 	public void setCustomer(Customer costumer) {
 		currentCostumer = costumer;
 	}
-	
-	public String getCustomer() {
-		if(currentCostumer != null) return currentCostumer.toString();
-		else return "---";
+
+	public double getClosingTime() {
+		return timeManager.getClosingTime();
+	}
+
+	public Event nextEvent() {
+		return nextEvent;
 	}
 	
 	public double getFreeTime() {

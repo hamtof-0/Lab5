@@ -37,4 +37,14 @@ public abstract class SupermarketEvent extends Event {
                 stateSuper.setCustomer(customer);
                 time.setTime(executeTime);
         }
+
+        public Customer getCustomer() {
+                return customer;
+        }
+
+        public String getCustomerID() {
+                if(customer != null)
+                        return customer.toString();
+                return "---";
+        }
 }

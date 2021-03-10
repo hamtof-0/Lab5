@@ -12,8 +12,10 @@ import lab5.state.supermarket.Customer.Customer;
  */
 public class SupermarketPayEvent extends SupermarketEvent {
 
+    private static final String NAME = "Pay";
+
     public SupermarketPayEvent(EventQueue eventQueue, SimState state, double executeTime, Customer customer) {
-        super(eventQueue, state, executeTime, customer, "Pay");
+        super(eventQueue, state, executeTime, customer, NAME);
     }
 
     @Override

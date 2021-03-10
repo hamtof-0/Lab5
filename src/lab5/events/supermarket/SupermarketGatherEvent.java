@@ -12,8 +12,10 @@ import lab5.state.supermarket.Customer.Customer;
  */
 public class SupermarketGatherEvent extends SupermarketEvent {
 
+    private static final String NAME = "Gather";
+
     public SupermarketGatherEvent(EventQueue eventQueue, SimState state, double executeTime, Customer customer) {
-        super(eventQueue, state, executeTime, customer, "Gather");
+        super(eventQueue, state, executeTime, customer, NAME);
     }
 
     @Override

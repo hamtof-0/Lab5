@@ -1,5 +1,6 @@
 package lab5.state;
 
+import lab5.events.Event;
 import lab5.events.EventQueue;
 
 import java.util.Observable;
@@ -13,28 +14,26 @@ import java.util.Observable;
 public abstract class SimState extends Observable {
     protected boolean stopped;
     protected double time;
-    protected String currentEvent;
-    protected EventQueue eventQueue;
+    protected double closingTime;
+    protected Event nextEvent;
+    protected EventQueue eventQueue = new EventQueue();
 
-
-    public SimState(EventQueue eventQueue) {
-        this.eventQueue = eventQueue;
-        stopped = false;
-    }
-
-    public SimState() {
-        this.eventQueue = new EventQueue();
+    private SimState() {
         stopped = false;
         time = 0D;
     }
 
-    public SimState(double time) {
+    public SimState(double closingTime) {
         this();
-        this.time = time;
+        this.closingTime = closingTime;
     }
 
     public double getTime() {
         return time;
+    }
+
+    public double getClosingTime() {
+        return closingTime;
     }
 
     public void stop() {
@@ -52,11 +51,11 @@ public abstract class SimState extends Observable {
     	notifyObservers();
     }
 
-    public void setEvent(String event) {
-        currentEvent = event;
+    public String getEvent() {
+        return nextEvent.getName();
     }
 
-    public String getEvent() {
-        return currentEvent;
+    public void nextEvent(Event nextEvent){
+        this.nextEvent = nextEvent;
     }
 }

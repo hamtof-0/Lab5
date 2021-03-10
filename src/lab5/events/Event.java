@@ -22,9 +22,12 @@ public abstract class Event {
         this.name = name;
     }
 
+    protected Event(String name){
+        this.name = name;
+    }
+
     public void execute(){
         if(DEBUG_EVENTS) System.out.println("\t\tExecuting Event: " + name);
-        state.setEvent(name);
         //time.setTime(executeTime);
     }
 
@@ -34,5 +37,13 @@ public abstract class Event {
                 ", State Type: " + state +
                 ", executeTime: " + executeTime +
                 "}";
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getExecuteTime() {
+        return executeTime;
     }
 }

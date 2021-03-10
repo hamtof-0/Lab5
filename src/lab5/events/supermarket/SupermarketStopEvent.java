@@ -24,6 +24,7 @@ public class SupermarketStopEvent extends StopEvent {
         this.time = stateSuper.getTimeManager();
     }
 
+
     @Override
     public void execute() {
         if(DEBUG_EVENTS) System.out.println("\t[Stop Event] Running...");
