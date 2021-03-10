@@ -106,11 +106,14 @@ public class FIFO{
 	}
 
 	public String toString() {
-		String leString = "Queue: ";
-		for (Object elem : listaObject) {
-			leString += ("(" + String.valueOf(elem) + ") ");
+		StringBuilder output = new StringBuilder("[");
+		for (int i = 0; i < listaObject.size(); i++) {
+			output.append(String.valueOf(listaObject.get(i)));
+			if(i == listaObject.size()-1) break;
+			output.append(", ");
 		}
-		return leString;
+		output.append(']');
+		return String.valueOf(output);
 	}
 }
 

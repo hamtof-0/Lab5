@@ -6,13 +6,27 @@ import lab5.view.SimView;
 import lab5.state.SimState;
 import lab5.state.supermarket.SupermarketState;
 
+/**
+ * @author Hampus Toft
+ * @author Malkolm Lundkvist
+ * @author Billy Norman
+ * @author Axel Johansson
+ * 
+ * Prints information about a supermarket and its events to the console.
+ */
+
 public class SupermarketView extends SimView{
 
 	private boolean printParameters = true;
+	private static final double FIX_DECIMALS = 100;
 	
 	public SupermarketView(SimState state) {
 		super(state);
 	}
+	
+	/** 
+	 * Called whenever something is changed in the state and prints information about this change
+	 */
 	
 	public void update(Observable o, Object arg) {
 		SupermarketState state = (SupermarketState)super.state;
@@ -39,12 +53,12 @@ public class SupermarketView extends SimView{
 		System.out.println();
 		System.out.println("FÖRLOPP");
 		System.out.println("_______");
-		System.out.println(" TID HÄNDELSE  KUND ÖPPET/STÄNGT FRIKASSOR FRIKASSETID KUNDANTAL KLARHANDLADE LEDSENKUNDER KÖAT KÖTID KÖAR [KÖN]");
+		System.out.println(" TID  HÄNDELSE  KUND ÖPPET/STÄNGT FRIKASSOR FRIKASSETID KUNDANTAL KLARHANDLADE LEDSENKUNDER KÖAT KÖTID KÖAR [KÖN]");
 	}
 	
 	private void running(SupermarketState state) {
 		String result = "";
-		String time = correctLengthDouble(state.getTimeManager().getTime(), 5);
+		String time = correctLengthDouble(state.getTimeManager().getTime(), 6);
 		String event = correctLengthString(state.getEvent(), 10);
 		String customer = correctLengthString(state.getCustomer().toString(), 5);
 		String open = correctLengthString((state.isOpen() ? "Öppet" : "Stängt"), 13);
@@ -70,7 +84,7 @@ public class SupermarketView extends SimView{
 	}
 	
 	private void endscreen(SupermarketState state) {
-		System.out.println(correctLengthDouble(state.getTimeManager().getTime(), 5) + "Stop");
+		System.out.println(correctLengthDouble(state.getTimeManager().getTime(), 6) + "Stop");
 		System.out.println();
 		System.out.println("RESULTAT");
 		System.out.println("__________________________");
@@ -86,16 +100,18 @@ public class SupermarketView extends SimView{
 	}
 	
 	private String correctLengthDouble(double d, int len) {
-		String s = Double.toString(d);
-		String s2 = s;
+		//Säkra två decimaler
+		d = d * FIX_DECIMALS;
+		int e = (int)d;
+		d = (double)e;
+		d = d / FIX_DECIMALS;
 		
-		int numAfterComma = (s.length()-1) - s.indexOf(",");
-		/*if (numAfterComma > 2) {
-			s = "";
-			for (int i = 0; i < s2.length() - numAfterComma + 2; i++) {
-				s = s + s2.charAt(i);
-			}
-		}*/
+		String s = Double.toString(d);
+		
+		int numAfterComma = (s.length()-1) - (s.indexOf("."));
+		if (numAfterComma == 1) {
+			s = s + "0";
+		}
 		
 		return correctLengthString(s, len);
 	}

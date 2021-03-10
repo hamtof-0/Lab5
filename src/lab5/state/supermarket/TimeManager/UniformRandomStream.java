@@ -1,5 +1,5 @@
 
-package lab5.state.supermarket;
+package lab5.state.supermarket.TimeManager;
 
 import java.util.Random;
 
@@ -22,7 +22,7 @@ public class UniformRandomStream {
 	}
 	
 	public double next() {
-	    return lower+rand.nextDouble()*width;
+		return lower+rand.nextDouble()*width;
 	}
 }
 

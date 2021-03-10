@@ -5,7 +5,7 @@ import lab5.events.EventQueue;
 import lab5.state.SimState;
 import lab5.state.supermarket.Customer.Customer;
 import lab5.state.supermarket.SupermarketState;
-import lab5.state.supermarket.TimeManager;
+import lab5.state.supermarket.TimeManager.TimeManager;
 
 /**
  * @author Hampus Toft
