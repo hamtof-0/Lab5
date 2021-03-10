@@ -7,6 +7,8 @@ import java.util.ArrayList;
  * @author Malkolm Lundkvist
  * @author Billy Norman
  * @author Axel Johansson
+ *
+ * The generic event queue
  */
 public class EventQueue {
 
@@ -47,17 +49,14 @@ public class EventQueue {
         return next;
     }
 
-    /**
-     * Gives the first event in the queue
-     * @return The Event that is first in queue
-     */
+    /* Verkar vara exakt likadan som ovanstående metod och tror aldrig den används(?)
     public Event getFirst(){
         if(this.isEmpty())
             throw new RuntimeException("Queue is empty Unable to get next event");
         Event next = queue.get(0);
         removeFirst();
         return next;
-    }
+    }*/
 
     /**
      * Removes the first event in the queue
@@ -67,8 +66,8 @@ public class EventQueue {
     }
 
     /**
-     * Gives the first event in the queue
-     * @return The Event that is first in queue
+     * Returns if the queue is empty or not
+     * @return returns true if the size of the queue is 0, else returns false
      */
     public boolean isEmpty(){
         return queue.size() <= 0;
