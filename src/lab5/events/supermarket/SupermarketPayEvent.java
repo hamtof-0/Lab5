@@ -6,9 +6,9 @@ import lab5.state.supermarket.Customer.Customer;
 
 /**
  * @author Hampus Toft
- * @author ...
- * @author ...
- * @author ...
+ * @author Malkolm Lundkvist
+ * @author Billy Norman
+ * @author Axel Johansson
  */
 public class SupermarketPayEvent extends SupermarketEvent {
 

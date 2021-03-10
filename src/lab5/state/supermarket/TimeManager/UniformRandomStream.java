@@ -3,6 +3,12 @@ package lab5.state.supermarket.TimeManager;
 
 import java.util.Random;
 
+/**
+ * @author Hampus Toft
+ * @author Malkolm Lundkvist
+ * @author Billy Norman
+ * @author Axel Johansson
+ */
 
 public class UniformRandomStream {
 

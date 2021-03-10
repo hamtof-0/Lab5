@@ -2,6 +2,13 @@ package lab5.state.supermarket.TimeManager;
 
 import lab5.state.supermarket.SupermarketState;
 
+/**
+ * @author Hampus Toft
+ * @author Malkolm Lundkvist
+ * @author Billy Norman
+ * @author Axel Johansson
+ */
+
 public class TimeManager {
 	private final UniformRandomStream gatherRandom;
 	private final UniformRandomStream scanningRandom;

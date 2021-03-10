@@ -8,9 +8,9 @@ import lab5.state.supermarket.SupermarketState;
 
 /**
  * @author Hampus Toft
- * @author ...
- * @author ...
- * @author ...
+ * @author Malkolm Lundkvist
+ * @author Billy Norman
+ * @author Axel Johansson
  */
 public class SupermarketStartEvent extends StartEvent{
 

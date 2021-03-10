@@ -6,8 +6,8 @@ import lab5.events.EventQueue;
 /**
  * @author Hampus Toft
  * @author Malkolm Lundkvist
- * @author ...
- * @author ...
+ * @author Billy Norman
+ * @author Axel Johansson
  */
 public class SupermarketClosingEvent extends SupermarketEvent {
 

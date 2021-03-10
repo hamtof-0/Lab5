@@ -2,6 +2,13 @@ package lab5.state.supermarket;
 
 import lab5.state.supermarket.Customer.Customer;
 
+/**
+ * @author Hampus Toft
+ * @author Malkolm Lundkvist
+ * @author Billy Norman
+ * @author Axel Johansson
+ */
+
 public class Checkout {
 
     private final int checkoutTotal;

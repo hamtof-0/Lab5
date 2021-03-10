@@ -4,6 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+/**
+ * @author Hampus Toft
+ * @author Malkolm Lundkvist
+ * @author Billy Norman
+ * @author Axel Johansson
+ */
+
 public class FIFO{
 	private final List<Object> objectList;
 	private int maxsize;

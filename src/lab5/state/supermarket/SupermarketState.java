@@ -7,6 +7,13 @@ import lab5.state.supermarket.Customer.Customer;
 import lab5.state.supermarket.Customer.CustomerFactory;
 import lab5.state.supermarket.TimeManager.TimeManager;
 
+/**
+ * @author Hampus Toft
+ * @author Malkolm Lundkvist
+ * @author Billy Norman
+ * @author Axel Johansson
+ */
+
 public class SupermarketState extends SimState {
 
 	private int numCustomersInStore = 0;

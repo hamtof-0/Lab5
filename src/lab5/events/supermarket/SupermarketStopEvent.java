@@ -8,9 +8,9 @@ import lab5.state.supermarket.TimeManager.TimeManager;
 
 /**
  * @author Hampus Toft
- * @author ...
- * @author ...
- * @author ...
+ * @author Malkolm Lundkvist
+ * @author Billy Norman
+ * @author Axel Johansson
  */
 public class SupermarketStopEvent extends StopEvent {
 

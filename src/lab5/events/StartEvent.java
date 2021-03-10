@@ -4,9 +4,9 @@ import lab5.state.SimState;
 
 /**
  * @author Hampus Toft
- * @author ...
- * @author ...
- * @author ...
+ * @author Malkolm Lundkvist
+ * @author Billy Norman
+ * @author Axel Johansson
  */
 public class StartEvent extends Event {
 
