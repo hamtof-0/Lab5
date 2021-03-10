@@ -28,7 +28,7 @@ public abstract class Event {
 
     public void execute(){
         if(DEBUG_EVENTS) System.out.println("\t\tExecuting Event: " + name);
-        state.setTime(executeTime);
+        //state.setTime(executeTime);
     }
 
     @Override
