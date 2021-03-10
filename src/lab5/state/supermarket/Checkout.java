@@ -41,6 +41,16 @@ public class Checkout {
     }
 
     /**
+     * add a customer to the queue
+     * @param customer the customer that should be placed in the checkout queue
+     */
+    public Customer getFirstInQueue(){
+        Customer firstInLine = (Customer) checkoutQueue.first();
+        checkoutQueue.removeFirst();
+        return firstInLine;
+    }
+
+    /**
      * Used if at anypoint it is important to know what customer is getting served
      * @param customer the customer object getting served
      */
@@ -53,7 +63,6 @@ public class Checkout {
      */
     public void serveCustomer(){
         if(!this.hasEmptyCheckout()) throw new RuntimeException("No empty checkouts to use!");
-        if(!this.queueIsEmpty()) this.remove(); // someone is in the queue serve the first
         // Occupied a checkout
         checkoutsOccupied ++;
     }
