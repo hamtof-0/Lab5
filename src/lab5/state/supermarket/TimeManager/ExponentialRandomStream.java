@@ -5,8 +5,8 @@ import java.util.Random;
 
 public class ExponentialRandomStream {
 	
-	private Random rand;
-	private double lambda;
+	private final Random rand;
+	private final double lambda;
 	  
 	public ExponentialRandomStream(double lambda, long seed) {
 	  	rand = new Random(seed);

@@ -26,9 +26,8 @@ public class SupermarketState extends SimState {
 							double arrivalLambda,
 							double gatheringTimeLower, double gatheringTimeUpper,
 							double scanningTimeLower, double scanningTimeUpper,
-							long seed,
-							double closingTime) {
-		super(closingTime);
+							long seed) {
+		super();
 		this.maxCustomersInStore = maxCustomersInStore;
 		this.customerFactory = new CustomerFactory(1000);
 		this.checkout = new Checkout(checkoutTotal);
@@ -36,7 +35,7 @@ public class SupermarketState extends SimState {
 				gatheringTimeLower, gatheringTimeUpper,
 				scanningTimeLower, scanningTimeUpper,
 				seed,
-				closingTime, this);
+				this);
 	}
 	
 	//Here the toString goes or might be in the SimView thingy
@@ -126,10 +125,6 @@ public class SupermarketState extends SimState {
 	
 	public void setCustomer(Customer costumer) {
 		currentCostumer = costumer;
-	}
-
-	public double getClosingTime() {
-		return timeManager.getClosingTime();
 	}
 
 	public Event nextEvent() {

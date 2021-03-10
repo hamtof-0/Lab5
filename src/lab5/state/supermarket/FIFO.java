@@ -5,18 +5,18 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 public class FIFO{
-	private List<Object> listaObject;
+	private final List<Object> objectList;
 	private int maxsize;
 
 	public FIFO() {
-		listaObject = new ArrayList<Object>();
+		objectList = new ArrayList<Object>();
 		maxsize = 0;
 	}
 
 	public void add(Object item) {
-		listaObject.add(item);
-		if (listaObject.size() > maxsize) {
-			maxsize = listaObject.size();
+		objectList.add(item);
+		if (objectList.size() > maxsize) {
+			maxsize = objectList.size();
 		}
 	}
 
@@ -24,14 +24,14 @@ public class FIFO{
 		if (isEmpty()) {
 			throw new NoSuchElementException();
 		}
-		listaObject.remove(0);
+		objectList.remove(0);
 	}
 
 	public Object first() throws NoSuchElementException {
 		if (isEmpty()) {
 			throw new NoSuchElementException();
 		}
-		return (listaObject.get(0));
+		return (objectList.get(0));
 	}
 
 	public int maxSize() {
@@ -39,58 +39,28 @@ public class FIFO{
 	}
 
 	public boolean isEmpty() {
-		if (listaObject.size() != 0) {
+		if (objectList.size() != 0) {
 			return (false);
 		}
 		return (true);
 	}
 
 	public int size() {
-		return (listaObject.size());
+		return (objectList.size());
 	}
-	
-	/* other version
-	public boolean equals(Object f) {
-        if (f instanceof FIFO) {
-            FIFO argument = (FIFO) f;
-            if (this.size() != argument.size()) { return false; }       // Not equal size
- 
-            for (int index = 0; index < this.size(); index++) {         // Loop values
- 
-                boolean thisNull = this.FIFOList.get(index) == null;            // improve readability
-                boolean argumentNull = argument.FIFOList.get(index) == null;    // improve readability
- 
-                if (thisNull != argumentNull) {
-                    return false; // Not equal (One is null other is a instantiated Object)
-                } // Both are instantiated Object OR both are null
- 
-                if (!thisNull) { // Neither are null
- 
-                    if (!this.FIFOList.get(index).equals(argument.FIFOList.get(index))) {
-                        return false; // false due to them not being equal
-                    }
- 
-                } // both values are equal (either both null or both are the same object)
-            }
-        } else { // Not a FIFO Queue
-            throw new ClassCastException("");
-        }
-        return true; // if this statement is reached it means that the FIFO Queues are equal to each other
-    }
-	*/
 	
 	public boolean equals(Object f) throws ClassCastException {
 		if (f instanceof FIFO) {
-			if (this.listaObject.size() == ((FIFO) f).listaObject.size()) {
+			if (this.objectList.size() == ((FIFO) f).objectList.size()) {
 				for (int i = 0; i < this.size(); i++) {
-					if ((listaObject.get(i) == null) && ((FIFO) f).listaObject.get(i) == null) {
+					if ((objectList.get(i) == null) && ((FIFO) f).objectList.get(i) == null) {
 						continue;
 					}
-					if ((((FIFO) f).listaObject.get(i) != null
+					if ((((FIFO) f).objectList.get(i) != null
 						
-							&& this.listaObject.get(i) != null)
+							&& this.objectList.get(i) != null)
 							
-							&& (this.listaObject.get(i).equals(((FIFO) f).listaObject.get(i)))) {
+							&& (this.objectList.get(i).equals(((FIFO) f).objectList.get(i)))) {
 						
 						continue;
 					}
@@ -107,9 +77,9 @@ public class FIFO{
 
 	public String toString() {
 		StringBuilder output = new StringBuilder("[");
-		for (int i = 0; i < listaObject.size(); i++) {
-			output.append(String.valueOf(listaObject.get(i)));
-			if(i == listaObject.size()-1) break;
+		for (int i = 0; i < objectList.size(); i++) {
+			output.append(String.valueOf(objectList.get(i)));
+			if(i == objectList.size()-1) break;
 			output.append(", ");
 		}
 		output.append(']');

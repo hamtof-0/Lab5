@@ -37,10 +37,6 @@ public abstract class SupermarketEvent extends Event {
                 stateSuper.setCustomer(customer);
         }
 
-        public Customer getCustomer() {
-                return customer;
-        }
-
         public String getCustomerID() {
                 if(customer != null)
                         return customer.toString();
