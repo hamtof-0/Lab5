@@ -17,15 +17,13 @@ public class RunSim {
 
     public static void main(String[] args) {
 		SupermarketState state = new SupermarketState(
-				2, 			// Antal kassor, N..........:
-				5, 	// Max som ryms, M..........:
-				1234, 			 	// Frö, f...................:
-				10,			// -------------------------:
-				2.0,		// Betaltider, [K_min]......:
-				3.0,		// Betaltider, [K_max]......:
-				0.5,	// Plocktider, [P_min]......:
-				1.0,	// Plocktider, [P_max]......:
-				1.0);		// Ankomshastighet, lambda..:
+				2,
+				5,
+				1.0D,
+				0.5D,1.0D,
+				2.D,3.0D,
+				1234L,
+				10D);
 		SupermarketView view = new SupermarketView(state);
 		state.addObserver(view);
 		Simulator sim = new Simulator(state);

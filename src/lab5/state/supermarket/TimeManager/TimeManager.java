@@ -13,14 +13,12 @@ public class TimeManager {
 	private double time;
 	private double closingTime;
 	
-	public TimeManager(double time,
-					   double closingTime,
-					   long seed,
+	public TimeManager(
 					   double arrivalLambda,
-					   double lowerScanningTime,
-					   double upperScanningTime,
-					   double lowerGatherTime,
-					   double upperGatherTime) {
+					   double lowerGatherTime, double upperGatherTime,
+					   double lowerScanningTime, double upperScanningTime,
+					   long seed,
+					   double closingTime, double time) {
 		this.seed = seed;
 		this.arrivalLambda = arrivalLambda;
 		this.lowerScanningTime = lowerScanningTime;
@@ -51,15 +49,15 @@ public class TimeManager {
 	}
 
 	public double arrivalTime(){
-		return arrivalRandom.next() + time;
+		return rounded2Decimals(arrivalRandom.next() + time);
 	}
 
 	public double scanTime(){
-		return scanningRandom.next() + time;
+		return rounded2Decimals(scanningRandom.next() + time);
 	}
 
 	public double gatherTime(){
-		return gatherRandom.next() + time;
+		return rounded2Decimals(gatherRandom.next() + time);
 	}
 
 	public long getSeed(){
@@ -110,5 +108,10 @@ public class TimeManager {
 
 	public void setUpperGatherTime(double upperGatherTime) {
 		this.upperGatherTime = upperGatherTime;
+	}
+
+	private static double rounded2Decimals(double in){
+		int truncated = (int) Math.round((in*100));
+		return ((double) truncated) / 100;
 	}
 }
