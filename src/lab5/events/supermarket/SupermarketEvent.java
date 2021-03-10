@@ -34,7 +34,6 @@ public abstract class SupermarketEvent extends Event {
         @Override
         public void execute() {
                 super.execute();
-                stateSuper.setCustomer(customer);
         }
 
         public String getCustomerID() {
