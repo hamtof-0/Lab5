@@ -39,22 +39,23 @@ public class SupermarketView extends SimView{
 		System.out.println();
 		System.out.println("FÖRLOPP");
 		System.out.println("_______");
-		System.out.println(" TID HÄNDELSE  KUND ÖPPET/STÄNGT FRIKASSOR FRIKASSETID KUNDANTAL KLARHANDLADE LEDSENKUNDER KÖAT KÖTID KÖAR [KÖN]");
+		System.out.println("   Tid Händlese  Kund  ?  led    ledT    I    $    :-(    köat    köT    köar    [Kassakö..]");
+		System.out.println("  0,00 Start");
 	}
 	
 	private void running(SupermarketState state) {
 		String result = "";
-		String time = correctLengthDouble(state.getTimeManager().getTime(), 5);
-		String event = correctLengthString(state.getEvent(), 10);
-		String customer = correctLengthString(state.getCustomer().toString(), 5);
-		String open = correctLengthString((state.isOpen() ? "Öppet" : "Stängt"), 13);
-		String freeCheckouts = correctLengthInt(state.checkout().getCheckoutTotal() - state.checkout().getCheckoutsOccupied(), 10);
-		String freeTime = correctLengthDouble(state.getFreeTime(), 12); //Just nu en placeholder
-		String custumersNumber = correctLengthInt(state.getNumCustomersInStore(), 10);
-		String customersFinished = correctLengthInt(state.getCustomersServed(), 13);
-		String customersSad = correctLengthInt(state.getMissedCustomers(), 13);
+		String time = correctLengthDouble(state.getTimeManager().getTime(), 7);
+		String event = correctLengthString(state.getEvent(), 13);
+		String customer = correctLengthString(state.getCustomer().toString(), 3);
+		String open = correctLengthString((state.isOpen() ? "Ö" : "S"), 5);
+		String freeCheckouts = correctLengthInt(state.checkout().getCheckoutTotal() - state.checkout().getCheckoutsOccupied(), 5);
+		String freeTime = correctLengthDouble(state.getFreeTime(), 8); //Just nu en placeholder
+		String custumersNumber = correctLengthInt(state.getNumCustomersInStore(), 5);
+		String customersFinished = correctLengthInt(state.getCustomersServed(), 6);
+		String customersSad = correctLengthInt(state.getMissedCustomers(), 8);
 		String customersQueued = correctLengthInt(state.checkout().getCustomersQueued(), 5);
-		String customersQueuetime = correctLengthDouble(state.getQueueTimeTotal(), 6);
+		String customersQueuetime = correctLengthDouble(state.getQueueTimeTotal(), 11);
 		String customersQueing = correctLengthInt(state.checkout().getQueue().size(), 5);
 		String queue = state.checkout().getQueue().toString();
 		
@@ -86,6 +87,7 @@ public class SupermarketView extends SimView{
 	}
 	
 	private String correctLengthDouble(double d, int len) {
+		//FIXME: Alltid 2 decimaler, samt numret ska förskutas åt vänster inte höger (tiondelar alltid på samma position)
 		String s = Double.toString(d);
 		String s2 = s;
 		
@@ -101,6 +103,7 @@ public class SupermarketView extends SimView{
 	}
 	
 	private String correctLengthInt(int in, int len) {
+
 		String s = Integer.toString(in);
 		
 		return correctLengthString(s, len);

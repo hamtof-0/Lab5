@@ -24,7 +24,6 @@ public class Simulator {
 
 
     public void run(){
-        state.update();
         eventQueue = new EventQueue();
         eventQueue.addEvent(new SupermarketStartEvent(eventQueue, state, 0d));
         eventQueue.addEvent(new SupermarketClosingEvent(eventQueue, state, 10.0));
