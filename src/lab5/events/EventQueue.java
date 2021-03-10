@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class EventQueue {
 
-    private ArrayList<Event> queue = new ArrayList<Event>();
+    private final ArrayList<Event> queue = new ArrayList<Event>();
 
     /**
      * Adds the given event to this EventQueue in its correct place

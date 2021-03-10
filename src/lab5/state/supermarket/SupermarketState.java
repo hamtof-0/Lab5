@@ -10,15 +10,14 @@ import lab5.state.supermarket.TimeManager.TimeManager;
 public class SupermarketState extends SimState {
 
 	private int numCustomersInStore = 0;
-	private int maxCustomersInStore;
+	private final int maxCustomersInStore;
 	private int customersServed = 0;
 	private int missedCustomers = 0;
 	private boolean open = true;
 	private double queueTimeTotal = 0;
-	private CustomerFactory customerFactory;
-	private TimeManager timeManager;
-	private Checkout checkout;
-	private Customer currentCostumer;
+	private final CustomerFactory customerFactory;
+	private final TimeManager timeManager;
+	private final Checkout checkout;
 	private double freeTime;
 
 	// Constructor
@@ -115,10 +114,6 @@ public class SupermarketState extends SimState {
 
 	public boolean getStopped() {
 		return stopped;
-	}
-
-	public void setCustomer(Customer costumer) {
-		currentCostumer = costumer;
 	}
 
 	public Event nextEvent() {
