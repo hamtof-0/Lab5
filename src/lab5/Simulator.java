@@ -33,7 +33,7 @@ public class Simulator {
             Event nextEvent = eventQueue.getNextEvent();
             nextEvent.execute();
             //System.out.println("\tNew Event queue: " + eventQueue.toString());
-            state.update();
+            state.update(); //FIXME: Descriptions says to update view before code changes State -.-
         }
     }
 }
