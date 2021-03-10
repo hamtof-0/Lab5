@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class EventQueue {
 
-    private ArrayList<Event> queue;
+    private ArrayList<Event> queue = new ArrayList<Event>();
 
     /**
      * Adds the given event to this EventQueue in its correct place
@@ -18,11 +18,24 @@ public class EventQueue {
      * @param event the event that needs to be added.
      */
     public void addEvent(Event event){
-        // checks from last event in queue to first event in queue
-        for (int index = queue.size()-1; index >= 0; index--) {
-            // assuming there are more events that execute before new than there are events that execute after
-            if (event.executeTime < queue.get(index).executeTime)  queue.add(index, event);
-        }
+    	if (isEmpty()){
+    	    queue.add(event);
+        } else if (event.executeTime > queue.get(queue.size()-1).executeTime) {
+            queue.add(event);
+        } else {
+            // checks from last event in queue to first event in queue
+            for (int index = queue.size()-1; index >= 0; index--) {
+                // assuming there are more events that execute before new than there are events that execute after
+                // if this event executes after event at index place this event at index+1
+                if (event.executeTime > queue.get(index).executeTime){
+                    queue.add(index+1, event);
+                    break;
+                } else if (index == 0) { // if we reached the end of loop place it here
+                    queue.add(index, event);
+                    break;
+                }
+            }
+    	}
     }
 
     /**
@@ -50,5 +63,12 @@ public class EventQueue {
      */
     public boolean isEmpty(){
         return queue.size() <= 0;
+    }
+
+    @Override
+    public String toString() {
+        return "EventQueue{" +
+                "queue=" + queue.toString() +
+                '}';
     }
 }

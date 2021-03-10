@@ -1,11 +1,13 @@
 package lab5.state.supermarket;
 
 import lab5.state.SimState;
+import lab5.state.supermarket.Customer.Customer;
 import lab5.state.supermarket.Customer.CustomerFactory;
 
 public class SupermarketState extends SimState {
-	
+
 	private int numCustomersInStore = 0;
+	private int maxCustomersInStore;
 	private int customersServed = 0;
 	private int missedCustomers = 0;
 	private boolean open = true;
@@ -13,10 +15,11 @@ public class SupermarketState extends SimState {
 	private CustomerFactory customerFactory;
 	private TimeManager timeManager;
 	private Checkout checkout;
+	private Customer currentCostumer;
 
 	// Constructor
 	public SupermarketState(int checkoutTotal,
-							int maxCostumers,
+							int maxCustomersInStore,
 							long seed,
 							double closingTime,
 							double scanningTimeLower,
@@ -25,9 +28,10 @@ public class SupermarketState extends SimState {
 							double gatheringTimeUpper,
 							double arrivalLambda) {
 		super();
-		this.customerFactory = new CustomerFactory(maxCostumers);
+		this.maxCustomersInStore = maxCustomersInStore;
+		this.customerFactory = new CustomerFactory(1000);
 		this.checkout = new Checkout(checkoutTotal);
-		this.timeManager = new TimeManager(0D	, closingTime, seed	,
+		this.timeManager = new TimeManager(time	, closingTime, seed	,
 								scanningTimeLower	, scanningTimeUpper	,
 								gatheringTimeLower	, gatheringTimeUpper,
 								arrivalLambda);
@@ -35,7 +39,7 @@ public class SupermarketState extends SimState {
 	
 	//Here the toString goes or might be in the SimView thingy
 	public String toString() {
-		return null;
+		return "SupermarketState";
 	}
 
 	public boolean hasRoom(){
@@ -137,9 +141,25 @@ public class SupermarketState extends SimState {
 		return this.customerFactory;
 	}
 
-
 	public TimeManager getTimeManager(){
 		return timeManager;
+	}
+	
+	public boolean getStopped() {
+		return stopped;
+	}
+	
+	public void setCustomer(Customer costumer) {
+		currentCostumer = costumer;
+	}
+	
+	public String getCustomer() {
+		if(currentCostumer != null) return currentCostumer.toString();
+		else return "---";
+	}
+	
+	public double getFreeTime() {
+		return 0; //Placeholder f�r att view ska kunna k�ras
 	}
 
 }
