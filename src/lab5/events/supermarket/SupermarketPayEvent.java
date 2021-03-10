@@ -32,7 +32,7 @@ public class SupermarketPayEvent extends SupermarketEvent {
         if(!stateSuper.isOpen()){
             if(stateSuper.getNumCustomersInStore() == 0){
                 if(DEBUG_EVENTS) System.out.println("[Pay Event] Added new \"Stop Event\"");
-                eventQueue.addEvent(new SupermarketStopEvent(eventQueue, state, time.getTime()+1));
+                //eventQueue.addEvent(new SupermarketStopEvent(eventQueue, state, time.getTime()+1));
             }
         }
         if(DEBUG_EVENTS) System.out.println("\t[Pay Event] Finished!");

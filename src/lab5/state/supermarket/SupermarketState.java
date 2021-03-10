@@ -43,13 +43,17 @@ public class SupermarketState extends SimState {
 	}
 
 	public boolean hasRoom(){
-		return (this.customerFactory.getMax() - this.numCustomersInStore) > 0;
+		return (this.maxCustomersInStore - this.numCustomersInStore) > 0;
 	}
 
 	public void addCustomer(){
 		numCustomersInStore += 1;
 	}
 
+	/**
+	 * Adds 1 customer to the customersMissed Statistics.
+	 * Also removes the Customer from the checkout.
+	 */
 	public void missedCustomer(){
 		missedCustomers += 1;
 	}
@@ -80,14 +84,6 @@ public class SupermarketState extends SimState {
 		numCustomersInStore--;
 	}
 
-	/**
-	 * Adds 1 customer to the customersMissed Statistics.
-	 * Also removes the Customer from the checkout.
-	 */
-	public void addMissed(){
-		missedCustomers++;
-	}
-
 	//There are only getters and setters beyond this point
 
 	public int getNumCustomersInStore() {
@@ -98,48 +94,20 @@ public class SupermarketState extends SimState {
 		return maxCustomersInStore;
 	}
 
-	public void setNumCustomersInStore(int numCustomersInStore) {
-		this.numCustomersInStore = numCustomersInStore;
-	}
-
 	public int getCustomersServed() {
 		return customersServed;
-	}
-
-	public void setCustomersServed(int customersServed) {
-		this.customersServed = customersServed;
-	}
-
-	public void setOpen(boolean open) {
-		this.open = open;
 	}
 
 	public int getMissedCustomers() {
 		return missedCustomers;
 	}
 
-	public void setMissedCustomers(int missedCustomers) {
-		this.missedCustomers = missedCustomers;
-	}
-
 	public double getQueueTimeTotal() {
 		return queueTimeTotal;
 	}
 
-	public void setQueueTimeTotal(double queueTimeTotal) {
-		this.queueTimeTotal = queueTimeTotal;
-	}
-
 	public long getSeed() {
 		return timeManager.getSeed();
-	}
-
-	public void setSeed(long seed) {
-		timeManager.setSeed(seed);
-	}
-
-	public void setCustomerFactory(CustomerFactory customerFactory) {
-		this.customerFactory = customerFactory;
 	}
 
 	public CustomerFactory getCustomerFactory() {

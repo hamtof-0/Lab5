@@ -27,12 +27,12 @@ public class Simulator {
         eventQueue = new EventQueue();
         eventQueue.addEvent(new SupermarketStartEvent(eventQueue, state, 0d));
         eventQueue.addEvent(new SupermarketClosingEvent(eventQueue, state, 10.0));
-        eventQueue.addEvent(new SupermarketStopEvent(eventQueue, state, 99.0));
+        eventQueue.addEvent(new SupermarketStopEvent(eventQueue, state, 999.0));
         //System.out.println("\tNew Event queue: " + eventQueue.toString());
         while (!state.isStopped()){
             Event nextEvent = eventQueue.getNextEvent();
             nextEvent.execute();
-            //System.out.println("\tNew Event queue: " + eventQueue.toString());
+            System.out.println("\tNew Event queue: " + eventQueue.toString());
             state.update(); //FIXME: Descriptions says to update view before code changes State -.-
         }
     }

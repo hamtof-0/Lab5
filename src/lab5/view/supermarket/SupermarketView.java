@@ -102,11 +102,9 @@ public class SupermarketView extends SimView{
 	
 	private String correctLengthDouble(double d, int len) {
 		//Säkra två decimaler
-		d = d * FIX_DECIMALS;
-		int e = (int)d;
-		d = (double)e;
-		d = d / FIX_DECIMALS;
-		
+		int truncated = (int) Math.round((d*FIX_DECIMALS));
+		d = ((double) truncated) / FIX_DECIMALS;
+
 		String s = Double.toString(d);
 		
 		int numAfterComma = (s.length()-1) - (s.indexOf("."));

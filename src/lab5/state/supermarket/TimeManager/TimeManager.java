@@ -49,15 +49,15 @@ public class TimeManager {
 	}
 
 	public double arrivalTime(){
-		return rounded2Decimals(arrivalRandom.next() + time);
+		return arrivalRandom.next() + time;
 	}
 
 	public double scanTime(){
-		return rounded2Decimals(scanningRandom.next() + time);
+		return scanningRandom.next() + time;
 	}
 
 	public double gatherTime(){
-		return rounded2Decimals(gatherRandom.next() + time);
+		return gatherRandom.next() + time;
 	}
 
 	public long getSeed(){
@@ -108,10 +108,5 @@ public class TimeManager {
 
 	public void setUpperGatherTime(double upperGatherTime) {
 		this.upperGatherTime = upperGatherTime;
-	}
-
-	private static double rounded2Decimals(double in){
-		int truncated = (int) Math.round((in*100));
-		return ((double) truncated) / 100;
 	}
 }
