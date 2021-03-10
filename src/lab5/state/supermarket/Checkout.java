@@ -98,7 +98,7 @@ public class Checkout {
     }
     
     public int getCustomersQueued() {
-    	return checkoutsOccupied;
+    	return customersQueued;
     }
     
     public FIFO getQueue() {
