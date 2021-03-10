@@ -32,6 +32,7 @@ public class Simulator {
         while (!state.isStopped()){
             Event eventToRun = eventQueue.getNextEvent();
             state.nextEvent(eventToRun);
+            state.setTime(eventToRun.getExecuteTime());
             state.update();
             eventToRun.execute();
         }

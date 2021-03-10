@@ -57,14 +57,14 @@ public class SupermarketView extends SimView{
 		System.out.println();
 		System.out.println("FÖRLOPP");
 		System.out.println("_______");
-		System.out.println(" TID  HÄNDELSE  KUND ÖPPET/STÄNGT FRIKASSOR FRIKASSETID KUNDANTAL KLARHANDLADE LEDSENKUNDER KÖAT KÖTID KÖAR [KÖN]");
-		System.out.println("0.00  Start");
+		System.out.println(" TID   HÄNDELSE  KUND ÖPPET/STÄNGT FRIKASSOR FRIKASSETID KUNDANTAL KLARHANDLADE LEDSENKUNDER KÖAT KÖTID KÖAR [KÖN]");
+		System.out.println("0.00   Start");
 	}
 	
 	private void running(SupermarketState state) {
 		String result = "";
 		Event next = state.nextEvent();
-		String time = correctLengthDouble(next.getExecuteTime(), 6);
+		String time = correctLengthDouble(next.getExecuteTime(), 7);
 		if(next.getName().equals(new StopEvent().getName())){
 			return;
 		}
@@ -77,7 +77,7 @@ public class SupermarketView extends SimView{
 		}
 		String open = correctLengthString((state.isOpen() ? "Öppet" : "Stängt"), 13);
 		String freeCheckouts = correctLengthInt(state.checkout().getCheckoutTotal() - state.checkout().getCheckoutsOccupied(), 10);
-		String freeTime = correctLengthDouble(state.getFreeTime(), 12); //Just nu en placeholder
+		String freeTime = correctLengthDouble(state.getFreeTime(), 12);
 		String custumersNumber = correctLengthInt(state.getNumCustomersInStore(), 10);
 		String customersFinished = correctLengthInt(state.getCustomersServed(), 13);
 		String customersSad = correctLengthInt(state.getMissedCustomers(), 13);
@@ -98,10 +98,12 @@ public class SupermarketView extends SimView{
 	}
 	
 	private void endscreen(SupermarketState state) {
-		System.out.println(correctLengthDouble(state.getTime(), 6) + "Stop");
+		System.out.println(correctLengthDouble(state.getTime(), 7) + "Stop");
 		System.out.println();
 		System.out.println("RESULTAT");
 		System.out.println("__________________________");
+		System.out.println();
+		System.out.println("(t.e. = Tidsenheter)");
 		System.out.println();
 		System.out.println("1. " + (state.getCustomersServed() + state.getMissedCustomers()) + " personer försökte handla och\n " + 
 		state.getCustomersServed() + " av dem fick plats i affären medan " + state.getMissedCustomers() + " fick gå till en konkurrent istället.");

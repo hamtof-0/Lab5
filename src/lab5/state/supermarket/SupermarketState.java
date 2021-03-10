@@ -19,47 +19,41 @@ public class SupermarketState extends SimState {
 	private TimeManager timeManager;
 	private Checkout checkout;
 	private Customer currentCostumer;
+	private double freeTime;
 
 	// Constructor
-	public SupermarketState(int checkoutTotal,
-							int maxCustomersInStore,
-							double arrivalLambda,
-							double gatheringTimeLower, double gatheringTimeUpper,
-							double scanningTimeLower, double scanningTimeUpper,
-							long seed) {
+	public SupermarketState(int checkoutTotal, int maxCustomersInStore, double arrivalLambda, double gatheringTimeLower,
+			double gatheringTimeUpper, double scanningTimeLower, double scanningTimeUpper, long seed) {
 		super();
 		this.maxCustomersInStore = maxCustomersInStore;
 		this.customerFactory = new CustomerFactory(1000);
 		this.checkout = new Checkout(checkoutTotal);
-		this.timeManager = new TimeManager(arrivalLambda,
-				gatheringTimeLower, gatheringTimeUpper,
-				scanningTimeLower, scanningTimeUpper,
-				seed,
-				this);
+		this.timeManager = new TimeManager(arrivalLambda, gatheringTimeLower, gatheringTimeUpper, scanningTimeLower,
+				scanningTimeUpper, seed, this);
 	}
-	
-	//Here the toString goes or might be in the SimView thingy
+
+	// Here the toString goes or might be in the SimView thingy
 	public String toString() {
 		return "SupermarketState";
 	}
 
-	public boolean hasRoom(){
+	public boolean hasRoom() {
 		return (this.maxCustomersInStore - this.numCustomersInStore) > 0;
 	}
 
-	public void addCustomer(){
+	public void addCustomer() {
 		numCustomersInStore += 1;
 	}
 
 	/**
-	 * Adds 1 customer to the customersMissed Statistics.
-	 * Also removes the Customer from the checkout.
+	 * Adds 1 customer to the customersMissed Statistics. Also removes the Customer
+	 * from the checkout.
 	 */
-	public void missedCustomer(){
+	public void missedCustomer() {
 		missedCustomers += 1;
 	}
 
-	public void close(){
+	public void close() {
 		open = false;
 	}
 
@@ -67,25 +61,25 @@ public class SupermarketState extends SimState {
 		return open;
 	}
 
-	public void stop(){
+	public void stop() {
 		super.stop();
 	}
 
-	public Checkout checkout(){
+	public Checkout checkout() {
 		return this.checkout;
 	}
 
 	/**
-	 * Adds 1 customer to the customersServed Statistics.
-	 * Also removes the Customer from the checkout.
+	 * Adds 1 customer to the customersServed Statistics. Also removes the Customer
+	 * from the checkout.
 	 */
-	public void addSale(){
+	public void addSale() {
 		customersServed++;
 		checkout.customerServed();
 		numCustomersInStore--;
 	}
 
-	//There are only getters and setters beyond this point
+	// There are only getters and setters beyond this point
 
 	public int getNumCustomersInStore() {
 		return numCustomersInStore;
@@ -115,14 +109,14 @@ public class SupermarketState extends SimState {
 		return this.customerFactory;
 	}
 
-	public TimeManager getTimeManager(){
+	public TimeManager getTimeManager() {
 		return timeManager;
 	}
-	
+
 	public boolean getStopped() {
 		return stopped;
 	}
-	
+
 	public void setCustomer(Customer costumer) {
 		currentCostumer = costumer;
 	}
@@ -130,9 +124,28 @@ public class SupermarketState extends SimState {
 	public Event nextEvent() {
 		return nextEvent;
 	}
-	
+
 	public double getFreeTime() {
-		return 0; //Placeholder f�r att view ska kunna k�ras
+		return freeTime; // Placeholder f�r att view ska kunna k�ras
+	}
+
+	private void setFreeTime(double addTime) {
+		if(isOpen() || (!isOpen() && getNumCustomersInStore() != 0)){
+            freeTime = freeTime + (addTime * (checkout.getCheckoutTotal() - checkout.getCheckoutsOccupied()));
+        }
+	}
+
+	private void setQueueTimeTotal(double addTime) {
+		if (!this.stopped) {
+			queueTimeTotal = queueTimeTotal + (addTime * (checkout.getQueue().size()));
+		}
+	}
+
+	public void update() {
+		setFreeTime(time - previousTime);
+		setQueueTimeTotal(time - previousTime);
+		super.update();
+
 	}
 
 }

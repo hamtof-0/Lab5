@@ -14,6 +14,7 @@ import java.util.Observable;
 public abstract class SimState extends Observable {
     protected boolean stopped;
     protected double time;
+    protected double previousTime;
     protected Event nextEvent;
     protected EventQueue eventQueue = new EventQueue();
 
@@ -27,9 +28,10 @@ public abstract class SimState extends Observable {
     }
 
     public void setTime(double time) {
+    	previousTime = this.time;
         this.time = Math.max(this.time, time);
     }
-
+    
     public void stop() {
         stopped = true;
     }
