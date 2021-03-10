@@ -24,6 +24,9 @@ public class SupermarketStopEvent extends StopEvent {
 
     @Override
     public void execute() {
+        if(DEBUG_EVENTS) System.out.println("\t[Stop Event] Running...");
+        super.execute();
         stateSuper.stop();
+        if(DEBUG_EVENTS) System.out.println("\t[Stop Event] Finished!");
     }
 }
