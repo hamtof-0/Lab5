@@ -45,15 +45,16 @@ public class SupermarketView extends SimView{
 		System.out.println("PARAMETRAR");
 		System.out.println("__________________________");
 		System.out.println("Antal kassor, N___________: " + state.checkout().getCheckoutTotal()); 
-		System.out.println("Max personer i lokalen, M_: " + state.getCustomerFactory().getMax());
-		System.out.println("Ankomsthastighet, lambda__: " + state.getTimeManager().getArrivalTime().getArrivalLambda());
-		System.out.println("Plocktider, [Pmin, Pmax]__: [" + state.getTimeManager().getGatherTime().getLowerGatherTime() + "," + state.getTimeManager().getGatherTime().getUpperGatherTime() + "]");
-		System.out.println("Betaltider, [Bmin, Bmax]__: [" + state.getTimeManager().getScanningTime().getLowerScanningTime() + "," + state.getTimeManager().getScanningTime().getUpperScanningTime() + "]");
+		System.out.println("Max personer i lokalen, M_: " + state.getMaxCustomersInStore());
+		System.out.println("Ankomsthastighet, lambda__: " + state.getTimeManager().getArrivalLambda());
+		System.out.println("Plocktider, [Pmin, Pmax]__: [" + state.getTimeManager().getLowerGatherTime() + "," + state.getTimeManager().getUpperGatherTime() + "]");
+		System.out.println("Betaltider, [Bmin, Bmax]__: [" + state.getTimeManager().getLowerScanningTime() + "," + state.getTimeManager().getUpperScanningTime() + "]");
 		System.out.println("Frö, f____________________: " + state.getSeed());
 		System.out.println();
 		System.out.println("FÖRLOPP");
 		System.out.println("_______");
 		System.out.println(" TID  HÄNDELSE  KUND ÖPPET/STÄNGT FRIKASSOR FRIKASSETID KUNDANTAL KLARHANDLADE LEDSENKUNDER KÖAT KÖTID KÖAR [KÖN]");
+		System.out.println("0.00  Start");
 	}
 	
 	private void running(SupermarketState state) {

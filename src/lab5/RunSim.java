@@ -18,8 +18,8 @@ public class RunSim {
     public static void main(String[] args) {
 		SupermarketState state = new SupermarketState(
 				2, 			// Antal kassor, N..........:
-				5, 	// Max som ryms, M..........: 7
-				1234, 			 	// Frö, f...................: 13
+				5, 	// Max som ryms, M..........:
+				1234, 			 	// Frö, f...................:
 				10,			// -------------------------:
 				2.0,		// Betaltider, [K_min]......:
 				3.0,		// Betaltider, [K_max]......:
