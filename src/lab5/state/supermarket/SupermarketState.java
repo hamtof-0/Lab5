@@ -3,6 +3,7 @@ package lab5.state.supermarket;
 import lab5.state.SimState;
 import lab5.state.supermarket.Customer.Customer;
 import lab5.state.supermarket.Customer.CustomerFactory;
+import lab5.state.supermarket.TimeManager.TimeManager;
 
 public class SupermarketState extends SimState {
 
@@ -77,6 +78,7 @@ public class SupermarketState extends SimState {
 	public void addSale(){
 		customersServed++;
 		checkout.customerServed();
+		numCustomersInStore--;
 	}
 
 	/**
@@ -91,6 +93,10 @@ public class SupermarketState extends SimState {
 
 	public int getNumCustomersInStore() {
 		return numCustomersInStore;
+	}
+
+	public int getMaxCustomersInStore() {
+		return maxCustomersInStore;
 	}
 
 	public void setNumCustomersInStore(int numCustomersInStore) {
