@@ -6,6 +6,15 @@ import lab5.view.SimView;
 import lab5.state.SimState;
 import lab5.state.supermarket.SupermarketState;
 
+/**
+ * @author Hampus Toft
+ * @author Malkolm Lundkvist
+ * @author Billy Norman
+ * @author Axel Johansson
+ * 
+ * Prints information about a supermarket and its events to the console.
+ */
+
 public class SupermarketView extends SimView{
 
 	private boolean printParameters = true;
@@ -14,6 +23,10 @@ public class SupermarketView extends SimView{
 	public SupermarketView(SimState state) {
 		super(state);
 	}
+	
+	/** 
+	 * Called whenever something is changed in the state and prints information about this change
+	 */
 	
 	public void update(Observable o, Object arg) {
 		SupermarketState state = (SupermarketState)super.state;
