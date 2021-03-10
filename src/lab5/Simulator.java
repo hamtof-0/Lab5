@@ -26,7 +26,7 @@ public class Simulator {
     public void run(){
         eventQueue = new EventQueue();
         eventQueue.addEvent(new SupermarketStartEvent(eventQueue, state, 0d));
-        eventQueue.addEvent(new SupermarketClosingEvent(eventQueue, state, state.getClosingTime()));
+        eventQueue.addEvent(new SupermarketClosingEvent(eventQueue, state, 10D));
         eventQueue.addEvent(new SupermarketStopEvent(eventQueue, state, 999.0));
         //System.out.println("\tNew Event queue: " + eventQueue.toString());
         while (!state.isStopped()){

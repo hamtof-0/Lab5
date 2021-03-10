@@ -12,7 +12,7 @@ import lab5.state.supermarket.Customer.Customer;
  */
 public class SupermarketPayEvent extends SupermarketEvent {
 
-    private static final String NAME = "Pay";
+    private static final String NAME = "Betalning";
 
     public SupermarketPayEvent(EventQueue eventQueue, SimState state, double executeTime, Customer customer) {
         super(eventQueue, state, executeTime, customer, NAME);
