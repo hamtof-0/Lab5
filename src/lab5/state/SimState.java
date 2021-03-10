@@ -1,5 +1,7 @@
 package lab5.state;
 
+import lab5.events.EventQueue;
+
 import java.util.Observable;
 
 /**
@@ -8,12 +10,20 @@ import java.util.Observable;
  * @author Billy Norman
  * @author Axel Johansson
  */
-public abstract class SimState extends Observable{
+public abstract class SimState extends Observable {
     protected boolean stopped;
     protected double time;
     protected String currentEvent;
+    protected EventQueue eventQueue;
+
+
+    public SimState(EventQueue eventQueue) {
+        this.eventQueue = eventQueue;
+        stopped = false;
+    }
 
     public SimState() {
+        this.eventQueue = new EventQueue();
         stopped = false;
         time = 0D;
     }
@@ -36,7 +46,7 @@ public abstract class SimState extends Observable{
     public boolean isStopped(){
         return stopped;
     }
-    
+
     public void update() {
     	setChanged();
     	notifyObservers();

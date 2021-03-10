@@ -24,7 +24,7 @@ public class SupermarketPayEvent extends SupermarketEvent {
         if(DEBUG_EVENTS) System.out.println("\t[Pay Event] Checkout now free");
         if(!stateSuper.checkout().queueIsEmpty()){
             if(DEBUG_EVENTS) System.out.println("\t[Pay Event] Added new \"Scan Event\"");
-            eventQueue.addEvent(new SupermarketPayEvent(eventQueue, state, time.scanTime(),customer));
+            eventQueue.addEvent(new SupermarketPayEvent(eventQueue, state, time.scanTime(),stateSuper.checkout().getFirstInQueue()));
             stateSuper.checkout().serveCustomer();
             if(DEBUG_EVENTS) System.out.println("\t[Pay Event] Checkout now in Use");
         }
