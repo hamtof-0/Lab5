@@ -1,4 +1,4 @@
-package lab5.state.supermarket;
+package lab5.state.supermarket.TimeManager;
 
 public class GatherTime {
 
