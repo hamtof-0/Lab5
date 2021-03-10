@@ -22,8 +22,7 @@ public class RunSim {
 				1.0D,
 				0.5D,1.0D,
 				2.D,3.0D,
-				1234L,
-				10D);
+				1234L);
 		SupermarketView view = new SupermarketView(state);
 		state.addObserver(view);
 		Simulator sim = new Simulator(state);

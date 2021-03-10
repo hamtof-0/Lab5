@@ -23,14 +23,11 @@ public class EventQueue {
         } else if (event.executeTime > queue.get(queue.size()-1).executeTime) {
             queue.add(event);
         } else {
-            // checks from last event in queue to first event in queue
             for (int index = queue.size()-1; index >= 0; index--) {
-                // assuming there are more events that execute before new than there are events that execute after
-                // if this event executes after event at index place this event at index+1
                 if (event.executeTime > queue.get(index).executeTime){
                     queue.add(index+1, event);
                     break;
-                } else if (index == 0) { // if we reached the end of loop place it here
+                } else if (index == 0) {
                     queue.add(index, event);
                     break;
                 }

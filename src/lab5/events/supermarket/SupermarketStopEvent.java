@@ -15,13 +15,11 @@ import lab5.state.supermarket.TimeManager.TimeManager;
 public class SupermarketStopEvent extends StopEvent {
 
     private final SupermarketState stateSuper;
-    private final TimeManager time;
 
     public SupermarketStopEvent(EventQueue eventQueue, SimState state, double executeTime){
         super(eventQueue, state, executeTime);
         if (!(state instanceof SupermarketState)) throw new RuntimeException("Invalid State");
         this.stateSuper = ((SupermarketState) state);
-        this.time = stateSuper.getTimeManager();
     }
 
 

@@ -4,9 +4,9 @@ import lab5.state.supermarket.Customer.Customer;
 
 public class Checkout {
 
-    private int checkoutTotal;
+    private final int checkoutTotal;
     private int checkoutsOccupied;
-    private FIFO checkoutQueue;
+    private final FIFO checkoutQueue;
     private int customersQueued = 0;
 
     public Checkout(int checkoutTotal) {

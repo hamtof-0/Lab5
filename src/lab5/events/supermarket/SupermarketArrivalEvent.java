@@ -11,7 +11,7 @@ import lab5.state.supermarket.Customer.Customer;
  */
 public class SupermarketArrivalEvent extends SupermarketEvent {
 
-    private static final String NAME = "Arrival";
+    private static final String NAME = "Ankomst";
 
     public SupermarketArrivalEvent(EventQueue eventQueue, SimState state, double executeTime, Customer customer) {
         super(eventQueue, state, executeTime, customer, NAME);
@@ -29,9 +29,7 @@ public class SupermarketArrivalEvent extends SupermarketEvent {
         } else {
             stateSuper.missedCustomer();
         }
-        if (stateSuper.getCustomerFactory().canCreate()) {
-            eventQueue.addEvent(new SupermarketArrivalEvent(eventQueue, state, time.arrivalTime(), stateSuper.getCustomerFactory().newCustomer()));
-        }
+        eventQueue.addEvent(new SupermarketArrivalEvent(eventQueue, state, time.arrivalTime(), stateSuper.getCustomerFactory().newCustomer()));
     }
 
 }

@@ -14,18 +14,12 @@ import java.util.Observable;
 public abstract class SimState extends Observable {
     protected boolean stopped;
     protected double time;
-    protected double closingTime;
     protected Event nextEvent;
     protected EventQueue eventQueue = new EventQueue();
 
-    private SimState() {
+    public SimState() {
         stopped = false;
         time = 0D;
-    }
-
-    public SimState(double closingTime) {
-        this();
-        this.closingTime = closingTime;
     }
 
     public double getTime() {
@@ -34,10 +28,6 @@ public abstract class SimState extends Observable {
 
     public void setTime(double time) {
         this.time = Math.max(this.time, time);
-    }
-
-    public double getClosingTime() {
-        return closingTime;
     }
 
     public void stop() {
