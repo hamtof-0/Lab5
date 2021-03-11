@@ -1,11 +1,11 @@
 package lab5;
 
-import lab5.supermarket.events.SupermarketClosingEvent;
-import lab5.supermarket.events.SupermarketStartEvent;
-import lab5.supermarket.events.SupermarketStopEvent;
-import lab5.generall.events.EventQueue;
-import lab5.supermarket.state.SupermarketState;
-import lab5.supermarket.view.SupermarketView;
+import lab5.supermarketsimulation.events.SupermarketClosingEvent;
+import lab5.supermarketsimulation.events.SupermarketStartEvent;
+import lab5.supermarketsimulation.events.SupermarketStopEvent;
+import lab5.generalsimulation.events.EventQueue;
+import lab5.supermarketsimulation.state.SupermarketState;
+import lab5.supermarketsimulation.view.SupermarketView;
 
 /**
  * @author Hampus Toft
