@@ -20,6 +20,7 @@ public class Simulator {
 	 * The constructor
 	 * 
 	 * @param state The general state used to keep track of the general state of the simulation
+	 * @param queue A general queue that hold the order of the events
 	 */
     public Simulator(SimState state, EventQueue queue) {
     	this.state = state;
