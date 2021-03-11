@@ -4,6 +4,8 @@ import lab5.generall.state.SimState;
 import lab5.generall.events.EventQueue;
 
 /**
+ * This Event represent the store closing.
+ *
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman

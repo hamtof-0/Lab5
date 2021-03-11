@@ -5,6 +5,8 @@ import lab5.generall.events.EventQueue;
 import lab5.supermarket.state.Customer.Customer;
 
 /**
+ * This Event represent a customer arriving to the store.
+ *
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman

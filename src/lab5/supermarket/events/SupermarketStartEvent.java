@@ -7,6 +7,8 @@ import lab5.supermarket.state.TimeManager.TimeManager;
 import lab5.supermarket.state.SupermarketState;
 
 /**
+ * This event starts the supermarket simulation by adding the first customer
+ *
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman

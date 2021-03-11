@@ -6,6 +6,8 @@ import lab5.generall.events.EventQueue;
 import lab5.supermarket.state.SupermarketState;
 
 /**
+ * This event stop the supermarket simulation
+ *
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman

@@ -5,6 +5,8 @@ import lab5.generall.events.EventQueue;
 import lab5.supermarket.state.Customer.Customer;
 
 /**
+ * The event that is executed when a customer has payed for their supplies
+ *
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman

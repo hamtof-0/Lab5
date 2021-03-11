@@ -8,6 +8,8 @@ import lab5.supermarket.state.SupermarketState;
 import lab5.supermarket.state.TimeManager.TimeManager;
 
 /**
+ * This Event represent the general supermarket event.
+ *
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman
