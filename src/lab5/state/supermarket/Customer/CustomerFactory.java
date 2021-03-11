@@ -19,7 +19,7 @@ public class CustomerFactory {
 	 * 
 	 * @param maxNumberOfCustomers
 	 */
-	public CustomerFactory(int maxNumberOfCustomers) {
+	public CustomerFactory() {
 		super();
 		createdSoFar = 0;
 	}

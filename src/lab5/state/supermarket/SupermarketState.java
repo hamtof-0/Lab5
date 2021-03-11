@@ -49,7 +49,7 @@ public class SupermarketState extends SimState {
 			double gatheringTimeUpper, double scanningTimeLower, double scanningTimeUpper, long seed) {
 		super();
 		this.maxCustomersInStore = maxCustomersInStore;
-		this.customerFactory = new CustomerFactory(1000);
+		this.customerFactory = new CustomerFactory();
 		this.checkout = new Checkout(checkoutTotal);
 		this.timeManager = new TimeManager(arrivalLambda, gatheringTimeLower, gatheringTimeUpper, scanningTimeLower,
 				scanningTimeUpper, seed, this);
