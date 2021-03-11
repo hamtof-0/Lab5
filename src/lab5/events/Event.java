@@ -8,7 +8,7 @@ import lab5.state.SimState;
  * @author Billy Norman
  * @author Axel Johansson
  * 
- * 
+ * Defines a general event, children specifies specific events
  */
 public abstract class Event {
     protected EventQueue eventQueue;
