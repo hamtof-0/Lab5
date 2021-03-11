@@ -1,6 +1,6 @@
-package lab5.events;
+package lab5.generall.events;
 
-import lab5.state.SimState;
+import lab5.generall.state.SimState;
 
 /**
  * @author Hampus Toft

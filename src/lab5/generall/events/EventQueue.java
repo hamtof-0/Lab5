@@ -1,4 +1,4 @@
-package lab5.events;
+package lab5.generall.events;
 
 import java.util.ArrayList;
 
@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class EventQueue {
 
-	private final ArrayList<Event> queue = new ArrayList<Event>();
+	private final ArrayList<Event> queue = new ArrayList<>();
 
 	/**
 	 * Adds the given event to this EventQueue in its correct place by looping and

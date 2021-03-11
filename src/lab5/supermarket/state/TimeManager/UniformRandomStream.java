@@ -1,5 +1,4 @@
-
-package lab5.state.supermarket.TimeManager;
+package lab5.supermarket.state.TimeManager;
 
 import java.util.Random;
 

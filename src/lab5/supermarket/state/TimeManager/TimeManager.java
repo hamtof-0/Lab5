@@ -1,6 +1,6 @@
-package lab5.state.supermarket.TimeManager;
+package lab5.supermarket.state.TimeManager;
 
-import lab5.state.supermarket.SupermarketState;
+import lab5.supermarket.state.SupermarketState;
 
 /**
  * @author Hampus Toft
@@ -104,7 +104,7 @@ public class TimeManager {
 	/**
 	 * Getter for the shortest time to scan
 	 * 
-	 * @Return lowerScanningTime The shortest time to scan
+	 * @return lowerScanningTime The shortest time to scan
 	 */
 	public double getLowerScanningTime() {
 		return lowerScanningTime;
@@ -113,7 +113,7 @@ public class TimeManager {
 	/**
 	 * Getter for the greatest time to scan
 	 * 
-	 * @Return upperScanningTime The greatest time to scan
+	 * @return upperScanningTime The greatest time to scan
 	 */
 	public double getUpperScanningTime() {
 		return upperScanningTime;
@@ -122,7 +122,7 @@ public class TimeManager {
 	/**
 	 * Getter for the shortest time to gather
 	 * 
-	 * @Return lowerGatherTime The shortest time to gather
+	 * @return lowerGatherTime The shortest time to gather
 	 */
 	public double getLowerGatherTime() {
 		return lowerGatherTime;
@@ -131,7 +131,7 @@ public class TimeManager {
 	/**
 	 * Getter for the greatest time to gather
 	 * 
-	 * @Return lowerGatherTime The greatest time to gather
+	 * @return lowerGatherTime The greatest time to gather
 	 */
 	public double getUpperGatherTime() {
 		return upperGatherTime;

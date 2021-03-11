@@ -1,14 +1,13 @@
-package lab5.view.supermarket;
+package lab5.supermarket.view;
 
 import java.util.Observable;
 
-import lab5.events.Event;
-import lab5.events.StopEvent;
-import lab5.events.supermarket.SupermarketEvent;
-import lab5.events.supermarket.SupermarketStopEvent;
-import lab5.view.SimView;
-import lab5.state.SimState;
-import lab5.state.supermarket.SupermarketState;
+import lab5.generall.events.Event;
+import lab5.generall.events.StopEvent;
+import lab5.supermarket.events.SupermarketEvent;
+import lab5.generall.view.SimView;
+import lab5.generall.state.SimState;
+import lab5.supermarket.state.SupermarketState;
 
 /**
  * @author Hampus Toft
@@ -62,7 +61,7 @@ public class SupermarketView extends SimView{
 	}
 	
 	private void running(SupermarketState state) {
-		String result = "";
+		String result;
 		Event next = state.nextEvent();
 		String time = correctLengthDouble(next.getExecuteTime(), 7);
 		if(next.getName().equals(new StopEvent().getName())){
@@ -140,16 +139,19 @@ public class SupermarketView extends SimView{
 		if (s.length() == len) {
 			return s;
 		} else if (s.length() < len) {
-			while (s.length() < len) {
-				s = s + " ";
+			StringBuilder sBuilder = new StringBuilder(s);
+			while (sBuilder.length() < len) {
+				sBuilder.append(" ");
 			}
+			s = sBuilder.toString();
 			return s;
 		} else {
 			String s2 = s;
-			s = "";
+			StringBuilder sBuilder = new StringBuilder();
 			for (int i = 0; i < len; i++) {
-				s = s + s2.charAt(i);
+				sBuilder.append(s2.charAt(i));
 			}
+			s = sBuilder.toString();
 			return s;
 		}
 	}

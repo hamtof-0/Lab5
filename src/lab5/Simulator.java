@@ -1,8 +1,8 @@
 package lab5;
 
-import lab5.events.Event;
-import lab5.state.SimState;
-import lab5.events.EventQueue;
+import lab5.generall.events.Event;
+import lab5.generall.state.SimState;
+import lab5.generall.events.EventQueue;
 
 /**
  * @author Hampus Toft

@@ -1,4 +1,4 @@
-package lab5.state.supermarket.Customer;
+package lab5.supermarket.state.Customer;
 
 /**
  * @author Hampus Toft

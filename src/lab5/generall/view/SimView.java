@@ -1,6 +1,6 @@
-package lab5.view;
+package lab5.generall.view;
 
-import lab5.state.SimState;
+import lab5.generall.state.SimState;
 
 import java.util.Observable;
 import java.util.Observer;

@@ -1,6 +1,6 @@
-package lab5.state.supermarket;
+package lab5.supermarket.state;
 
-import lab5.state.supermarket.Customer.Customer;
+import lab5.supermarket.state.Customer.Customer;
 
 /**
  * @author Hampus Toft
@@ -57,8 +57,7 @@ public class Checkout {
     }
 
     /**
-     * add a customer to the queue
-     * @param customer the customer that should be placed in the checkout queue
+     * gets the first Customer in the queue and removes him
      */
     public Customer getFirstInQueue(){
         Customer firstInLine = (Customer) checkoutQueue.first();

@@ -1,6 +1,4 @@
-package lab5.state.supermarket.Customer;
-
-import lab5.state.supermarket.Customer.Customer;
+package lab5.supermarket.state.Customer;
 
 /**
  * @author Hampus Toft
@@ -16,8 +14,7 @@ public class CustomerFactory {
 	
 	/**
 	 * Constructor
-	 * 
-	 * @param maxNumberOfCustomers
+	 *
 	 */
 	public CustomerFactory() {
 		super();

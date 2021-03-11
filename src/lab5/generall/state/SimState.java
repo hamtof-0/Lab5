@@ -1,7 +1,7 @@
-package lab5.state;
+package lab5.generall.state;
 
-import lab5.events.Event;
-import lab5.events.EventQueue;
+import lab5.generall.events.Event;
+import lab5.generall.events.EventQueue;
 
 import java.util.Observable;
 
@@ -58,7 +58,7 @@ public abstract class SimState extends Observable {
     /**
 	 * Used to check if the simulation is to stop
 	 * 
-	 * @returns stopped Hold the value if the simulation is stopped or not
+	 * @return stopped Hold the value if the simulation is stopped or not
 	 */
     public boolean isStopped(){
         return stopped;

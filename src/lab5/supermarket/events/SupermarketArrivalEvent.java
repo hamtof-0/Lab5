@@ -1,8 +1,8 @@
-package lab5.events.supermarket;
+package lab5.supermarket.events;
 
-import lab5.state.SimState;
-import lab5.events.EventQueue;
-import lab5.state.supermarket.Customer.Customer;
+import lab5.generall.state.SimState;
+import lab5.generall.events.EventQueue;
+import lab5.supermarket.state.Customer.Customer;
 
 /**
  * @author Hampus Toft

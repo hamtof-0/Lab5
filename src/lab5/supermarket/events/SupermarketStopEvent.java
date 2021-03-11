@@ -1,10 +1,9 @@
-package lab5.events.supermarket;
+package lab5.supermarket.events;
 
-import lab5.events.StopEvent;
-import lab5.state.SimState;
-import lab5.events.EventQueue;
-import lab5.state.supermarket.SupermarketState;
-import lab5.state.supermarket.TimeManager.TimeManager;
+import lab5.generall.events.StopEvent;
+import lab5.generall.state.SimState;
+import lab5.generall.events.EventQueue;
+import lab5.supermarket.state.SupermarketState;
 
 /**
  * @author Hampus Toft

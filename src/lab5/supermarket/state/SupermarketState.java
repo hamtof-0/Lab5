@@ -1,11 +1,9 @@
-package lab5.state.supermarket;
+package lab5.supermarket.state;
 
-import lab5.events.Event;
-import lab5.events.supermarket.SupermarketEvent;
-import lab5.state.SimState;
-import lab5.state.supermarket.Customer.Customer;
-import lab5.state.supermarket.Customer.CustomerFactory;
-import lab5.state.supermarket.TimeManager.TimeManager;
+import lab5.generall.events.Event;
+import lab5.generall.state.SimState;
+import lab5.supermarket.state.Customer.CustomerFactory;
+import lab5.supermarket.state.TimeManager.TimeManager;
 
 /**
  * @author Hampus Toft
