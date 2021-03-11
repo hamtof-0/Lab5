@@ -93,13 +93,6 @@ public class SupermarketState extends SimState {
 	public boolean isOpen() {
 		return open;
 	}
-
-	/**
-	 * Calls the stop method in simState.
-	 */
-	public void stop() {
-		super.stop();
-	}
 	
 	/**
 	 * Used by the view to get information about the checkouts.
@@ -243,7 +236,6 @@ public class SupermarketState extends SimState {
 		setFreeTime(time - previousTime);
 		setQueueTimeTotal(time - previousTime);
 		super.update();
-
 	}
 
 }

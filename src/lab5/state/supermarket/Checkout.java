@@ -67,14 +67,6 @@ public class Checkout {
     }
 
     /**
-     * Used if at anypoint it is important to know what customer is getting served
-     * @param customer the customer object getting served
-     */
-    public void serveCustomer(Customer customer){
-        serveCustomer(); // TODO: Change if actually needed
-    }
-
-    /**
      * Used if we don't track what customer is getting served.
      */
     public void serveCustomer(){
@@ -84,25 +76,10 @@ public class Checkout {
     }
 
     /**
-     * Used if at anypoint it is important to know what customer was served
-     * @param customer the customer object getting served
-     */
-    public void customerServed(Customer customer){
-        customerServed(); // TODO: Change if actually needed
-    }
-
-    /**
      * Used if we don't track what customer was served.
      */
     public void customerServed(){
         checkoutsOccupied --;
-    }
-
-    /**
-     * Remove the first person from the queue
-     */
-    private void remove(){
-        checkoutQueue.removeFirst();
     }
     
 	/**
