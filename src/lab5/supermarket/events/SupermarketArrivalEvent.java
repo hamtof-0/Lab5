@@ -20,7 +20,6 @@ public class SupermarketArrivalEvent extends SupermarketEvent {
 
 	@Override
 	public void execute() {
-		super.execute();
 		if (!stateSuper.isOpen()) {
 			return;
 		}

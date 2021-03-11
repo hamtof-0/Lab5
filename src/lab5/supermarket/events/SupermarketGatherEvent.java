@@ -35,7 +35,6 @@ public class SupermarketGatherEvent extends SupermarketEvent {
 	 */
 	@Override
 	public void execute() {
-		super.execute();
 		if (stateSuper.checkout().hasEmptyCheckout()) {
 			eventQueue.addEvent(new SupermarketPayEvent(eventQueue, state, time.scanTime(), customer));
 			stateSuper.checkout().serveCustomer();

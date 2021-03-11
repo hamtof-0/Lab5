@@ -28,7 +28,6 @@ public class SupermarketStartEvent extends StartEvent {
 
 	@Override
 	public void execute() {
-		super.execute();
 		eventQueue.addEvent(new SupermarketArrivalEvent(eventQueue, state, time.arrivalTime(),
 				stateSuper.getCustomerFactory().newCustomer()));
 	}

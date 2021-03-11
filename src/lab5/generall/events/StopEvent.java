@@ -37,7 +37,6 @@ public class StopEvent extends Event {
      */
     @Override
     public void execute() {
-        super.execute();
         state.stop();// Using the handbrake in State to stop
     }
 }

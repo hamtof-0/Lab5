@@ -20,7 +20,6 @@ public class SupermarketPayEvent extends SupermarketEvent {
 
     @Override
     public void execute() {
-        super.execute();
         stateSuper.addSale();
         if(!stateSuper.checkout().queueIsEmpty()){
             eventQueue.addEvent(new SupermarketPayEvent(eventQueue, state, time.scanTime(),stateSuper.checkout().getFirstInQueue()));

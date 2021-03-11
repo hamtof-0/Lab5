@@ -33,10 +33,7 @@ public abstract class SupermarketEvent extends Event {
 		this.time = stateSuper.getTimeManager();
 	}
 
-	@Override
-	public void execute() {
-		super.execute();
-	}
+	public abstract void execute();
 
 	public String getCustomerID() {
 		if (customer != null) {

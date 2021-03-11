@@ -42,12 +42,7 @@ public abstract class Event {
     }
 
 
-    public void execute() {
-        if (DEBUG_EVENTS) {
-        	System.out.println("\t\tExecuting Event: " + name);
-        }
-        //state.setTime(executeTime);
-    }
+    public abstract void execute();
 
     /**
      * Returns all the info stored about the event in Event.

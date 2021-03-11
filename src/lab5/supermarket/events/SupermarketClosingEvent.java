@@ -19,7 +19,6 @@ public class SupermarketClosingEvent extends SupermarketEvent {
 
     @Override
     public void execute() {
-        super.execute();
         stateSuper.close();
     }
 
