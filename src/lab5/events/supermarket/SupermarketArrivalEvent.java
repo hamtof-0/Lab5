@@ -14,7 +14,7 @@ public class SupermarketArrivalEvent extends SupermarketEvent {
 
 	private static final String NAME = "Ankomst";
 
-	public SupermarketArrivalEvent(EventQueue eventQueue, SimState state, double executeTime, Customer customer) {
+	SupermarketArrivalEvent(EventQueue eventQueue, SimState state, double executeTime, Customer customer) {
 		super(eventQueue, state, executeTime, customer, NAME);
 	}
 

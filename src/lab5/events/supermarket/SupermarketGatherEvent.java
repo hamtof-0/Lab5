@@ -26,7 +26,7 @@ public class SupermarketGatherEvent extends SupermarketEvent {
 	 * @param executeTime The time that the event will be executed
 	 * @param customer    The customer that the event is executed for
 	 */
-	public SupermarketGatherEvent(EventQueue eventQueue, SimState state, double executeTime, Customer customer) {
+	SupermarketGatherEvent(EventQueue eventQueue, SimState state, double executeTime, Customer customer) {
 		super(eventQueue, state, executeTime, customer, NAME);
 	}
 
