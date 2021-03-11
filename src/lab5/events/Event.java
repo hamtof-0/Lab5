@@ -18,10 +18,10 @@ public abstract class Event {
     /**
      * Constructor
      *
-     * @param eventQueue  a generic eventQueue object
-     * @param state       a generic simState object
-     * @param executeTime execute time (?)
-     * @param name        the name of the event
+     * @param eventQueue  a generic eventQueue object.
+     * @param state       a generic simState object.
+     * @param executeTime execute time. (?)
+     * @param name        the name of the event.
      */
     public Event(EventQueue eventQueue, SimState state, double executeTime, String name) {
         this.eventQueue = eventQueue;
@@ -31,9 +31,9 @@ public abstract class Event {
     }
 
     /**
-     * Changes the name of the event
+     * Changes the name of the event.
      *
-     * @param name the name of the event
+     * @param name the name of the event.
      */
     protected Event(String name) {
         this.name = name;
@@ -46,9 +46,9 @@ public abstract class Event {
     }
 
     /**
-     * Returns all the info stored about the event in Event
+     * Returns all the info stored about the event in Event.
      *
-     * @return a string describing the event
+     * @return a string describing the event.
      */
     @Override
     public String toString() {
@@ -59,18 +59,18 @@ public abstract class Event {
     }
 
     /**
-     * Returns the name of the event
+     * Returns the name of the event.
      *
-     * @return event name
+     * @return event name.
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Returns the execute time
+     * Returns the execute time.
      *
-     * @return execute time
+     * @return execute time.
      */
     public double getExecuteTime() {
         return executeTime;

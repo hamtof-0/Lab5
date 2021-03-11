@@ -17,16 +17,16 @@ public class StartEvent extends Event {
     /**
      * Constructor
      *
-     * @param eventQueue  a generic eventQueue object
-     * @param state       a generic simState object
-     * @param executeTime execute time (?)
+     * @param eventQueue  a generic eventQueue object.
+     * @param state       a generic simState object.
+     * @param executeTime execute time. (?)
      */
     public StartEvent(EventQueue eventQueue, SimState state, double executeTime) {
         super(eventQueue, state, executeTime, NAME);
     }
 
     /**
-     * Sends the name of THIS (start) event to the generic event super class
+     * Sends the name of THIS (start) event to the generic event super class.
      */
     public StartEvent(){
         super(NAME);
