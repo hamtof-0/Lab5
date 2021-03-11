@@ -74,6 +74,11 @@ public class EventQueue {
         return queue.size() <= 0;
     }
 
+    /**
+     * Returns the queue as a String
+     * 
+     * @return Returns the queue as a String
+     */
     @Override
     public String toString() {
         return "EventQueue{" +

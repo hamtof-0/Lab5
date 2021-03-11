@@ -10,6 +10,8 @@ import java.util.Observer;
  * @author Malkolm Lundkvist
  * @author Billy Norman
  * @author Axel Johansson
+ * 
+ * 
  */
 public abstract class SimView implements Observer {
 
