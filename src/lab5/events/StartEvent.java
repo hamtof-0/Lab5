@@ -31,9 +31,4 @@ public class StartEvent extends Event {
     public StartEvent(){
         super(NAME);
     }
-
-    @Override
-    public void execute() {
-        super.execute();
-    }
 }
