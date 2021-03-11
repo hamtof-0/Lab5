@@ -22,6 +22,19 @@ public class Optimize {
 		System.out.println(varyLeastCheckouts(1400, 2000.0D, 0.45D, 0.65D, 0.2D, 0.3D, 42L, 20D, 100));
 	}
 
+	/**
+	 * Runs simulation with the given parameters
+	 * @param checkoutNum number of checkouts available
+	 * @param maxCustomers max number of customer allowed in the store
+	 * @param arrivalTime the random delay between customer arrivals
+	 * @param gatherMin the minimum time needed to gather all merchandise
+	 * @param gatherMax the maximum time needed to gather all merchandise
+	 * @param payMin the minimum time needed to pay for the merchandise
+	 * @param payMax the maximum time needed to pay for the merchandise
+	 * @param seed the seed to create a new run each tim or the same if the same seed is given
+	 * @param closingTime when the store will close
+	 * @return returns the amount of customers we missed due to store being full.
+	 */
 	private static int RunSimReturnMissed(int checkoutNum, int maxCustomers, double arrivalTime, double gatherMin,
 			double gatherMax, double payMin, double payMax, long seed, double closingTime) {
 		SupermarketState state = new SupermarketState(checkoutNum, maxCustomers, arrivalTime, gatherMin, gatherMax,
@@ -92,44 +105,46 @@ public class Optimize {
 	
 	private static int leastCheckouts(int maxCustomers, double arrivalTime, double gatherMin, double gatherMax, double payMin,
 			double payMax, long seed, double closingTime) {
-		int optimalCheckouts = maxCustomers; 
-		int increase = maxCustomers / 2;
+		int optimalCheckouts = maxCustomers; // Bassfall alla kunder sliper köa
+		int increase = maxCustomers / 2; // Förändring på halva
 		int minMissed = RunSimReturnMissed(Integer.MAX_VALUE, maxCustomers, arrivalTime, gatherMin, gatherMax, payMin, payMax,
-				seed, closingTime);
+				seed, closingTime); // the minimum of missed customers if the store is given ALOT of checkouts
 		for (int checkouts = 1; checkouts <= maxCustomers; checkouts = checkouts + increase) {
+			// if checkouts are equal to max customers no need to increase.
 			int missed = RunSimReturnMissed(checkouts, maxCustomers, arrivalTime, gatherMin, gatherMax, payMin, payMax,
 					seed, closingTime);
-			System.out.println("1 " + checkouts + " " + increase + " " + missed + " " + minMissed);
+			//System.out.println("1 " + checkouts + " " + increase + " " + missed + " " + minMissed);
 			if (missed == minMissed) {
-				if (increase == 1) {
-					optimalCheckouts = checkouts;
+				if (increase == 1) { // if increase has reached 1 that means we are a maximum of 1 away from correct answerd
+					optimalCheckouts = checkouts; // we will assume this is the optimal
 					break;
 				}
-				checkouts = checkouts - increase;
-				increase = increase / 2;
-				if (increase == 0) {
+				checkouts = checkouts - increase; // if they missed is equal to minMissed
+				// we can decrease the amount of checkouts
+				increase = increase / 2; // decrease the increase to half of previous for binary search.
+				if (increase == 0) { // ensure the minimum increase is always 1
 					increase = 1;
 				}
 			}
 		}
-		System.out.println("Optimal: " + optimalCheckouts);
+		//System.out.println("Optimal: " + optimalCheckouts);
 		return optimalCheckouts;
 	}
 
 	private static int varyLeastCheckouts(int maxCustomers, double arrivalTime, double gatherMin, double gatherMax,
 			double payMin, double payMax, long seed, double closingTime, int noChangeFor) {
-		int loopsSinceLastChange = 0;
-		int leastCheckouts = Integer.MIN_VALUE;
-		Random randSeed = new Random(seed);
-		while (loopsSinceLastChange < noChangeFor) { // noChangeFor ska sättas till 100
+		int loopsSinceLastChange = 0; // default to zero
+		int leastCheckouts = Integer.MIN_VALUE;  // assume the least amount is Integer.Min_value because you cannot get any lower
+		Random randSeed = new Random(seed); // generates the seed to use for the next simulation
+		while (loopsSinceLastChange < noChangeFor) { // needs to be unchanged for at least 100 runs
 			int checkouts = leastCheckouts(maxCustomers, arrivalTime, gatherMin, gatherMax, payMin, payMax,
-					randSeed.nextLong(), closingTime);
-			System.out.println("Working... " + loopsSinceLastChange);
-			if (checkouts > leastCheckouts) {
-				leastCheckouts = checkouts;
-				loopsSinceLastChange = 0;
+					randSeed.nextLong(), closingTime); // gets the least required on this seed
+			//System.out.println("Working... " + loopsSinceLastChange); // prints how many loops it has done so far
+			if (checkouts > leastCheckouts) { // if checkouts are bigger than last
+				leastCheckouts = checkouts; // update it
+				loopsSinceLastChange = 0; // and reset
 			} else {
-				loopsSinceLastChange++;
+				loopsSinceLastChange++; // leastCheckouts is bigger than the new so continue
 			}
 		}
 		return leastCheckouts;
