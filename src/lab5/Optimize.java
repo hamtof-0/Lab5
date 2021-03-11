@@ -7,7 +7,6 @@ import lab5.events.supermarket.SupermarketClosingEvent;
 import lab5.events.supermarket.SupermarketStartEvent;
 import lab5.events.supermarket.SupermarketStopEvent;
 import lab5.state.supermarket.SupermarketState;
-import lab5.view.supermarket.SupermarketView;
 
 /**
  * @author Hampus Toft
