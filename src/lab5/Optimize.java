@@ -9,12 +9,14 @@ import lab5.supermarketsimulation.events.SupermarketStopEvent;
 import lab5.supermarketsimulation.state.SupermarketState;
 
 /**
+ * Used to optimize the supermarket so we can feed the capitalist world
+ * 
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman
  * @author Axel Johansson
  * 
- *         Used to optimize the supermarket so we can feed the capitalist world
+ *  
  */
 public class Optimize {
 
@@ -71,19 +73,20 @@ public class Optimize {
 		return state.getMissedCustomers();
 	}
 
-	
+	//method 2
 	private static int leastCheckouts(int maxCustomers, double arrivalTime, double gatherMin, double gatherMax,
 			double payMin, double payMax, long seed, double closingTime) {
 		int optimalCheckouts = maxCustomers; // Bassfall alla kunder sliper köa
 		int increase = maxCustomers / 2; // Förändring på halva
 		int minMissed = RunSimReturnMissed(Integer.MAX_VALUE, maxCustomers, arrivalTime, gatherMin, gatherMax, payMin,
 				payMax, seed, closingTime); // the minimum of missed customers if the store is given ALOT of checkouts
+		
 		for (int checkouts = 1; checkouts <= maxCustomers; checkouts = checkouts + increase) {
 			// if checkouts are equal to max customers no need to increase.
 			int missed = RunSimReturnMissed(checkouts, maxCustomers, arrivalTime, gatherMin, gatherMax, payMin, payMax,
 					seed, closingTime);
-			// System.out.println("1 " + checkouts + " " + increase + " " + missed + " " +
-			// minMissed);
+//			 System.out.println("1 " + checkouts + " " + increase + " " + missed + " " +
+//			 minMissed);
 			if (missed == minMissed) {
 				if (increase == 1) { // if increase has reached 1 that means we are a maximum of 1 away from correct
 										// answerd
@@ -101,7 +104,7 @@ public class Optimize {
 		// System.out.println("Optimal: " + optimalCheckouts);
 		return optimalCheckouts;
 	}
-
+	//method 3
 	private static int varyLeastCheckouts(int maxCustomers, double arrivalTime, double gatherMin, double gatherMax,
 			double payMin, double payMax, long seed, double closingTime, int noChangeFor) {
 		int loopsSinceLastChange = 0; // default to zero

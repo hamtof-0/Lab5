@@ -5,12 +5,13 @@ import lab5.generalsimulation.state.SimState;
 import lab5.generalsimulation.events.EventQueue;
 
 /**
+ * The general simulator
+ * 
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman
  * @author Axel Johansson
  * 
- * The general simulator
  */
 public class Simulator {
     private final SimState state;

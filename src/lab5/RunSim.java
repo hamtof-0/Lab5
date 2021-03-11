@@ -8,12 +8,13 @@ import lab5.supermarketsimulation.state.SupermarketState;
 import lab5.supermarketsimulation.view.SupermarketView;
 
 /**
+ *
+ * Tells the simulator to start the simulation
+ * 
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman
  * @author Axel Johansson
- * 
- * Tells the simulator to start the simulation
  */
 public class RunSim {
 
