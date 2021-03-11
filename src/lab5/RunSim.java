@@ -29,19 +29,18 @@ public class RunSim {
 				0.5D,1.0D,
 				2.D,3.0D,
 				1234L);
-    	/*/
-    	SupermarketState state = new SupermarketState(
-				2,
-				7,
-				3.0D,
-				0.6D,0.9D,
-				0.35,0.6,
-				13L);
-
-    	 /*/
+		
+//    	SupermarketState state = new SupermarketState(
+//				2,
+//				7,
+//				3.0D,
+//				0.6D,0.9D,
+//				0.35,0.6,
+//				13L);
     	EventQueue queue = new EventQueue();
     	queue.addEvent(new SupermarketStartEvent(queue, state, 0d));
-    	queue.addEvent(new SupermarketClosingEvent(queue, state, 8D));
+    	queue.addEvent(new SupermarketClosingEvent(queue, state, 10D));
+//    	queue.addEvent(new SupermarketClosingEvent(queue, state, 8D)); // <--------------------------------This line Ma dudes 
     	queue.addEvent(new SupermarketStopEvent(queue, state, 999.0));
 		SupermarketView view = new SupermarketView(state);
 		state.addObserver(view);
