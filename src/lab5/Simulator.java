@@ -27,7 +27,7 @@ public class Simulator {
     }
 
     /**
-	 * Starts the simulation 
+	 * Starts the simulation nad runs the simulation
 	 */
     public void run(){
         //System.out.println("\tNew Event queue: " + eventQueue.toString());

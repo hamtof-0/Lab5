@@ -8,7 +8,7 @@ import lab5.state.SimState;
  * @author Billy Norman
  * @author Axel Johansson
  * 
- * 
+ * Defines a general event, children specifies specific events
  */
 public abstract class Event {
     protected EventQueue eventQueue;
@@ -43,7 +43,9 @@ public abstract class Event {
 
 
     public void execute() {
-        if (DEBUG_EVENTS) System.out.println("\t\tExecuting Event: " + name);
+        if (DEBUG_EVENTS) {
+        	System.out.println("\t\tExecuting Event: " + name);
+        }
         //state.setTime(executeTime);
     }
 

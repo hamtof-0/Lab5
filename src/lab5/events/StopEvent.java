@@ -32,6 +32,9 @@ public class StopEvent extends Event {
         super(NAME);
     }
 
+    /**
+     * Calls the stop method in state to stop the simulation
+     */
     @Override
     public void execute() {
         super.execute();

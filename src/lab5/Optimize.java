@@ -18,8 +18,20 @@ import lab5.view.supermarket.SupermarketView;
 public class Optimize {
 
 	public static void main(String[] args) {
-		System.out.println(varyLeastCheckouts(5, 1.0D, 0.5D, 1.0D, 2.D, 3.0D, 1234L, 10D, 100));
-		System.out.println(varyLeastCheckouts(1400, 2000.0D, 0.45D, 0.65D, 0.2D, 0.3D, 42L, 20D, 100));
+		nicePrinting(5, 1.0D, 0.5D, 1.0D, 2.D, 3.0D, 1234L, 10D, 100);
+		nicePrinting(1400, 2000.0D, 0.45D, 0.65D, 0.2D, 0.3D, 42L, 20D, 100);
+	}
+	
+	private static void nicePrinting (int maxCustomers, double arrivalTime, double gatherMin, double gatherMax,
+			double payMin, double payMax, long seed, double closingTime, int noChangeFor) {
+		System.out.println("Max personer i lokalen, M_: " + maxCustomers);
+		System.out.println("Ankomsthastighet, lambda__: " + arrivalTime);
+		System.out.println("Plocktider, [Pmin, Pmax]__: [" + gatherMin + "," + gatherMax + "]");
+		System.out.println("Betaltider, [Bmin, Bmax]__: [" + payMin + "," + payMax + "]");
+		System.out.println("Frö, f____________________: " + seed);
+		System.out.println("Stängning_________________: " + closingTime + " t.e.");
+		System.out.println();
+		System.out.println("Minsta antal kassor för minsta antal missade = " + varyLeastCheckouts(maxCustomers, arrivalTime, gatherMin, gatherMax, payMin, payMax, seed, closingTime, noChangeFor));
 	}
 
 	/**
