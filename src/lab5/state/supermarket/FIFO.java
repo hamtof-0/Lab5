@@ -41,7 +41,7 @@ public class FIFO{
 	/**
 	 * Removes the first object in the queue
 	 * 
-	 * @exception throws an exception if the queue is empty
+	 * @exception throw exception if the queue is empty
 	 */
 	public void removeFirst() throws NoSuchElementException {
 		if (isEmpty()) {
@@ -68,10 +68,7 @@ public class FIFO{
 	 * @return Returns true if the queue is empty otherwise false
 	 */
 	public boolean isEmpty() {
-		if (objectList.size() != 0) {
-			return (false);
-		}
-		return (true);
+		return objectList.size() == 0;
 	}
 	
 	/**
