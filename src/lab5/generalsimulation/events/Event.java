@@ -24,7 +24,7 @@ public abstract class Event {
      * @param executeTime execute time. (?)
      * @param name        the name of the event.
      */
-    public Event(EventQueue eventQueue, SimState state, double executeTime, String name) {
+    protected Event(EventQueue eventQueue, SimState state, double executeTime, String name) {
         this.eventQueue = eventQueue;
         this.state = state;
         this.executeTime = executeTime;
