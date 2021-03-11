@@ -3,8 +3,8 @@ package lab5.supermarketsimulation.events;
 import lab5.generalsimulation.events.StartEvent;
 import lab5.generalsimulation.state.SimState;
 import lab5.generalsimulation.events.EventQueue;
-import lab5.supermarketsimulation.state.TimeManager.TimeManager;
 import lab5.supermarketsimulation.state.SupermarketState;
+import lab5.supermarketsimulation.state.timemanager.TimeManager;
 
 /**
  * This event starts the supermarket simulation by adding the first customer

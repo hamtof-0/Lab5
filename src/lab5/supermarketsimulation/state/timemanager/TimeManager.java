@@ -1,4 +1,4 @@
-package lab5.supermarketsimulation.state.TimeManager;
+package lab5.supermarketsimulation.state.timemanager;
 
 import lab5.supermarketsimulation.state.SupermarketState;
 

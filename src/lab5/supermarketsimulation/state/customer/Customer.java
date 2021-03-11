@@ -1,4 +1,4 @@
-package lab5.supermarketsimulation.state.Customer;
+package lab5.supermarketsimulation.state.customer;
 
 /**
  * @author Hampus Toft

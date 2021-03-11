@@ -3,9 +3,9 @@ package lab5.supermarketsimulation.events;
 import lab5.generalsimulation.events.Event;
 import lab5.generalsimulation.events.EventQueue;
 import lab5.generalsimulation.state.SimState;
-import lab5.supermarketsimulation.state.Customer.Customer;
 import lab5.supermarketsimulation.state.SupermarketState;
-import lab5.supermarketsimulation.state.TimeManager.TimeManager;
+import lab5.supermarketsimulation.state.customer.Customer;
+import lab5.supermarketsimulation.state.timemanager.TimeManager;
 
 /**
  * This Event represent the general supermarket event.

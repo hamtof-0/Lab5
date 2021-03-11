@@ -1,8 +1,8 @@
 package lab5.supermarketsimulation.events;
 
 import lab5.generalsimulation.state.SimState;
+import lab5.supermarketsimulation.state.customer.Customer;
 import lab5.generalsimulation.events.EventQueue;
-import lab5.supermarketsimulation.state.Customer.Customer;
 
 /**
  * The event that is executed when a customer has payed for their supplies
