@@ -15,7 +15,6 @@ public abstract class Event {
     protected SimState state;
     protected double executeTime;
     protected String name;
-    protected static final boolean DEBUG_EVENTS = false;
 
     /**
      * Constructor
@@ -45,19 +44,6 @@ public abstract class Event {
      * This will preform the actions that a event dose.
      */
     public abstract void execute();
-
-    /**
-     * Returns all the info stored about the event in Event.
-     *
-     * @return a string describing the event.
-     */
-    @Override
-    public String toString() {
-        return "\n\tEvent{" + "Event Type: " + name +
-                ", State Type: " + state +
-                ", executeTime: " + executeTime +
-                "}";
-    }
 
     /**
      * Returns the name of the event.
