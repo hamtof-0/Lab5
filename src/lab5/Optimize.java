@@ -19,6 +19,7 @@ public class Optimize {
 
 	public static void main(String[] args) {
 		System.out.println(varyLeastCheckouts(5, 1.0D, 0.5D, 1.0D, 2.D, 3.0D, 1234L, 10D, 100));
+		System.out.println(varyLeastCheckouts(1400, 2000.0D, 0.45D, 0.65D, 0.2D, 0.3D, 42L, 20D, 100));
 	}
 
 	private static int RunSimReturnMissed(int checkoutNum, int maxCustomers, double arrivalTime, double gatherMin,
@@ -33,21 +34,85 @@ public class Optimize {
 		sim.run();
 		return state.getMissedCustomers();
 	}
-
-	private static int leastCheckouts(int maxCustomers, double arrivalTime, double gatherMin, double gatherMax, double payMin,
+	
+	//Gammal metod, den nya är lika effektiv med mycket mindre kod
+	/*private static int leastCheckouts(int maxCustomers, double arrivalTime, double gatherMin, double gatherMax, double payMin,
 			double payMax, long seed, double closingTime) {
-		int optimalCheckouts = maxCustomers; // Ifall man vill få en effektivare metod kan man ta reda på vad minimalt
-												// missade kunder kommer vara genom att köra en runSim men maxvärde på
-												// kassor
-		int minMissed = Integer.MAX_VALUE;
-		for (int checkouts = 1; checkouts < maxCustomers; checkouts++) {
+		int optimalCheckouts = maxCustomers; 
+		int increase = maxCustomers;
+		int minMissed = RunSimReturnMissed(Integer.MAX_VALUE, maxCustomers, arrivalTime, gatherMin, gatherMax, payMin, payMax,
+				seed, closingTime);
+		//System.out.println(minMissed);
+		for (int checkouts = 1; checkouts <= maxCustomers; checkouts = checkouts + increase) { //int checkouts = maxCustomers; checkouts > 1; checkouts--
+			int oldIncrease = increase;
+			while((checkouts + increase) > maxCustomers) {
+				increase = (increase / 8);
+			}
+			if (increase == 0) {
+				increase = 1;
+			}
 			int missed = RunSimReturnMissed(checkouts, maxCustomers, arrivalTime, gatherMin, gatherMax, payMin, payMax,
 					seed, closingTime);
-			if (missed < minMissed) {
-				minMissed = missed;
-				optimalCheckouts = checkouts;
+			System.out.println("1 " + checkouts + " " + increase + " " + missed + " " + minMissed);
+			if (missed == minMissed) {
+				int increase2 = increase / 8;
+				if (increase2 == 0) {
+					increase2 = 1;
+				}
+				for (int checkouts2 = (checkouts - oldIncrease) - 1; checkouts2 < maxCustomers; checkouts2 = checkouts2 + increase2) {
+					if (checkouts2 < 0) {
+						checkouts2 = 0;
+					}
+					System.out.println("2 " + checkouts2 + " " + increase2 + " " + missed + " " + minMissed);
+					missed = RunSimReturnMissed(checkouts2, maxCustomers, arrivalTime, gatherMin, gatherMax, payMin, payMax,
+							seed, closingTime);
+					if (missed == minMissed) {
+						for (int checkouts3 = (checkouts2 - increase2) - 2; checkouts3 < maxCustomers; checkouts3++) {
+							if (checkouts3 < 0) {
+								checkouts3 = 0;
+							}
+							missed = RunSimReturnMissed(checkouts3, maxCustomers, arrivalTime, gatherMin, gatherMax, payMin, payMax,
+									seed, closingTime);
+							System.out.println("3 " + checkouts3 + " " + increase2 + " " + missed + " " + minMissed);
+							if (missed == minMissed) {
+								optimalCheckouts = checkouts3;
+								System.out.println(optimalCheckouts);
+								break;
+							}
+						}
+						break;
+					}
+				}
+				break;
 			}
 		}
+		System.out.println("Optimal: " + optimalCheckouts);
+		return optimalCheckouts;
+	}*/
+	
+	private static int leastCheckouts(int maxCustomers, double arrivalTime, double gatherMin, double gatherMax, double payMin,
+			double payMax, long seed, double closingTime) {
+		int optimalCheckouts = maxCustomers; 
+		int increase = maxCustomers / 2;
+		int minMissed = RunSimReturnMissed(Integer.MAX_VALUE, maxCustomers, arrivalTime, gatherMin, gatherMax, payMin, payMax,
+				seed, closingTime);
+		for (int checkouts = 1; checkouts <= maxCustomers; checkouts = checkouts + increase) {
+			int missed = RunSimReturnMissed(checkouts, maxCustomers, arrivalTime, gatherMin, gatherMax, payMin, payMax,
+					seed, closingTime);
+			System.out.println("1 " + checkouts + " " + increase + " " + missed + " " + minMissed);
+			if (missed == minMissed) {
+				if (increase == 1) {
+					optimalCheckouts = checkouts;
+					break;
+				}
+				checkouts = checkouts - increase;
+				increase = increase / 2;
+				if (increase == 0) {
+					increase = 1;
+				}
+			}
+		}
+		System.out.println("Optimal: " + optimalCheckouts);
 		return optimalCheckouts;
 	}
 
@@ -59,6 +124,7 @@ public class Optimize {
 		while (loopsSinceLastChange < noChangeFor) { // noChangeFor ska sättas till 100
 			int checkouts = leastCheckouts(maxCustomers, arrivalTime, gatherMin, gatherMax, payMin, payMax,
 					randSeed.nextLong(), closingTime);
+			System.out.println("Working... " + loopsSinceLastChange);
 			if (checkouts > leastCheckouts) {
 				leastCheckouts = checkouts;
 				loopsSinceLastChange = 0;
