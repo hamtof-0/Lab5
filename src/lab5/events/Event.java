@@ -7,6 +7,8 @@ import lab5.state.SimState;
  * @author Malkolm Lundkvist
  * @author Billy Norman
  * @author Axel Johansson
+ * 
+ * 
  */
 public abstract class Event {
     protected EventQueue eventQueue;
