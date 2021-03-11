@@ -3,12 +3,14 @@ package lab5.supermarketsimulation.state;
 import lab5.supermarketsimulation.state.customer.Customer;
 
 /**
+ * Used to keeps track of and hold most information about the checkouts  
+ * 
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman
  * @author Axel Johansson
  * 
- * Used to keeps track of and hold most information about the checkouts  
+ * 
  */
 
 public class Checkout {

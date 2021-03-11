@@ -1,12 +1,14 @@
 package lab5.supermarketsimulation.state.customer;
 
 /**
+ * A customer object that holds an id number
+ * 
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman
  * @author Axel Johansson
  * 
- * A customer object that holds an id number
+ * 
  */
 
 public class Customer {

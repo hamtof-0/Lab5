@@ -6,12 +6,14 @@ import lab5.generalsimulation.events.EventQueue;
 import java.util.Observable;
 
 /**
+ * The general state, keeps track of the general state of the simulation
+ * 
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman
  * @author Axel Johansson
  * 
- * The general state, keeps track of the general state of the simulation
+ * 
  */
 public abstract class SimState extends Observable {
     protected boolean stopped;

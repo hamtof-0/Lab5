@@ -3,12 +3,14 @@ package lab5.generalsimulation.events;
 import lab5.generalsimulation.state.SimState;
 
 /**
+ * Defines a general event, children specifies specific events
+ * 
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman
  * @author Axel Johansson
  * 
- * Defines a general event, children specifies specific events
+ * 
  */
 public abstract class Event {
     protected EventQueue eventQueue;

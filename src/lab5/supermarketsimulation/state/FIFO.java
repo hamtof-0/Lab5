@@ -5,12 +5,15 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 /**
+ * 
+ * This is a simple FIFO queue
+ * 
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman
  * @author Axel Johansson
  * 
- * This is a simple FIFO queue
+ * 
  */
 
 public class FIFO{

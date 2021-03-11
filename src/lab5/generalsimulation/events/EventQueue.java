@@ -3,12 +3,14 @@ package lab5.generalsimulation.events;
 import java.util.ArrayList;
 
 /**
+ * The generic event queue.
+ *         
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman
  * @author Axel Johansson
  *
- *         The generic event queue.
+ * 
  */
 public class EventQueue {
 

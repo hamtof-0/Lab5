@@ -10,12 +10,15 @@ import lab5.generalsimulation.state.SimState;
 import lab5.supermarketsimulation.state.SupermarketState;
 
 /**
+ * 
+ * Prints information about a supermarket and its events to the console.
+ * 
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman
  * @author Axel Johansson
  * 
- * Prints information about a supermarket and its events to the console.
+ * 
  */
 
 public class SupermarketView extends SimView{

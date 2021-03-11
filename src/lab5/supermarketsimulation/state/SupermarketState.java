@@ -6,12 +6,14 @@ import lab5.supermarketsimulation.state.customer.CustomerFactory;
 import lab5.supermarketsimulation.state.timemanager.TimeManager;
 
 /**
+ * The specific state of the simulation.
+ * 
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman
  * @author Axel Johansson
  * 
- * The specific state of the simulation.
+ * 
  */
 
 public class SupermarketState extends SimState {
