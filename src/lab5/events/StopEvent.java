@@ -7,16 +7,28 @@ import lab5.state.SimState;
  * @author Malkolm Lundkvist
  * @author Billy Norman
  * @author Axel Johansson
+ *
+ * The generic stop event
  */
 public class StopEvent extends Event {
 
     private static final String NAME = "Stop";
 
-    public StopEvent(EventQueue eventQueue, SimState state, double executeTime){
-    	super(eventQueue, state, executeTime, NAME);
+    /**
+     * Constructor
+     *
+     * @param eventQueue  a generic eventQueue object
+     * @param state       a generic simState object
+     * @param executeTime execute time (?)
+     */
+    public StopEvent(EventQueue eventQueue, SimState state, double executeTime) {
+        super(eventQueue, state, executeTime, NAME);
     }
 
-    public StopEvent(){
+    /**
+     * Sends the name of THIS (stop) event to the generic event super class
+     */
+    public StopEvent() {
         super(NAME);
     }
 
