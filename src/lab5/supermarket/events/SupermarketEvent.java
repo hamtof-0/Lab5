@@ -8,6 +8,8 @@ import lab5.supermarket.state.SupermarketState;
 import lab5.supermarket.state.TimeManager.TimeManager;
 
 /**
+ * This Event represent the general supermarket event.
+ *
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman
@@ -33,10 +35,7 @@ public abstract class SupermarketEvent extends Event {
 		this.time = stateSuper.getTimeManager();
 	}
 
-	@Override
-	public void execute() {
-		super.execute();
-	}
+	public abstract void execute();
 
 	public String getCustomerID() {
 		if (customer != null) {

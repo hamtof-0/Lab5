@@ -5,13 +5,12 @@ import lab5.generall.state.SimState;
 import lab5.supermarket.state.Customer.Customer;
 
 /**
+ * This Event represent when a customer has gathered their supplies and are ready to pay
+ *
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman
  * @author Axel Johansson
- * 
- *         The event that is executed when a customer is done gathering their
- *         stuff
  */
 public class SupermarketGatherEvent extends SupermarketEvent {
 
@@ -35,7 +34,6 @@ public class SupermarketGatherEvent extends SupermarketEvent {
 	 */
 	@Override
 	public void execute() {
-		super.execute();
 		if (stateSuper.checkout().hasEmptyCheckout()) {
 			eventQueue.addEvent(new SupermarketPayEvent(eventQueue, state, time.scanTime(), customer));
 			stateSuper.checkout().serveCustomer();

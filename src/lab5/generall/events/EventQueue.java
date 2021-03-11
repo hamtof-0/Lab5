@@ -52,13 +52,6 @@ public class EventQueue {
 		return next;
 	}
 
-	/*
-	 * Verkar vara exakt likadan som ovanstående metod och tror aldrig den
-	 * används(?) public Event getFirst(){ if(this.isEmpty()) throw new
-	 * RuntimeException("Queue is empty Unable to get next event"); Event next =
-	 * queue.get(0); removeFirst(); return next; }
-	 */
-
 	/**
 	 * Removes the first/next event in the queue.
 	 */

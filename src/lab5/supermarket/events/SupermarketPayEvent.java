@@ -5,6 +5,8 @@ import lab5.generall.events.EventQueue;
 import lab5.supermarket.state.Customer.Customer;
 
 /**
+ * The event that is executed when a customer has payed for their supplies
+ *
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman
@@ -20,7 +22,6 @@ public class SupermarketPayEvent extends SupermarketEvent {
 
     @Override
     public void execute() {
-        super.execute();
         stateSuper.addSale();
         if(!stateSuper.checkout().queueIsEmpty()){
             eventQueue.addEvent(new SupermarketPayEvent(eventQueue, state, time.scanTime(),stateSuper.checkout().getFirstInQueue()));
