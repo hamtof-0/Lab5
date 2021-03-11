@@ -22,11 +22,11 @@ public class Optimize {
 
 	public static void main(String[] args) {
 
-		System.out.println(leastCheckouts(K.M, K.L, K.LOW_COLLECTION_TIME, K.HIGH_COLLECTION_TIME, K.LOW_PAYMENT_TIME,
-				K.HIGH_PAYMENT_TIME, K.SEED, K.END_TIME));
+		//System.out.println(leastCheckouts(K.M, K.L, K.LOW_COLLECTION_TIME, K.HIGH_COLLECTION_TIME, K.LOW_PAYMENT_TIME,
+		//		K.HIGH_PAYMENT_TIME, K.SEED, K.END_TIME));
 
-//		nicePrinting(K.M, K.L, K.LOW_COLLECTION_TIME, K.HIGH_COLLECTION_TIME, K.LOW_PAYMENT_TIME,
-//				K.HIGH_PAYMENT_TIME, K.SEED, K.END_TIME, 100);
+		nicePrinting(K.M, K.L, K.LOW_COLLECTION_TIME, K.HIGH_COLLECTION_TIME, K.LOW_PAYMENT_TIME,
+				K.HIGH_PAYMENT_TIME, K.SEED, K.END_TIME, 100);
 
 //		nicePrinting(5, 1.0D, 0.5D, 1.0D, 2.D, 3.0D, 1234L, 10D, 100);
 //		nicePrinting(1400, 2000.0D, 0.45D, 0.65D, 0.2D, 0.3D, 42L, 20D, 100);
