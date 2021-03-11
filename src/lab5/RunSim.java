@@ -13,7 +13,7 @@ import lab5.view.supermarket.SupermarketView;
  * @author Billy Norman
  * @author Axel Johansson
  * 
- * Tells the simultaor to start the simulation
+ * Tells the simulator to start the simulation
  */
 public class RunSim {
 
