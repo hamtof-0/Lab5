@@ -13,6 +13,8 @@ import lab5.supermarketsimulation.state.SupermarketState;
  * @author Malkolm Lundkvist
  * @author Billy Norman
  * @author Axel Johansson
+ * 
+ * Used to optimize the supermarket so we can feed the capitalist world
  */
 public class Optimize {
 
@@ -27,10 +29,10 @@ public class Optimize {
 		System.out.println("Ankomsthastighet, lambda__: " + arrivalTime);
 		System.out.println("Plocktider, [Pmin, Pmax]__: [" + gatherMin + "," + gatherMax + "]");
 		System.out.println("Betaltider, [Bmin, Bmax]__: [" + payMin + "," + payMax + "]");
-		System.out.println("Frö, f____________________: " + seed);
-		System.out.println("Stängning_________________: " + closingTime + " t.e.");
+		System.out.println("FrÃ¶, f____________________: " + seed);
+		System.out.println("StÃ¤ngning_________________: " + closingTime + " t.e.");
 		System.out.println();
-		System.out.println("Minsta antal kassor för minsta antal missade = " + varyLeastCheckouts(maxCustomers, arrivalTime, gatherMin, gatherMax, payMin, payMax, seed, closingTime, noChangeFor));
+		System.out.println("Minsta antal kassor fÃ¶r minsta antal missade = " + varyLeastCheckouts(maxCustomers, arrivalTime, gatherMin, gatherMax, payMin, payMax, seed, closingTime, noChangeFor));
 	}
 
 	/**
@@ -59,7 +61,7 @@ public class Optimize {
 		return state.getMissedCustomers();
 	}
 	
-	//Gammal metod, den nya är lika effektiv med mycket mindre kod
+	//Gammal metod, den nya ï¿½r lika effektiv med mycket mindre kod
 	/*private static int leastCheckouts(int maxCustomers, double arrivalTime, double gatherMin, double gatherMax, double payMin,
 			double payMax, long seed, double closingTime) {
 		int optimalCheckouts = maxCustomers; 
@@ -116,8 +118,8 @@ public class Optimize {
 	
 	private static int leastCheckouts(int maxCustomers, double arrivalTime, double gatherMin, double gatherMax, double payMin,
 			double payMax, long seed, double closingTime) {
-		int optimalCheckouts = maxCustomers; // Bassfall alla kunder sliper köa
-		int increase = maxCustomers / 2; // Förändring på halva
+		int optimalCheckouts = maxCustomers; // Bassfall alla kunder sliper kÃ¶a
+		int increase = maxCustomers / 2; // FÃ¶rÃ¤ndring pÃ¥ halva
 		int minMissed = RunSimReturnMissed(Integer.MAX_VALUE, maxCustomers, arrivalTime, gatherMin, gatherMax, payMin, payMax,
 				seed, closingTime); // the minimum of missed customers if the store is given ALOT of checkouts
 		for (int checkouts = 1; checkouts <= maxCustomers; checkouts = checkouts + increase) {
