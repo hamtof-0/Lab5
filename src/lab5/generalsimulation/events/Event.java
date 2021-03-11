@@ -3,14 +3,12 @@ package lab5.generalsimulation.events;
 import lab5.generalsimulation.state.SimState;
 
 /**
- * Defines a general event, children specifies specific events
- * 
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman
  * @author Axel Johansson
  * 
- * 
+ * Defines a general event, children specifies specific events
  */
 public abstract class Event {
     protected EventQueue eventQueue;
@@ -26,7 +24,7 @@ public abstract class Event {
      * @param executeTime execute time. (?)
      * @param name        the name of the event.
      */
-    public Event(EventQueue eventQueue, SimState state, double executeTime, String name) {
+    protected Event(EventQueue eventQueue, SimState state, double executeTime, String name) {
         this.eventQueue = eventQueue;
         this.state = state;
         this.executeTime = executeTime;

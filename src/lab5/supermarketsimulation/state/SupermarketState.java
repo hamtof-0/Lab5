@@ -6,26 +6,24 @@ import lab5.supermarketsimulation.state.customer.CustomerFactory;
 import lab5.supermarketsimulation.state.timemanager.TimeManager;
 
 /**
- * The specific state of the simulation.
- * 
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman
  * @author Axel Johansson
  * 
- * 
+ * The specific state of the simulation.
  */
 
 public class SupermarketState extends SimState {
 
 	private int numCustomersInStore = 0;
-	private final int maxCustomersInStore;
+	private int maxCustomersInStore;
 	private int customersServed = 0;
 	private int missedCustomers = 0;
 	private boolean open = true;
 	private double queueTimeTotal = 0;
-	private final CustomerFactory customerFactory;
-	private final TimeManager timeManager;
+	private CustomerFactory customerFactory;
+	private TimeManager timeManager;
 	private final Checkout checkout;
 	private double freeTime;
 

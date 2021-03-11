@@ -3,18 +3,16 @@ package lab5.generalsimulation.events;
 import java.util.ArrayList;
 
 /**
- * The generic event queue.
- *         
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman
  * @author Axel Johansson
  *
- * 
+ *         The generic event queue.
  */
 public class EventQueue {
 
-	private final ArrayList<Event> queue = new ArrayList<>();
+	private ArrayList<Event> queue = new ArrayList<>();
 
 	/**
 	 * Adds the given event to this EventQueue in its correct place by looping and

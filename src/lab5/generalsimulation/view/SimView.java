@@ -6,14 +6,12 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
- * Abstract view to represent all possible specific simulations
- * 
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman
  * @author Axel Johansson
  * 
- * 
+ * Abstract view to represent all possible specific simulations
  */
 public abstract class SimView implements Observer {
 

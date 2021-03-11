@@ -3,14 +3,12 @@ package lab5.supermarketsimulation.state.timemanager;
 import lab5.supermarketsimulation.state.SupermarketState;
 
 /**
- * This is the TimeManager which manages when different events executes using ExponentialRandomStream and UniformRandomStream
- * 
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman
  * @author Axel Johansson
  * 
- * 
+ * This is the TimeManager which manages when different events executes using ExponentialRandomStream and UniformRandomStream
  */
 
 public class TimeManager {

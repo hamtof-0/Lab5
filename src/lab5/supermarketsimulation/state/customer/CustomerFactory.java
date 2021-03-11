@@ -1,14 +1,12 @@
 package lab5.supermarketsimulation.state.customer;
 
 /**
- * A customer factory that creates new customers
- * 
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman
  * @author Axel Johansson
  * 
- * 
+ * A customer factory that creates new customers
  */
 
 public class CustomerFactory {

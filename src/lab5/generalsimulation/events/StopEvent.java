@@ -3,14 +3,12 @@ package lab5.generalsimulation.events;
 import lab5.generalsimulation.state.SimState;
 
 /**
- * The generic stop event.
- * 
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman
  * @author Axel Johansson
  *
- * 
+ * The generic stop event.
  */
 public class StopEvent extends Event {
 

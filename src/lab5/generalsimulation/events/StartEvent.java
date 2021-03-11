@@ -3,14 +3,12 @@ package lab5.generalsimulation.events;
 import lab5.generalsimulation.state.SimState;
 
 /**
- * The generic start event
- * 
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman
  * @author Axel Johansson
  *
- * 
+ * The generic start event
  */
 public class StartEvent extends Event {
 

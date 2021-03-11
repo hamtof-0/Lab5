@@ -21,12 +21,12 @@ public abstract class SupermarketEvent extends Event {
 	protected SupermarketState stateSuper;
 	protected TimeManager time;
 
-	public SupermarketEvent(EventQueue eventQueue, SimState state, double executeTime, Customer customer, String name) {
+	protected SupermarketEvent(EventQueue eventQueue, SimState state, double executeTime, Customer customer, String name) {
 		this(eventQueue, state, executeTime, name);
 		this.customer = customer;
 	}
 
-	public SupermarketEvent(EventQueue eventQueue, SimState state, double executeTime, String name) {
+	protected SupermarketEvent(EventQueue eventQueue, SimState state, double executeTime, String name) {
 		super(eventQueue, state, executeTime, name);
 		if (!(state instanceof SupermarketState)) {
 			throw new RuntimeException("Invalid State");
