@@ -41,7 +41,9 @@ public abstract class Event {
         this.name = name;
     }
 
-
+    /**
+     * This will preform the actions that a event dose.
+     */
     public abstract void execute();
 
     /**

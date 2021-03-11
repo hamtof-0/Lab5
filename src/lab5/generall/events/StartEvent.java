@@ -27,8 +27,17 @@ public class StartEvent extends Event {
 
     /**
      * Sends the name of THIS (start) event to the generic event super class.
+     * Used to create dummy start events that don't affect any state
      */
     public StartEvent(){
         super(NAME);
+    }
+
+    /**
+     * This will preform the actions that a event dose.
+     */
+    @Override
+    public void execute() {
+        // General start event dose nothing
     }
 }

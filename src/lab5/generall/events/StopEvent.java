@@ -27,6 +27,7 @@ public class StopEvent extends Event {
 
     /**
      * Sends the name of THIS (stop) event to the generic event super class.
+     * Used to create dummy stop events that don't affect any state
      */
     public StopEvent() {
         super(NAME);
