@@ -1,0 +1,9 @@
+lab5
+lab5.generalsimulation.events
+lab5.generalsimulation.state
+lab5.generalsimulation.view
+lab5.supermarketsimulation.events
+lab5.supermarketsimulation.state
+lab5.supermarketsimulation.state.Customer
+lab5.supermarketsimulation.state.TimeManager
+lab5.supermarketsimulation.view

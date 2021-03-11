@@ -52,11 +52,11 @@ public class SupermarketView extends SimView{
 		System.out.println("Ankomsthastighet, lambda__: " + state.getTimeManager().getArrivalLambda());
 		System.out.println("Plocktider, [Pmin, Pmax]__: [" + state.getTimeManager().getLowerGatherTime() + "," + state.getTimeManager().getUpperGatherTime() + "]");
 		System.out.println("Betaltider, [Bmin, Bmax]__: [" + state.getTimeManager().getLowerScanningTime() + "," + state.getTimeManager().getUpperScanningTime() + "]");
-		System.out.println("Frö, f____________________: " + state.getSeed());
+		System.out.println("FrÃ¶, f____________________: " + state.getSeed());
 		System.out.println();
-		System.out.println("FÖRLOPP");
+		System.out.println("FÃ–RLOPP");
 		System.out.println("_______");
-		System.out.println(" TID   HÄNDELSE  KUND ÖPPET/STÄNGT FRIKASSOR FRIKASSETID KUNDANTAL KLARHANDLADE LEDSENKUNDER KÖAT KÖTID KÖAR [KÖN]");
+		System.out.println(" TID   HÃ„NDELSE  KUND Ã–PPET/STÃ„NGT FRIKASSOR FRIKASSETID KUNDANTAL KLARHANDLADE LEDSENKUNDER KÃ–AT KÃ–TID KÃ–AR [KÃ–N]");
 		System.out.println("0.00   Start");
 	}
 	
@@ -74,7 +74,7 @@ public class SupermarketView extends SimView{
 		} else {
 			customer = correctLengthString("", 5);
 		}
-		String open = correctLengthString((state.isOpen() ? "Öppet" : "Stängt"), 13);
+		String open = correctLengthString((state.isOpen() ? "Ã–ppet" : "StÃ¤ngt"), 13);
 		String freeCheckouts = correctLengthInt(state.checkout().getCheckoutTotal() - state.checkout().getCheckoutsOccupied(), 10);
 		String freeTime = correctLengthDouble(state.getFreeTime(), 12);
 		String custumersNumber = correctLengthInt(state.getNumCustomersInStore(), 10);
@@ -85,7 +85,7 @@ public class SupermarketView extends SimView{
 		String customersQueing = correctLengthInt(state.checkout().getQueue().size(), 5);
 		String queue = state.checkout().getQueue().toString();
 		
-		if (state.getEvent().equals("Stänger")) {
+		if (state.getEvent().equals("StÃ¤nger")) {
 			result = time + event + correctLengthString("-", 5) + open + freeCheckouts + freeTime + custumersNumber +
 					customersFinished + customersSad + customersQueued + customersQueuetime + customersQueing + queue;
 		} else {
@@ -104,18 +104,18 @@ public class SupermarketView extends SimView{
 		System.out.println();
 		System.out.println("(t.e. = Tidsenheter)");
 		System.out.println();
-		System.out.println("1. " + (state.getCustomersServed() + state.getMissedCustomers()) + " personer försökte handla och\n " + 
-		state.getCustomersServed() + " av dem fick plats i affären medan " + state.getMissedCustomers() + " fick gå till en konkurrent istället.");
+		System.out.println("1. " + (state.getCustomersServed() + state.getMissedCustomers()) + " personer fÃ¶rsÃ¶kte handla och\n " + 
+		state.getCustomersServed() + " av dem fick plats i affÃ¤ren medan " + state.getMissedCustomers() + " fick gÃ¥ till en konkurrent istÃ¤llet.");
 		System.out.println();
 		System.out.println("2. Kassorna var lediga i totalt " + correctLengthDouble(state.getFreeTime(), 5) + "t.e. \n"
-				+ "Detta är " + correctLengthDouble((state.getFreeTime() / state.checkout().getCheckoutTotal()), 5) + "t.e. per kassaapparat.");
+				+ "Detta Ã¤r " + correctLengthDouble((state.getFreeTime() / state.checkout().getCheckoutTotal()), 5) + "t.e. per kassaapparat.");
 		System.out.println();
-		System.out.println("3. " + state.checkout().getCustomersQueued() + " kunder behövde köa i totalt " + correctLengthDouble(state.getQueueTimeTotal(), 6) + "t.e. \n"
-				+ "Detta är " + correctLengthDouble((state.getQueueTimeTotal() / state.checkout().getCustomersQueued()), 6) + "t.e. per person.");
+		System.out.println("3. " + state.checkout().getCustomersQueued() + " kunder behÃ¶vde kÃ¶a i totalt " + correctLengthDouble(state.getQueueTimeTotal(), 6) + "t.e. \n"
+				+ "Detta Ã¤r " + correctLengthDouble((state.getQueueTimeTotal() / state.checkout().getCustomersQueued()), 6) + "t.e. per person.");
 	}
 	
 	private String correctLengthDouble(double d, int len) {
-		//Säkra två decimaler
+		//Sï¿½kra tvï¿½ decimaler
 		int truncated = (int) Math.round((d*FIX_DECIMALS));
 		d = ((double) truncated) / FIX_DECIMALS;
 

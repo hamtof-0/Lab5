@@ -2,7 +2,7 @@ package lab5.supermarketsimulation.events;
 
 import lab5.generalsimulation.events.EventQueue;
 import lab5.generalsimulation.state.SimState;
-import lab5.supermarketsimulation.state.Customer.Customer;
+import lab5.supermarketsimulation.state.customer.Customer;
 
 /**
  * This Event represent when a customer has gathered their supplies and are ready to pay

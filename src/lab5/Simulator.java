@@ -5,12 +5,13 @@ import lab5.generalsimulation.state.SimState;
 import lab5.generalsimulation.events.EventQueue;
 
 /**
+ * The general simulator
+ * 
  * @author Hampus Toft
  * @author Malkolm Lundkvist
  * @author Billy Norman
  * @author Axel Johansson
  * 
- * The general simulator
  */
 public class Simulator {
     private final SimState state;
@@ -20,6 +21,7 @@ public class Simulator {
 	 * The constructor
 	 * 
 	 * @param state The general state used to keep track of the general state of the simulation
+	 * @param queue A general queue that hold the order of the events
 	 */
     public Simulator(SimState state, EventQueue queue) {
     	this.state = state;

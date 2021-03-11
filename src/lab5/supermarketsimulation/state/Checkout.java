@@ -1,6 +1,6 @@
 package lab5.supermarketsimulation.state;
 
-import lab5.supermarketsimulation.state.Customer.Customer;
+import lab5.supermarketsimulation.state.customer.Customer;
 
 /**
  * @author Hampus Toft
